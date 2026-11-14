@@ -1,0 +1,54 @@
+{
+  "version": "0.4.0",
+  "source": "Only the freshly supplied 3d-lab(2).zip; no cApp owner or native runtime changes.",
+  "inputSha256": {
+    "3d-lab(2).zip": "813d6109830c5ff0289c6910db7c724b1f67107aa9b93d2c480c1753600ba87d"
+  },
+  "checks": {
+    "core": 19,
+    "largeModel": 7,
+    "geometry": 13,
+    "cutAndShell": 12,
+    "projection": 9,
+    "editedDraftLibrary": 4,
+    "outlineSeparation": 17,
+    "objectOperations": 11,
+    "existingBrowser": 25,
+    "builderBrowser": 22,
+    "viewerBrowser": 19,
+    "workspaceBrowser": 10,
+    "total": 168
+  },
+  "builtIndex": {
+    "bytes": 883305,
+    "sha256": "494f76131986c7f446c1b682017e06f1055e70e71513296651b2a915910f7d40"
+  },
+  "verified": [
+    "Real surface/vertex/edge tracking, visible brush radius, keyboard focus guards and orthographic cut projection",
+    "Concave outline separation with interpolated attributes; cuts before and after shelling; closed Float32 output topology",
+    "57,120-triangle synthetic mesh split and independent topology checks",
+    "Point correction including first-point drag, click-to-close and pending-outline navigation guard",
+    "Actual Move handle dragging, baking, undo and interrupted-drag rollback",
+    "Direct brush edits, one-stroke undo and cancelled-stroke restoration",
+    "Object transforms, duplication, filtering, locks and hidden-object persistence through GLB save/reopen",
+    "Native and fallback fullscreen with accessible tool and object panels",
+    "Manual and real automatic WebGL context restoration retaining edits",
+    "Unchanged original draft bytes and retained working geometry after save failure",
+    "Existing generation workflow and full-detail multi-megabyte saves using controlled engine replies",
+    "Desktop/mobile layouts and no unexpected browser requests or uncaught errors"
+  ],
+  "limitations": [
+    "Installed Windows WebView2 and RTX 4070 behaviour remain unverified here.",
+    "Neural inference, Windows packaging and new native runtimes were not exercised in this update.",
+    "Outlines are fixed orthographic projections, not geodesic paths; wall depth must reach the intended inner skin.",
+    "A cut acts on up to 350,000 source triangles, with 3\u201364 simple points; ambiguous or invalid topology is rejected without replacing the working scene.",
+    "Shell offsets can locally thin or intersect at concave folds; inspect the interior before production use.",
+    "Glass is a transparent material preset, not optical refraction; reference projection is not generated unseen texturing.",
+    "Other GLB viewers can show hidden objects retained in full-scene exports because Builder visibility uses metadata.",
+    "Automatic compartment layout, full AI texturing, Shape Studio UI, rigging and external production writes remain future work."
+  ],
+  "cleanSourceRebuild": {
+    "identicalIndex": true,
+    "sha256": "494f76131986c7f446c1b682017e06f1055e70e71513296651b2a915910f7d40"
+  }
+}

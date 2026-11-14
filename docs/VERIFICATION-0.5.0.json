@@ -1,0 +1,60 @@
+{
+  "version": "0.5.0",
+  "source": "Only the freshly supplied 3d-lab(3).zip; no cApp owner or native runtime changes.",
+  "inputSha256": {
+    "3d-lab(3).zip": "784c0dca8ff4fffecdbe1ea67c1d3b8739257ca1dc414eb04ed7ec65f5928ba6"
+  },
+  "checks": {
+    "core": 19,
+    "largeModel": 7,
+    "geometry": 13,
+    "cutAndShell": 12,
+    "projection": 9,
+    "editedDraftLibrary": 4,
+    "outlineSeparation": 17,
+    "objectOperations": 11,
+    "shapeDocument": 12,
+    "shapeGeometry": 11,
+    "shapeStorage": 13,
+    "existingBrowser": 25,
+    "builderBrowser": 22,
+    "shapeCanvasBrowser": 9,
+    "shapeBrowser": 23,
+    "workspaceBrowser": 16,
+    "total": 223
+  },
+  "builtIndex": {
+    "bytes": 1021404,
+    "sha256": "2f8018874008f98c6229e1e37245a0c404dd9f95beb9dcb1f377f0479d6ee0e1"
+  },
+  "verified": [
+    "Live paired profile points and whole-edge dragging in Side/Top views, linked and independent peers, exact coordinates and hover snapping",
+    "Concave polygon extrusion, bevel, taper and twist; full revolutions; correct closed topology and mirrored winding",
+    "Safe formula parsing, resource limits and invalid-document rejection before replacing current geometry",
+    "Multipart object editing, hidden and locked state, transforms, colours and separately owned meshes",
+    "One-step gesture undo, interrupted drag rollback, unfinished outline guards and keyboard focus isolation",
+    "Editable recipe and GLB saved atomically, saved shape reopening, JSON round trips and tracing-image retention",
+    "Unsaved completed changes restored after page reload, without altering separately saved recipes",
+    "Shape-to-Builder transfer, original imported GLB retention and unchanged existing Create/Builder workflows",
+    "Fullscreen split/sketch/3D panes, contextual controls, keyboard navigation, desktop and mobile layouts",
+    "No uncaught browser errors or unexpected requests in integrated browser suites"
+  ],
+  "limitations": [
+    "Installed Windows WebView2 and RTX4070 behaviour remain unverified here; neural inference and Windows packaging were not exercised.",
+    "Shape Lab supports simple closed polygon contours, without separate hole contours, and full360-degree revolutions only.",
+    "Shape Lab maintains procedural recipes. Cutting and sculpt brushes are available through Save & edit in Builder; mesh edits do not reverse-engineer profile controls.",
+    "Strong twists and deeply concave outlines may self-intersect; this is not a general solid-intersection solver.",
+    "Session autosave retains completed recipe data, not the tracing image, undo history or pending gestures. Saved shape drafts retain the tracing image.",
+    "Other GLB viewers may show hidden objects retained in full-scene exports because visibility uses editor metadata.",
+    "AI texturing, rigging, automatic compartment layout and external production writes remain future work."
+  ],
+  "evidenceNotes": [
+    "Geometry/storage/core tests ran against the final implementation. Canvas9 checks reran after adaptive-fit polish.",
+    "Integrated Shape23 and workspace16 checks ran on the final1021404-byte build.",
+    "Create25 and Builder22 regression checks ran on1020202-byte build; subsequent changes were Shape selection highlighting, selected-point copy, compact sketch fitting, navigation tooltip and fullscreen Shape layout-button state."
+  ],
+  "cleanSourceRebuild": {
+    "identicalIndex": true,
+    "sha256": "2f8018874008f98c6229e1e37245a0c404dd9f95beb9dcb1f377f0479d6ee0e1"
+  }
+}

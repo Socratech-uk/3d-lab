@@ -1,0 +1,16 @@
+import assert from 'node:assert/strict';
+import * as THREE from '../vendor/three-0.160.1/build/three.module.js';
+import {predictionProxy} from '../src/skeleton-proxy-kernel.mjs';
+import {prepareSkeletonMesh} from '../src/skeleton-proxy.mjs';
+import {skeletonReadiness} from '../src/action-composer.mjs';
+import {ActionEngine} from '../src/action-engine.mjs';
+const geometry=new THREE.SphereGeometry(1,240,240);geometry.scale(.5,1,.4);geometry.translate(4,-2,7);
+const positions=Array.from(geometry.attributes.position.array),indices=Array.from(geometry.index.array),before=JSON.stringify({positions,indices}),events=[];
+const started=performance.now(),result=predictionProxy({positions,indices},(m,f)=>events.push({m,f}));
+assert.ok(result.preparation.before.triangles>110000);assert.ok(result.mesh.positions.length/3<=20000);assert.ok(result.mesh.indices.length/3<=40000);assert.equal(JSON.stringify({positions,indices}),before);assert.ok(events.length>=3);assert.equal(events.at(-1).f,1);
+const output=new THREE.BufferGeometry();output.setAttribute('position',new THREE.Float32BufferAttribute(result.mesh.positions,3));output.computeBoundingBox();const center=output.boundingBox.getCenter(new THREE.Vector3());assert.ok(center.distanceTo(new THREE.Vector3(4,-2,7))<.01);assert.ok(output.boundingBox.max.y-output.boundingBox.min.y>1.98);
+console.log('PASS 114k-triangle prediction copy fits native limits, preserves coordinates and leaves source bytes intact in '+Math.round(performance.now()-started)+' ms');
+for(const mesh of [{positions:[NaN,0,0,1,0,0,0,1,0],indices:[0,1,2]},{positions:[0,0,0,1,0,0,0,1,0],indices:[0,1,10]},{positions:[0,0,0],indices:[0,0]}])assert.throws(()=>predictionProxy(mesh));console.log('PASS invalid geometry rejected without truncation');
+const ready={loaded:true,licenseAccepted:true,seed:0,meshStats:{vertices:56790,triangles:113576}};assert.deepEqual(skeletonReadiness(ready),[]);assert.deepEqual(skeletonReadiness({...ready,meshStats:{vertices:2000001,triangles:10}}),[]);console.log('PASS dense models are admitted for automatic preparation without a source count ceiling');
+const root=new THREE.Group();root.add(new THREE.Mesh(geometry,new THREE.MeshBasicMaterial()));const abort=new AbortController();abort.abort();await assert.rejects(()=>prepareSkeletonMesh(root,{signal:abort.signal}),/cancelled/);
+const engine=new ActionEngine();engine.loaded={model:'unirig',device:'auto'};let renderCalls=0;globalThis.window={capp:{ai:{local:{animation:{connect:()=>({render:()=>{renderCalls++;},cancel:async()=>{}})}}}}};const operation=engine.generate({model:'unirig',device:'auto',licenseAccepted:true,seed:0},root,{});await engine.cancel();await assert.rejects(operation,/cancelled/);assert.equal(renderCalls,0);assert.equal(engine.loaded.model,'unirig');assert.equal(engine.busy,false);delete globalThis.window;console.log('PASS cancelling preparation prevents inference and retains detailed geometry and loaded model');

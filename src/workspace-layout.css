@@ -1,0 +1,74 @@
+/* A long tool panel must never set the height of the 3D canvas. This sheet is
+   last so the workspace has one sizing authority across its older breakpoints. */
+@media(min-width:1000px){
+ body:is([data-view=create],[data-view=builder],[data-view=shapes],[data-view=actions]){
+  height:100vh;height:100dvh;overflow:hidden;display:grid;
+  grid-template-rows:auto minmax(0,1fr) auto;
+ }
+ body:is([data-view=create],[data-view=builder],[data-view=shapes],[data-view=actions])>main{min-height:0;min-width:0;overflow:hidden}
+ .topbar{min-width:0;gap:16px;padding-inline:22px}
+ .primary-nav{min-width:0;flex:1;justify-content:center}
+ .primary-nav button{padding-inline:12px}
+ .header-actions{flex-shrink:0;gap:10px}
+ #create-view,#builder-view:not(.viewport-expanded),#shape-view:not(.viewport-expanded),#action-view:not(.viewport-expanded){
+  height:100%;min-height:0;max-height:100%;overflow:hidden;
+  display:grid;grid-template-columns:clamp(250px,21vw,310px) minmax(0,1fr) clamp(224px,18vw,270px);
+  grid-template-rows:minmax(0,1fr);align-items:stretch;
+ }
+ #action-view:not(.viewport-expanded){padding:12px;gap:12px;max-width:none}
+ #create-view>.create-panel,#create-view>.inspector,
+ #builder-view:not(.viewport-expanded)>.builder-tools,#builder-view:not(.viewport-expanded)>.builder-inspector,
+ #shape-view:not(.viewport-expanded)>.shape-tools,#shape-view:not(.viewport-expanded)>.shape-inspector,
+ #action-view:not(.viewport-expanded)>.action-tools,#action-view:not(.viewport-expanded)>.action-inspector{
+  min-height:0;max-height:100%;height:auto;overflow-y:auto;overscroll-behavior:contain;
+  scrollbar-width:thin;scrollbar-color:#435773 transparent;position:static;grid-row:1;
+ }
+ #create-view>.create-panel,#builder-view>.builder-tools,#shape-view>.shape-tools,#action-view>.action-tools{grid-column:1}
+ #create-view>.inspector,#builder-view>.builder-inspector,#shape-view>.shape-inspector,#action-view>.action-inspector{grid-column:3}
+ #create-view>.inspector{display:flex;border-left:1px solid var(--line);border-top:0}
+ #builder-view:not(.viewport-expanded)>.builder-inspector,#shape-view:not(.viewport-expanded)>.shape-inspector{display:block}
+ #create-view>.stage-panel,#builder-stage,#shape-workspace,#action-workspace{grid-column:2;grid-row:1;min-width:0;min-height:0}
+ #create-view>.stage-panel,#builder-stage>.stage-panel{height:100%;min-height:0;max-height:100%}
+ #create-view .viewport,#builder-stage .viewport{min-height:0}
+ #shape-view:not(.viewport-expanded) #shape-workspace{height:100%;min-height:0;overflow:hidden}
+ #shape-view:not(.viewport-expanded) .shape-workspace-head{flex-shrink:0;min-height:60px;padding-block:11px}
+ #shape-view:not(.viewport-expanded) .shape-pane-grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr);grid-template-rows:minmax(0,1fr)}
+ #shape-view:not(.viewport-expanded) #shape-workspace:is([data-layout=sketch],[data-layout="3d"]) .shape-pane-grid{grid-template-columns:minmax(0,1fr);grid-template-rows:minmax(0,1fr)}
+ #shape-view:not(.viewport-expanded) .shape-canvas-wrap{min-height:0}
+ #action-view:not(.viewport-expanded) #action-workspace{height:100%;position:static;display:flex;flex-direction:column;overflow:hidden;align-self:stretch}
+ #action-view:not(.viewport-expanded) .action-source-card,#action-view:not(.viewport-expanded) .action-toolstrip{flex-shrink:0}
+ #action-view:not(.viewport-expanded) .action-source-card{padding:9px 12px;gap:8px;margin-bottom:6px}
+ #action-view:not(.viewport-expanded) .action-source-copy>span:last-child{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:10px}
+ #action-view:not(.viewport-expanded) .action-source-copy strong{font-size:13px}
+ #action-view:not(.viewport-expanded) .action-source-buttons{gap:5px}
+ #action-view:not(.viewport-expanded) .action-source-buttons button{min-height:30px;padding:5px 8px;font-size:11px}
+ #action-view:not(.viewport-expanded) .action-toolstrip{padding:6px 8px;gap:4px}
+ #action-view:not(.viewport-expanded) .action-toolstrip button{padding:5px 8px;font-size:11px}
+ #action-view:not(.viewport-expanded) #action-stage{flex:1;min-height:0}
+ #action-view:not(.viewport-expanded) #action-stage>.stage-panel{height:100%;min-height:0}
+ #action-view:not(.viewport-expanded) #action-stage #viewport{height:auto;min-height:0;inset:64px 0 98px}
+ #action-view:not(.viewport-expanded) #action-stage .stage-top{top:15px;left:16px;right:16px}
+ #action-view:not(.viewport-expanded) #action-stage .stage-top h2{font-size:12px;line-height:1.3;margin:6px 0;max-width:200px}
+ #action-view:not(.viewport-expanded) #action-stage .viewport-controls{bottom:42px;left:12px;right:12px;gap:8px}
+ #action-view:not(.viewport-expanded) #action-stage .viewport-controls button{font-size:9px;line-height:1.2;min-height:0;padding:6px 7px}
+ #action-view:not(.viewport-expanded) .action-timeline{flex:none;max-height:30%;overflow:auto}
+}
+@media(min-width:1000px) and (max-width:1299px){
+ .topbar{padding-inline:15px;gap:10px}.brand{font-size:19px}.brand svg{width:28px}
+ .primary-nav button{padding-inline:8px;font-size:12px}.header-actions .local-badge{display:none}
+ .header-actions>button:not(.icon-button){padding:9px 10px;font-size:11px}
+}
+/* On smaller screens put the complete preview before the stacked controls. */
+@media(max-width:999px){
+ #create-view{display:flex;flex-direction:column;min-height:0}
+ #create-view>.stage-panel{order:0;height:clamp(390px,70dvh,640px);min-height:0;flex-shrink:0}
+ #create-view>.create-panel{order:1;border-right:0;border-top:1px solid var(--line)}
+ #create-view>.inspector{order:2;display:flex;border-left:0;border-top:1px solid var(--line)}
+}
+.retained{max-height:calc(100dvh - 140px);overflow:auto;flex-wrap:wrap}
+
+.zip-flag{display:flex;align-items:center;gap:6px;font-size:11px;margin-top:9px}.zip-flag input,.work-selection input{width:auto}.identity-dialog{max-width:520px}.identity-dialog button{margin:8px 8px 0 0}.work-selection{border-block:1px solid var(--line);padding-block:12px;margin-block:12px}.work-selection textarea{width:100%;min-height:80px}
+
+.texture-aligner{width:min(1180px,96vw);max-width:96vw;max-height:96dvh;padding:1rem;background:#131e2b;color:#edf3ff;border:1px solid #8192ac;border-radius:12px}.texture-aligner::backdrop{background:#000b}.texture-aligner header h2{margin:0}.texture-aligner header p{max-width:85ch}.texture-aligner-body{display:grid;grid-template-columns:minmax(0,1fr) 230px;gap:1rem;height:min(65dvh,720px);min-height:280px}.texture-aligner canvas{display:block;width:100%;height:100%;min-width:0;min-height:0;touch-action:none;cursor:move;border:1px solid #3b506a;border-radius:8px}.texture-aligner aside{display:flex;flex-direction:column;gap:.6rem;overflow:auto}.texture-aligner label{display:flex;flex-direction:column;gap:.25rem}.texture-aligner input,.texture-aligner select{width:100%;min-width:0}.texture-aligner label:has(input[type=checkbox]){flex-direction:row;align-items:center}.texture-aligner input[type=checkbox]{width:auto}.texture-aligner footer{display:flex;justify-content:flex-end;gap:.6rem;margin-top:1rem}@media(max-width:650px){.texture-aligner-body{grid-template-columns:minmax(0,1fr);height:auto}.texture-aligner canvas{height:45dvh;min-height:240px}.texture-aligner aside{max-height:25dvh;display:grid;grid-template-columns:1fr 1fr}.texture-aligner header p{font-size:.8rem}}
+
+.texture-paint-stage{position:relative;min-height:0;overflow:hidden;border:1px solid #3b506a;border-radius:8px}.texture-painter .texture-paint-stage canvas{border:0;border-radius:0;cursor:crosshair}.texture-brush-cursor{position:absolute;pointer-events:none;border:1px solid white;box-shadow:0 0 0 1px #111;border-radius:50%;transform:translate(-50%,-50%)}.texture-paint-help{font-size:.8rem;line-height:1.4;color:#b3c5d9}.texture-painter input[type=color]{height:38px}.texture-painter footer{flex-wrap:wrap}@media(max-width:650px){.texture-paint-stage{height:44dvh;min-height:240px}.texture-painter aside p{grid-column:1/-1}}

@@ -1,0 +1,96 @@
+{
+  "format": "capp.action-flow",
+  "version": 1,
+  "name": "Carry and review — local only",
+  "nodes": [
+    {
+      "id": "node-b244b548-9a30-45c1-984a-77bb91cda8bc",
+      "type": "current",
+      "label": "Current character",
+      "position": {
+        "x": 40,
+        "y": 40
+      },
+      "config": {}
+    },
+    {
+      "id": "node-1cdfdf96-0842-4a38-a311-f405ef1a6343",
+      "type": "accept",
+      "label": "Apply joints & map body",
+      "position": {
+        "x": 288,
+        "y": 40
+      },
+      "config": {
+        "kind": "humanoid",
+        "facing": "+Z"
+      }
+    },
+    {
+      "id": "node-e649ede6-96b4-4d1c-9352-7d4a159f054e",
+      "type": "equipment",
+      "label": "Equip & hold item",
+      "position": {
+        "x": 536,
+        "y": 40
+      },
+      "config": {
+        "category": "carry",
+        "name": "Crate",
+        "massKg": 8,
+        "dimensions": [
+          0.45,
+          0.35,
+          0.35
+        ],
+        "hand": "auto",
+        "actions": [
+          "equip",
+          "hold",
+          "holster"
+        ],
+        "carryLimitKg": 25
+      }
+    },
+    {
+      "id": "node-989b4f77-c7db-4c0f-8a2c-8bbd2b16aab0",
+      "type": "review",
+      "label": "Manual review",
+      "position": {
+        "x": 40,
+        "y": 180
+      },
+      "config": {}
+    },
+    {
+      "id": "node-ce725cb5-52bf-41de-82dc-b296d3ef3220",
+      "type": "save",
+      "label": "Save action draft",
+      "position": {
+        "x": 288,
+        "y": 180
+      },
+      "config": {
+        "name": ""
+      }
+    }
+  ],
+  "edges": [
+    {
+      "from": "node-b244b548-9a30-45c1-984a-77bb91cda8bc",
+      "to": "node-1cdfdf96-0842-4a38-a311-f405ef1a6343"
+    },
+    {
+      "from": "node-1cdfdf96-0842-4a38-a311-f405ef1a6343",
+      "to": "node-e649ede6-96b4-4d1c-9352-7d4a159f054e"
+    },
+    {
+      "from": "node-e649ede6-96b4-4d1c-9352-7d4a159f054e",
+      "to": "node-989b4f77-c7db-4c0f-8a2c-8bbd2b16aab0"
+    },
+    {
+      "from": "node-989b4f77-c7db-4c0f-8a2c-8bbd2b16aab0",
+      "to": "node-ce725cb5-52bf-41de-82dc-b296d3ef3220"
+    }
+  ]
+}

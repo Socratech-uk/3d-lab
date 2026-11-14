@@ -1,0 +1,96 @@
+{
+  "checks": 22,
+  "results": [
+    {
+      "name": "cube import and Builder preserve twelve source triangles",
+      "ms": 1244
+    },
+    {
+      "name": "outline cursor tracks the surface and four clicked points draw a pending cut",
+      "ms": 2629
+    },
+    {
+      "name": "drawing an outline locks movement and permits point correction",
+      "ms": 382
+    },
+    {
+      "name": "point outline separates a complementary new object and Undo/Redo preserve geometry",
+      "ms": 572
+    },
+    {
+      "name": "inner walls can be generated on the outlined hull with the extracted piece retained",
+      "ms": 532
+    },
+    {
+      "name": "a cut made after inner-wall generation retains closed separated wall geometry",
+      "ms": 1485
+    },
+    {
+      "name": "discard restores the exact original and unfinished outlines trigger navigation confirmation",
+      "ms": 806
+    },
+    {
+      "name": "existing outline points drag without completing and clicking the first point closes the cut",
+      "ms": 2324
+    },
+    {
+      "name": "Move gizmo dragging commits baked geometry and Undo restores the source",
+      "ms": 2623
+    },
+    {
+      "name": "cancelling a Move gizmo drag restores geometry and leaves no undo entry",
+      "ms": 1026
+    },
+    {
+      "name": "floating toolbar selects Move and pending outlines refuse tool changes safely",
+      "ms": 633
+    },
+    {
+      "name": "visible sculpt footprint edits by direct drag as one undoable stroke",
+      "ms": 1000
+    },
+    {
+      "name": "cancelling an in-progress brush stroke restores geometry without adding history",
+      "ms": 437
+    },
+    {
+      "name": "numeric object transforms, duplication, locking and object search work together",
+      "ms": 1171
+    },
+    {
+      "name": "hidden and locked scene objects persist through save and reopen",
+      "ms": 2021
+    },
+    {
+      "name": "WASD and QE move the focused viewport while text inputs keep typing safely",
+      "ms": 1402
+    },
+    {
+      "name": "fullscreen retains tool, object and keyboard-guide access",
+      "ms": 797
+    },
+    {
+      "name": "manual and automatic graphics recovery preserve edits, object state and one canvas",
+      "ms": 631
+    },
+    {
+      "name": "failed edited-draft save preserves working geometry and download",
+      "ms": 199
+    },
+    {
+      "name": "original GLB remains byte-for-byte unchanged",
+      "ms": 335
+    },
+    {
+      "name": "desktop and mobile Builder layouts fit without horizontal overflow",
+      "ms": 549
+    },
+    {
+      "name": "no unexpected external requests or uncaught browser errors",
+      "ms": 0
+    }
+  ],
+  "errors": [],
+  "network": [],
+  "scope": "Integrated browser editor tests using synthetic meshes and real UI events. No neural generation, Windows packaging or GPU inference."
+}

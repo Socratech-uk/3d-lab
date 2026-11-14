@@ -1,0 +1,22 @@
+{
+  "passed": true,
+  "checks": [
+    "empty-action model has a usable sandbox with clear fallback guidance",
+    "existing editable actions feed idle, walk, run and interruptible start/stop slots",
+    "WASD accelerates, Shift runs, release brakes, and rest is reached",
+    "short taps and direction reversal interrupt transitions without waiting for a cycle",
+    "typing and focus loss never leave movement keys held",
+    "POV, turning, head/hand aiming, pausing and NPC test run in the actual renderer",
+    "bad settings stay visible and cannot overwrite the accepted profile",
+    "game export contains trimmed in-place clips, a rig and movement metadata",
+    "keeping settings leaves source keys intact and Undo restores the prior draft",
+    "responsive modal and keyboard focus work at 390px; repeated open/close retains editor",
+    "saved draft reopens with movement settings and original keys after reload",
+    "dense mesh is automatically prepared in the real worker and original detail returns with candidate",
+    "applying a proxy-derived candidate keeps full detail and one Undo restores weights/actions/settings",
+    "cancelling preparation never sends a partial mesh and retains source and engine",
+    "no uncaught browser errors"
+  ],
+  "errors": [],
+  "nativeInference": false
+}

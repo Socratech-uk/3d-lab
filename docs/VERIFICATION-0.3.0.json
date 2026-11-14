@@ -1,0 +1,50 @@
+{
+  "version": "0.3.0",
+  "source": "Only supplied 3d-lab(1).zip; capp-v1(20261014-212235).zip inspected and unchanged.",
+  "inputSha256": {
+    "3d-lab(1).zip": "73ad5b74b47b74b51857bde3c02de0beb079a3b2955cd64d28ac5416f779ed28",
+    "capp-v1(20261014-212235).zip": "d7997d91b6b596b7ea678410185741e7aa778db0b77cb5581b4de58818f9a52c"
+  },
+  "checks": {
+    "core": 19,
+    "largeModel": 7,
+    "geometry": 13,
+    "cutAndShell": 12,
+    "projection": 9,
+    "editedDraftLibrary": 4,
+    "existingBrowser": 25,
+    "builderBrowser": 16,
+    "totalPackagedChecks": 105,
+    "isolatedViewerBrowser": 8
+  },
+  "actualSuppliedShip": {
+    "originalTriangles": 56050,
+    "reducedTriangles": 28026,
+    "cutShellTriangles": 109420,
+    "openingRevealTriangles": 1942,
+    "cutShellTopology": {
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "inconsistentEdges": 0,
+      "degenerateTriangles": 0
+    }
+  },
+  "verified": [
+    "Browser preview/import/export and unchanged original bytes",
+    "Editable draft provenance, conflicts and reference persistence",
+    "Geometry algorithms on synthetic fixtures and supplied ship",
+    "Embedded source-image projection roundtrip",
+    "Automatic and manual WebGL restoration retaining unsaved edits and cutter controls",
+    "Desktop and mobile responsive layout",
+    "One self-contained HTML with local dependencies",
+    "Edited-draft save failure retains the working mesh and exact export",
+    "Clean reapplication of the source with byte-identical rebuilt index.html"
+  ],
+  "limitations": [
+    "Installed Windows WebView2 and RTX 4070 acceptance remain unverified here.",
+    "No new neural generation test or engine/runtime change in this update.",
+    "Shell wall thickness may be locally reduced; concave global intersections require inspection.",
+    "Projected reference is a textured overlay using triangle-centre visibility, not complete generated texturing.",
+    "Shape Studio UI, full AI texturing, rigging, external production folders and pending model runtimes remain later work."
+  ]
+}

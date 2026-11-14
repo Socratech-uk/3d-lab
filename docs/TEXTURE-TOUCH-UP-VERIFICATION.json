@@ -1,0 +1,120 @@
+{
+  "version": "0.22.0",
+  "source": "creative-suite-20261018-232123.zip",
+  "sourceSha256": "f1826b6d9e5c5c5223e992f2adcbd662657a81904049ab0a4341498ae1fd01d3",
+  "originalRig": {
+    "ok": true,
+    "checks": [
+      "every indexed triangle corner: exact original positions, normals, bone indices and skin weights",
+      "editable Action Lab document exact",
+      "all 10 animation clips and keyframes exact"
+    ],
+    "triangles": 456408,
+    "joints": 34,
+    "animations": 10
+  },
+  "modelBinary": {
+    "ok": true,
+    "unchanged": {
+      "nodes": "exact",
+      "scenes": "exact",
+      "skins": "exact",
+      "animations": "exact",
+      "accessors": "exact",
+      "meshes": "exact",
+      "materials": "exact",
+      "textures": "exact"
+    },
+    "allAccessorBufferBytes": "exact",
+    "sourceRepaired": "a5fc11673b984bdb6783731234064a7aaa630818e3e7662736b978b2e3ea53bb",
+    "output": "8e28c02b0b45de5acfd5411b1d099bb1b5cf646b7d407d0ec6ce2fc6dabbeab3"
+  },
+  "deformation": {
+    "ok": true,
+    "clips": 10,
+    "poses": 30,
+    "samples": 5760,
+    "maximumPositionDelta": 0,
+    "browser": "Chromium software WebGL",
+    "nativeWindows": false
+  },
+  "paintModule": {
+    "ok": true,
+    "paintedPixels": 1559,
+    "roundtrip": {
+      "layers": 1,
+      "width": 4096,
+      "height": 4096,
+      "paintBytes": 338967,
+      "baseBytes": 11499505
+    },
+    "checks": [
+      "real android brush stroke",
+      "undo",
+      "redo",
+      "GLB export",
+      "layer parse",
+      "save callback and close"
+    ],
+    "errors": []
+  },
+  "builtUI": {
+    "ok": true,
+    "checks": [
+      "built UI paints the real rigged android and saves revision 2 on the same disk ID with exact mesh, rig and animation data",
+      "reload restores the layer; erase keeps the immutable base; another save reuses buffer slots; mobile dialog fits"
+    ],
+    "errors": [],
+    "nativeWindows": false
+  },
+  "materialsAndBakeBrowser": {
+    "ok": true,
+    "checks": [
+      "texture upload supplies box UVs; Undo/Redo retain exact geometry and original disk bytes",
+      "normal maps and physical glass export together, with editable optical settings",
+      "PNG capture uses its own glass environment and leaves the editable scene unchanged",
+      "source-image bake preserves the mesh and existing normal UVs; export embeds the atlas",
+      "explicitly duplicated textured edits save as a new disk draft; a fresh browser profile reloads the embedded images",
+      "material changes affect only selected parts and roll back with Undo",
+      "texture controls remain reachable in the small-screen workspace"
+    ],
+    "errors": [],
+    "neuralInference": false,
+    "nativeAcceptance": false,
+    "performanceAcceptance": false
+  },
+  "nodeChecks": [
+    "22 core checks",
+    "5 durable revision checks",
+    "9 material and source-bake checks, including transparent-centre fixture",
+    "9 legacy projection checks",
+    "texture-layer buffer preservation, base retention, repeated-save reuse, invalid-reference and shared-channel rejection"
+  ],
+  "eraseReadback": {
+    "remainingPaintPixels": 0,
+    "maximumAlpha": 0
+  },
+  "visualReview": [
+    "front",
+    "both profiles",
+    "both front three-quarter views",
+    "back",
+    "rear three-quarter",
+    "walking pose"
+  ],
+  "unrun": [
+    "native compile or CTest",
+    "installed Windows / WebView2",
+    "PowerShell updater execution",
+    "CUDA",
+    "performance acceptance",
+    "Kestrel gameplay"
+  ],
+  "limitations": [
+    "source pose and lighting inconsistencies; body projection stretching remains",
+    "generic baker still selects one view per triangle",
+    "landmark registration is specific to this repaired asset",
+    "paint shares overlapping UVs; repeated UV tiles need unique mapping",
+    "other exporters may flatten editable paint layers"
+  ]
+}

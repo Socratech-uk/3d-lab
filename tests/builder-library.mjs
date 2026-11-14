@@ -1,0 +1,16 @@
+import assert from 'node:assert/strict';
+import {pathToFileURL} from 'node:url';
+import {ModelLibrary} from '../src/library.mjs';
+import {fixtureGlb} from './fixtures.mjs';
+import {filterAssets} from '../src/core.mjs';
+const {indexedDB}=process.env.FAKE_IDB_PATH?await import(pathToFileURL(process.env.FAKE_IDB_PATH).href):await import('fake-indexeddb');
+const lib=new ModelLibrary({indexedDB,name:'builder-'+crypto.randomUUID()}),bytes=fixtureGlb(),ref=new Blob(['reference'],{type:'image/png'});
+const original=await lib.save({bytes,info:{title:'Hull',folder:'Ships'},source:{blob:ref,name:'hull.png',width:64,height:64,sha256:'a'.repeat(64)}});
+const edit={parentId:original.asset.id,parentSha256:original.asset.sha256,operations:['Reduce polygons','Cut box opening']};
+const first=await lib.save({bytes,info:{title:'Hull edited',folder:'Ships'},source:{blob:ref,name:'hull.png',width:64,height:64,sha256:'a'.repeat(64),views:{left:{blob:ref,name:'left.png',width:64,height:64,sha256:'b'.repeat(64)}}},origin:'edit',edit});
+assert.notEqual(first.asset.id,original.asset.id);assert.equal(first.asset.origin,'edit');assert.deepEqual(first.asset.edit,edit);assert.deepEqual(new Uint8Array(await(await lib.get(original.asset.id)).files.glb.arrayBuffer()),bytes);
+console.log('PASS edited draft has separate identity and original bytes remain intact');
+lib.close();const reopened=await lib.get(first.asset.id);assert.deepEqual(reopened.asset.edit,edit);assert.equal(await reopened.files.image.text(),'reference');assert.equal(await reopened.files.views.left.blob.text(),'reference');
+assert.equal(filterAssets(await lib.list(),{type:'edit'}).length,1);console.log('PASS edit provenance and separate source views survive reopening and filtering');
+const duplicate=await lib.save({bytes,info:{title:'Hull edited',folder:'Ships'},origin:'edit',edit});assert.equal(duplicate.asset.title,'Hull edited (2)');assert.equal(duplicate.renamed,true);assert.equal((await lib.list()).length,3);console.log('PASS repeated edited name resolves without overwriting either draft');
+await assert.rejects(()=>lib.save({bytes,info:{title:'Bad'},origin:'edit'}),/parent provenance/);await assert.rejects(()=>lib.save({bytes,info:{title:'Bad'},origin:'edit',edit:{...edit,operations:['x'.repeat(201)]}}),/bounded edit history/);assert.equal((await lib.list()).length,3);lib.close();console.log('PASS invalid provenance cannot create partial edited drafts');

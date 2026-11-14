@@ -1,0 +1,7 @@
+/** Only visible card previews are read; no geometry, hashing or background mesh loads. */
+export class AssetPreviews {
+ constructor(library,{concurrency=2}={}){this.library=library;this.concurrency=concurrency;this.queue=[];this.running=0;this.serial=0;this.urls=new Set();this.observer=typeof IntersectionObserver==='function'?new IntersectionObserver(entries=>{for(const e of entries)if(e.isIntersecting){this.observer.unobserve(e.target);const job=e.target._assetPreview;if(job){this.queue.push(job);this.pump();}}},{rootMargin:'80px'}):null;}
+ reset(){++this.serial;this.queue=[];this.observer?.disconnect();for(const url of this.urls)URL.revokeObjectURL(url);this.urls.clear();}
+ watch(card,id,preview,title=''){const job={card,id,preview,title,serial:this.serial};if(this.observer){card._assetPreview=job;this.observer.observe(card);}else{this.queue.push(job);this.pump();}}
+ pump(){while(this.running<this.concurrency&&this.queue.length){const job=this.queue.shift();if(job.serial!==this.serial||!job.card.isConnected||!job.card.getClientRects().length)continue;this.running++;Promise.resolve().then(()=>this.library.preview(job.id)).then(blob=>{if(job.serial!==this.serial||!job.card.isConnected||!(blob instanceof Blob))return;const url=URL.createObjectURL(blob);this.urls.add(url);const img=document.createElement('img');img.src=url;img.alt=job.title;img.loading='lazy';job.preview.replaceChildren(img);}).catch(()=>{}).finally(()=>{this.running--;this.pump();});}}
+}

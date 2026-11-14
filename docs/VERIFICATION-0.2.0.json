@@ -1,0 +1,57 @@
+{
+  "sourceArchives": {
+    "capp": "a4be50bc7a1990a8423ee9d88ae840cf2155a295abad169da6305f5d29f76b8d",
+    "3d-lab": "a9e57afcf6e85d25ac4e95aa84fcd3f337c3a2dcf60cbbd2b880f46b33e5ecd3"
+  },
+  "versions": {
+    "localAi": "0.18.0",
+    "mcp": "0.24.17",
+    "lab": "0.2.0"
+  },
+  "modelChoices": 9,
+  "runtimeImplementations": 6,
+  "setupPending": [
+    "sf3d",
+    "spar3d",
+    "trellis2"
+  ],
+  "dependencyArtifacts": {
+    "assets": 46,
+    "dependencyGraphVerified": true,
+    "targetImportProbe": "pending Windows x64",
+    "extractedBytes": 5137194069
+  },
+  "checks": {
+    "models3dBoundary": 8,
+    "advancedBoundary": 5,
+    "dialogueRegression": 12,
+    "agentPolicy": 27,
+    "labCore": 19,
+    "labBrowser": 22,
+    "generatedAppFrameBrowser": 18,
+    "generatedRust": 35,
+    "standard": 633,
+    "publicDocs": 17,
+    "publicWorker": 249,
+    "immutableOwnerClosure": "passed",
+    "linuxPipelineImports": "passed",
+    "pinnedHunyuanConstructorContracts": 4,
+    "ordinaryCapppackBuild": "passed --site-id capp-protocol --version 0.28.0 --no-sealed",
+    "verify": "passed",
+    "verifyCapsule": "passed",
+    "publicSdkDeclarations": 63,
+    "overlayReapplication": "passed; every source file matches fresh input plus overlay"
+  },
+  "docs": {
+    "status": "failed",
+    "preExistingBrokenLinks": 19,
+    "unchangedFromPristine": true
+  },
+  "notVerified": [
+    "Windows Setup.exe build and installation",
+    "Added pipeline neural inference / GPU quality and performance",
+    "Installed WebView2 and CUDA",
+    "Independent installed A-to-B self-hosting"
+  ],
+  "weights": "Small model configs fetched and hashed; large weights pinned to official revision/LFS metadata. Runtime preparation verifies full bytes; full new weight collection was not downloaded in this session."
+}

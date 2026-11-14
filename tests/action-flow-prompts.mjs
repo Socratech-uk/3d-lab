@@ -1,0 +1,27 @@
+import assert from 'node:assert/strict';
+import {ACTION_PROMPTS,PromptLibrary} from '../src/action-prompts.mjs';
+import {flowPromptChoices,flowActionFromPrompt} from '../src/action-flow-prompts.mjs';
+import {flowPreset,parseFlow,stringifyFlow} from '../src/action-flow.mjs';
+
+const storage={getItem:()=>null,setItem:()=>{}},library=new PromptLibrary(storage);
+const saved=library.save({name:'My patrol recipe',actionName:'Guard patrol',prompt:'A person walks slowly.\nLook ahead.',durationSeconds:6.017,seed:42});
+let choices=flowPromptChoices(library.state.entries);
+assert.deepEqual(choices.filter(c=>c.key.startsWith('preset:')).map(c=>[c.key,c.group,c.recipe.prompt]),ACTION_PROMPTS.map(p=>['preset:'+p.id,p.group,p.prompt]));
+const choice=choices.find(c=>c.key==='saved:'+saved.id),before=JSON.stringify(library.state);
+assert.equal(choice.group,'Your saved prompts');
+const action=flowActionFromPrompt(choice.recipe,'unimate');
+assert.deepEqual(action,{name:'Guard patrol',prompt:saved.prompt,durationSeconds:6.017,seed:42,loop:false});
+const f=flowPreset('actions');f.nodes.find(n=>n.type==='motions').config.actions=[action];
+const serialized=stringifyFlow(f);action.prompt='A changed workflow description.';
+assert.equal(JSON.stringify(library.state),before,'Workflow edits must not overwrite the source');
+library.remove(saved.id);
+assert.equal(flowPromptChoices(library.state.entries).some(c=>c.key===choice.key),false);
+assert.equal(parseFlow(serialized).nodes.find(n=>n.type==='motions').config.actions[0].prompt,saved.prompt,'Export must survive deletion of its source');
+const long={...choice.recipe,durationSeconds:12};
+assert.throws(()=>flowActionFromPrompt(long,'momask'),/9.6/);
+assert.equal(flowActionFromPrompt(long,'momask',{durationSeconds:9.6,loop:true}).loop,true);
+assert.equal(long.durationSeconds,12,'Duration override must not edit the source');
+assert.equal(flowActionFromPrompt({...long,actionName:''},'unimate').name,long.name);
+for(const invalid of [{durationSeconds:NaN},{durationSeconds:0},{seed:-1},{seed:1.2}])assert.throws(()=>flowActionFromPrompt(long,'unimate',invalid));
+assert.throws(()=>flowActionFromPrompt(long,'unirig'),/UniMate or MoMask/);
+console.log('Action prompt selection checks passed: shared catalogue, named snapshots, portable export, source isolation and explicit model limits.');

@@ -1,0 +1,95 @@
+{
+  "release": "3D Lab 0.10.0",
+  "date": "2026-10-15",
+  "scope": "Automatic bounded skeleton prediction copies, reusable movement settings, controllable character sandbox and matching in-place game exports.",
+  "sourcePolicy": "Only the freshly supplied 3d-lab(8).zip used as application source. Kestrel source was not modified. No older Lab or cApp code merged.",
+  "source": {
+    "file": "3d-lab(8).zip",
+    "bytes": 1154784,
+    "sha256": "07eceec36270deece65ad62333aeb295911c79bf1ce5f40146198c1799efb407"
+  },
+  "builtIndex": {
+    "bytes": 1724861,
+    "sha256": "7290a52080f6aacd9b27f457c05319ea43584eca2cbe83eda6bbb3fc7d5e050c"
+  },
+  "changes": [
+    "Cancellable off-main-thread QEM simplification for UniRig; original high-detail mesh retained.",
+    "Candidate review reports inference and original counts; existing Apply/Discard/Undo protection remains.",
+    "Optional validated movement profile with idle/walk/run/start/stop and directional slots, trims, speeds and blend timing.",
+    "Interruptible acceleration/braking, root X/Z removal, normalized walk/run phase and loop-seam smoothing.",
+    "Third-person/POV sandbox, keyboard and mouse input, optional pointer capture, NPC test, additive head/chest look and two-parent hand IK with separate influence controls.",
+    "Game movement prompt starters and contextual guidance.",
+    "Matching game-clip GLB and movement-recipe exports with provenance and original draft/key preservation."
+  ],
+  "preserved": [
+    "capp.3d-lab.assets.v1 identity and original source assets.",
+    "Detailed mesh geometry, materials and saved skin weights.",
+    "Existing action/rig recipes and history; movement field is optional for older recipes.",
+    "All supplied vendor and extracted authoring modules unchanged.",
+    "Existing native model engines and checkpoints."
+  ],
+  "node": {
+    "command": "npm test",
+    "passed": true,
+    "suiteScripts": 18,
+    "movementCases": 11,
+    "proxyChecks": 4,
+    "log": "validation/node-0.10.0.txt",
+    "finalFocusedRerun": [
+      "tests/action-movement.mjs (11 cases)",
+      "tests/action-lab.mjs (17 cases)"
+    ]
+  },
+  "browser": {
+    "passed": true,
+    "sandboxChecks": [
+      "empty-action model has a usable sandbox with clear fallback guidance",
+      "existing editable actions feed idle, walk, run and interruptible start/stop slots",
+      "WASD accelerates, Shift runs, release brakes, and rest is reached",
+      "short taps and direction reversal interrupt transitions without waiting for a cycle",
+      "typing and focus loss never leave movement keys held",
+      "POV, turning, head/hand aiming, pausing and NPC test run in the actual renderer",
+      "bad settings stay visible and cannot overwrite the accepted profile",
+      "game export contains trimmed in-place clips, a rig and movement metadata",
+      "keeping settings leaves source keys intact and Undo restores the prior draft",
+      "responsive modal and keyboard focus work at 390px; repeated open/close retains editor",
+      "saved draft reopens with movement settings and original keys after reload",
+      "dense mesh is automatically prepared in the real worker and original detail returns with candidate",
+      "applying a proxy-derived candidate keeps full detail and one Undo restores weights/actions/settings",
+      "cancelling preparation never sends a partial mesh and retains source and engine",
+      "no uncaught browser errors"
+    ],
+    "sandboxErrors": [],
+    "sandboxBuiltIndexSha256": "7290a52080f6aacd9b27f457c05319ea43584eca2cbe83eda6bbb3fc7d5e050c",
+    "assetWorkflowCases": 25,
+    "assetTestedInputs": {
+      "builtIndexSha256": "f1faae96af75e71424aee736118e831ec691e3d0249e4ad22008b04d16a04326",
+      "browserTestSha256": "5145c60adc9f40cb84355db17bde80708f05937dd04cb845dc5f018d6cc74656"
+    },
+    "evidence": [
+      "validation/action-sandbox-browser-0.10.0.json",
+      "validation/action-assets-browser-0.10.0.json"
+    ],
+    "scope": "Real Linux Chromium WebGL, local Blob worker, IndexedDB, GLB loading/export. Controlled native UniRig replies only; no actual neural inference in this release.",
+    "sandboxTestSha256": "8164bd431b83dc1a88b0569425b179afcd4956885dd9c15585f3fa04163dcb1a"
+  },
+  "denseMeshEvidence": {
+    "verticesBefore": 58081,
+    "trianglesBefore": 114720,
+    "nativeLimitVerified": {
+      "vertices": 20000,
+      "triangles": 40000
+    },
+    "canonicalCoordinatesRetained": true,
+    "sourceRigAndWeightsExportByteIdenticalAfterDiscardAndUndo": true,
+    "activeWorkerCancellationWithoutNativeRender": true
+  },
+  "visualReview": "Desktop and 390px mobile sandbox inspected; separate POV/aim view inspected before packaging. Screenshots retained for internal QA only.",
+  "limitations": [
+    "Windows/WebView2 and RTX/CUDA inference not executed here. Existing native model versions unchanged.",
+    "Actual neural skeleton quality and ordered AI start/stop prompt compliance are not established by fixtures.",
+    "Flat-ground sandbox has no collision, physics, foot locking, contact solver, navigation or weapon attachment system.",
+    "Blocked Blob workers, timeout or protected geometry that cannot meet inference bounds fail visibly with original retained.",
+    "Game exports contain clips and controller settings; another game engine requires an adapter for interactive movement. No Kestrel integration."
+  ]
+}

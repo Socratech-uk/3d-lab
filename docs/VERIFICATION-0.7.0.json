@@ -1,0 +1,228 @@
+{
+  "release": "3D Lab 0.7.0 / Local AI 0.20.0 / MCP 0.24.19",
+  "date": "2026-10-15",
+  "sources": [
+    {
+      "file": "3d-lab(6).zip",
+      "sha256": "c3b7445c12b9708f9726399c9a0c876b75b12f5925fa8f1889454bf95bbedfa6",
+      "bytes": 1040350
+    },
+    {
+      "file": "capp-v1(20261015-084712).zip",
+      "sha256": "b0b5a7b20ae29fff4becab34e290ad9c01ac5e9fb92cc27b08b184ac9a9222b7",
+      "bytes": 112268657
+    }
+  ],
+  "sourcePolicy": "Fresh uploaded sources only; no earlier source archive merged. Existing identity, drafts, model pins and dependency pins retained.",
+  "lab": {
+    "nodeChecks": 157,
+    "actionChecks": 10,
+    "longMotionTimingChecks": 5,
+    "promptAndEngineChecks": 14,
+    "browser": {
+      "checks": [
+        "Opening AI does not download or generate; unprepared engine cannot run",
+        "Grouped human and animal starter prompts load editable text and length",
+        "Prompt replacement can be declined without losing an edited draft",
+        "Save new stores prompt, duration, seed and action name",
+        "Update saved changes one recipe without adding duplicates",
+        "Save a copy and confirmed delete preserve the original",
+        "Unsaved prompt editor draft and saved library survive reload",
+        "Prompt library export and import use a real downloadable JSON file",
+        "Setup requires licence acceptance; passive check does not prepare",
+        "Unavailable model remains explicit and cannot generate",
+        "Lengths above two seconds are available and invalid length is blocked",
+        "Long generation sends exact length and displays scoped progress",
+        "Generated action preserves exact requested duration and can preview",
+        "Stop suppresses a successful late native reply and retains previous actions",
+        "Long generated action exports and saves",
+        "Saved success text does not hide later engine failures",
+        "Saved long generated action reopens with exact duration",
+        "Fullscreen retains access to composer and timeline",
+        "Narrow composer remains within viewport and controls remain reachable",
+        "Recorded real UniMate output retargets, saves and exports its exact endpoint",
+        "No browser exceptions"
+      ],
+      "errors": [],
+      "fixture": "Actual built Lab and production animation JS client, controlled native IPC. No inference in this test.",
+      "windowsExecutionVerified": false,
+      "recordedNeuralMotion": {
+        "durationSeconds": 3,
+        "frames": 91,
+        "generation": {
+          "method": "independent-neural-windows",
+          "windows": 2,
+          "windowFrames": 60,
+          "overlapFrames": 12
+        },
+        "neuralGenerationMs": 480411
+      },
+      "passed": true
+    },
+    "animatedGlb": {
+      "skins": 8,
+      "animations": [
+        {
+          "name": "QA long walk",
+          "channels": 42,
+          "lastTime": 6.5
+        }
+      ],
+      "helperNodes": []
+    },
+    "indexBytes": 1150241,
+    "indexSha256": "cb31313717bd55ae9b4340695b5c1a03fa3c2734e854945f3a355392cf52bbad"
+  },
+  "capp": {
+    "longMotionPythonTests": 11,
+    "animationBoundaryTests": 6,
+    "agentPolicyTests": 28,
+    "generatedNativeRustTests": 38,
+    "nativeTestScope": "Complete generated block compiled/executed with UI/GPU fixtures; not installed Windows execution.",
+    "immutableServiceClosure": "PASS: actual service ZIP contains runtime, contract, recipe, vendored animation modules including motion_windows.py, provenance and licence.",
+    "releaseGates": {
+      "publicReviewDeliberatelyResealed": true,
+      "publicCheck": {
+        "passed": true,
+        "pages": 62,
+        "components": 26,
+        "downloads": 75
+      },
+      "publicSmoke": {
+        "passed": true,
+        "tests": 17
+      },
+      "publicWorkerSmoke": {
+        "passed": true,
+        "checks": 249
+      },
+      "sidecarRegistry": {
+        "passed": true
+      },
+      "standard": {
+        "passed": true,
+        "checks": 633
+      },
+      "docs": {
+        "passed": false,
+        "issues": 19,
+        "exactBaselineMatch": true
+      },
+      "normalPack": {
+        "passed": true,
+        "siteId": "capp-protocol",
+        "version": "0.28.0",
+        "sealed": false,
+        "verify": true,
+        "verifyCapsule": true,
+        "isolatedSourceMatches": true
+      },
+      "windowsExecutionVerified": false
+    }
+  },
+  "neuralInference": {
+    "source": "real-long-motion.json",
+    "sha256": "be3d6071f93dfce1b10498068499b3023695b7cd191f42802da4ac4c2fd9e473",
+    "evidence": "Production UniMate CPU inference; numerical validation only, not a locomotion or animal-quality benchmark.",
+    "model": "unimate",
+    "modelRevision": "174fc755ec248d0c98f27759b7a95648e7f05905",
+    "device": "cpu",
+    "generationMs": 480411,
+    "windows": 2,
+    "windowFrames": 60,
+    "overlapFrames": 12,
+    "frames": 91,
+    "joints": 5,
+    "fps": 30,
+    "requestedDurationSeconds": 3,
+    "firstFrameTime": 0.0,
+    "lastFrameTime": 3.0,
+    "exactEndpoint": true,
+    "strictlyOrderedFrameTimes": true,
+    "finitePositionsAndRotations": true,
+    "maxQuaternionNormError": 5.359373564939318e-07,
+    "boneLengths": {
+      "maxErrorVersusRoundedRest": 1.4947081904415072e-06,
+      "maxRangeAcrossFrames": 1.9740217243047198e-06,
+      "roundingTolerance": 2e-06,
+      "pass": true
+    },
+    "rootStepsNormalizedUnits": {
+      "baseline": {
+        "min": 0.0002203497220329479,
+        "median": 0.0033519801610391244,
+        "max": 0.01310009603018237
+      },
+      "overlapAndEdges": {
+        "min": 0.0011646823601308826,
+        "median": 0.002029608090247884,
+        "max": 0.008045893176024712
+      },
+      "entryEdge47to48": 0.008045893176024712,
+      "exitEdge59to60": 0.002024511299054616,
+      "overlapMaxVersusBaselineMax": 0.6141858164617365
+    },
+    "rootOrientationStepDegrees": {
+      "baseline": {
+        "min": 0.03227271476648107,
+        "median": 0.2646314559067061,
+        "max": 0.6334895954438786
+      },
+      "overlapAndEdges": {
+        "min": 0.13642187035359896,
+        "median": 0.26840374414309315,
+        "max": 0.4401184566945291
+      }
+    },
+    "wireBytes": 36912,
+    "wireShape": "capp.motion.v1 with durationSeconds, per-frame time, world positions and xyzw world rotations; generation reports independent-neural-windows.",
+    "limitations": [
+      "Five-joint numerical integration fixture; no NPC/animal quality acceptance.",
+      "Independent neural windows joined kinematically; no learned long-horizon continuity or foot-contact correction.",
+      "Windows/CUDA acceptance is separate."
+    ]
+  },
+  "limits": {
+    "durationSeconds": [
+      0.5,
+      60
+    ],
+    "joints": [
+      5,
+      70
+    ],
+    "promptLibraryEntries": 48,
+    "promptLibraryBytes": 262144,
+    "promptCharacters": 2000,
+    "assembly": "Independent 60-frame neural windows with 12-frame local quaternion overlap; root heading and horizontal trajectory alignment. No learned long-horizon conditioning or contact solver."
+  },
+  "targetAcceptance": {
+    "installedWindows": false,
+    "webView2": false,
+    "rtx4070Inference": false,
+    "realWindowsDependencyExecution": false,
+    "realWorkerCancellationWhileSampling": false,
+    "representativeNpcAndAnimalQuality": false
+  },
+  "logDigests": {
+    "lab-final-tests.log": "08d9ac4f72d926439b2e8aba8988a65662e9baab47fdd2db3e1883d776fef486",
+    "lab-build.log": "9e3e3a6fc7154ab81e03677aa4f233108d21f403c8aa14b67b9159659e26109c",
+    "action-ai-browser.log": "8d26e712e7437ff253003440c766dff309dd446c34b0e9fcbbbcefa12d9d556f",
+    "long-motion-python.log": "4ff59ebe07f6929c6aeb1102bae6534491307512ce10d1ebdfd7419f1b47c457",
+    "animation-boundary.log": "69190fefb2508917c08b0b9b108f23341de6bb340c9ed1686a0fd86579ad47f5",
+    "agent-policy.log": "067a641c4a56e33671a6fdd8524bf8f014115bfb9852b2de5fdb810274ea9a91",
+    "native-rust.log": "b425116686a8a81750be0329d1d8b7dbafa4ebfd2b2da14e87d2998ecf6bbaef",
+    "selfhost-closure.log": "0d2742b09c1354dcfb557d1ca07d019c760d113290821fa71d888bad7a1b2df5",
+    "real-long-motion.log": "f92c823342288bdd613236d9655d14792c4877038bcb66e12753ea4eedb03015",
+    "public-check.log": "f27fcf1186f06a11cf648d59f2ecedceee935af7dd4ce83a691e1ab482e3b313",
+    "public-smoke.log": "0b867b8d941415068fcf1384e5db99e21266f02b938b7dc8f8d970ec3d327172",
+    "public-worker-smoke.log": "acf66dd7dd7551bff28820644b64335f4c3159a050d4565d5a0fcc639ce9209b",
+    "registry-check.log": "cd5abbf973243f5c157fa9b4233154fc281f0d689ea885bd766f3c2b79259371",
+    "standard.json": "7a075f3d4d53edce03acfd19ea634c30bbe11e6343654c7a9e07fb93eb5827b4",
+    "docs-baseline.log": "1475d562c42922ce3c2bfa8d1706e398ab7223bcf000ef4362306b332a19c26b",
+    "docs-check-final.log": "1475d562c42922ce3c2bfa8d1706e398ab7223bcf000ef4362306b332a19c26b",
+    "pack-build.log": "cb43b8bcb6553fa0a2065a0c6b0030e62d4be06c9ccee3f2e81d48c118da15b1",
+    "pack-verify.log": "e72b877d856e56c8c0a610f56436431c4351666135290010a1ecdd6f040ea2d9",
+    "pack-verify-capsule.log": "c9b544389e83daff596f8f74d2a7c62101d499cf9cbd0129e8cf29f948971115"
+  }
+}

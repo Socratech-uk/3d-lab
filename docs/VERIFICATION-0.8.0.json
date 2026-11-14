@@ -1,0 +1,633 @@
+{
+  "release": "3D Lab 0.8.0 / Local AI 0.21.0 / MCP 0.24.20",
+  "date": "2026-10-15",
+  "sourcePolicy": "Only the two newly supplied archives were used as application source.",
+  "sources": [
+    {
+      "file": "3d-lab(7).zip",
+      "bytes": 1076887,
+      "sha256": "43613dae635eff0ed3bbab3987d328dd6f7ca3fb66bf56ad94f8f21d9f56809f"
+    },
+    {
+      "file": "capp-v1(20261015-110947).zip",
+      "bytes": 112283424,
+      "sha256": "7ab7b3f72e5156b5dc77e881a10708d4cc2d8b6622a6949c35086b22711c8c51"
+    }
+  ],
+  "changes": [
+    "Automatic skinning segment belongs to parent pivot, not child tip",
+    "Exact anatomical names precede aliases; source-rest rotations and initial root height are retained",
+    "UniMate official anatomy labels, adaptive initial solver, conditioned continuation and guidance",
+    "Real MoMask humanoid inference, 20 FPS, 0.5\u20139.6 seconds",
+    "Real UniRig mesh skeleton proposals with explicit preview/edit/apply/discard; separate local skin binding",
+    "All-model opt-in and legacy UniMate-only selection; strict native schema, owned cancellation and lease cleanup"
+  ],
+  "lab": {
+    "nodeAssertions": 165,
+    "actionAssertions": 37,
+    "builtIndex": {
+      "bytes": 1160485,
+      "sha256": "d895e104e4db052026899e0b43c7b88bd4bcb9fb55411d6f72d88dd5a1683fc3"
+    },
+    "browser": {
+      "checks": [
+        "Opening AI does not download or generate; unprepared engine cannot run",
+        "Grouped human and animal starter prompts load editable text and length",
+        "Prompt replacement can be declined without losing an edited draft",
+        "Save new stores prompt, duration, seed and action name",
+        "Update saved changes one recipe without adding duplicates",
+        "Save a copy and confirmed delete preserve the original",
+        "Unsaved prompt editor draft and saved library survive reload",
+        "Prompt library export and import use a real downloadable JSON file",
+        "Setup requires licence acceptance; passive check does not prepare",
+        "Model changes require their own licence and load; MoMask caps length at 9.6 seconds",
+        "Lengths above two seconds are available and invalid length is blocked",
+        "Long generation sends exact length and guidance and displays scoped progress",
+        "Generated action preserves exact requested duration and can preview",
+        "Stop suppresses a successful late native reply and retains previous actions",
+        "Long generated action exports and saves",
+        "Saved success text does not hide later engine failures",
+        "Saved long generated action reopens with exact duration",
+        "Fullscreen retains access to composer and timeline",
+        "Narrow composer remains within viewport and controls remain reachable",
+        "MoMask enforces its native limit after loading and sends no UniMate guidance",
+        "Unmatched motion names fail without adding an action or changing the rig",
+        "UniRig submits bounded mesh geometry without a pre-existing skeleton or prompt",
+        "Skeleton candidate is editable and discard restores the exact original rig, clips and bindings",
+        "Applying a skeleton leaves skinning explicit and one Undo restores the original",
+        "Applying and binding uses an explicit separate local operation and remains undoable",
+        "Malformed generated joint names cannot replace the current rig",
+        "Cancelling skeleton inference suppresses a late candidate and preserves the original rig",
+        "Recorded real UniMate output retargets, saves and exports its exact endpoint",
+        "Recorded real MoMask output maps onto named humanoid joints and exports its endpoint",
+        "Recorded real UniRig output is reviewed on its actual input mesh and can be discarded",
+        "No browser exceptions"
+      ],
+      "errors": [],
+      "testedInputs": {
+        "builtIndexSha256": "d895e104e4db052026899e0b43c7b88bd4bcb9fb55411d6f72d88dd5a1683fc3",
+        "productionAnimationClientSha256": "53b520b9cbc10bcf792a81e3125bcd2063d8ea510812c8e8b1d612e98ed4202b",
+        "browserTestSha256": "467f7ed7a0fdc0809a5c7a2228df7d1c02add1b5c93dd1eede213b6044a9d9fa"
+      },
+      "fixture": "Actual built Lab and production animation JS client, controlled native IPC. No inference in this test.",
+      "windowsExecutionVerified": false,
+      "recordedNeuralMotion": {
+        "durationSeconds": 3.125,
+        "frames": 95,
+        "generation": {
+          "method": "replacement-conditioned-windows",
+          "windows": 2,
+          "windowFrames": 60,
+          "overlapFrames": 12,
+          "initialSolver": "dopri5",
+          "continuationSolver": "euler-50",
+          "guidance": 3,
+          "modelEvaluations": [
+            128,
+            50
+          ],
+          "seamCleanup": {
+            "method": "local-angular-velocity-smootherstep",
+            "frames": 8,
+            "seams": [
+              60
+            ],
+            "rootTranslation": "unchanged"
+          }
+        }
+      },
+      "recordedMoMask": {
+        "durationSeconds": 2,
+        "frames": 41,
+        "generation": {
+          "method": "momask-masked-residual-rvq",
+          "nativeFps": 20,
+          "maskSteps": 18,
+          "quantizers": 6,
+          "positionDecoder": "humanml3d-ric",
+          "rotationDecoder": "outgoing-bone-fit",
+          "continuousNativeWindow": true
+        }
+      },
+      "recordedUniRig": {
+        "joints": 47,
+        "inputMesh": {
+          "vertices": 14807,
+          "triangles": 21636
+        },
+        "generation": {
+          "method": "unirig-neural-skeleton",
+          "modelRevision": "36842e2b5947e9e60f89275b83208c8e74071c63",
+          "surfaceSamples": 65536,
+          "meshTokens": 1024,
+          "beams": 1,
+          "generationProfile": "cpu-single-sample",
+          "semanticJointNames": false,
+          "skinWeights": false,
+          "reviewRequired": true,
+          "coordinateSpace": "input-mesh"
+        }
+      },
+      "passed": true
+    }
+  },
+  "capp": {
+    "generatedRustTests": 43,
+    "animationAdmissionTests": 6,
+    "dispatcherLifecycleTests": 6,
+    "dialogueRegressionTests": 12,
+    "unimateConditioningTests": 12,
+    "motionWindowTests": 11,
+    "momaskTests": 6,
+    "unirigTests": 7,
+    "threeArchitectureOfflineProbe": "pass on Linux CPU; no checkpoint inference implied",
+    "immutableServiceClosure": "pass; all worker and vendor files included",
+    "releaseGates": {
+      "allPassed": false,
+      "checkedAtEpoch": 1792062055,
+      "snapshot": "/tmp/action-quality-capp-pack",
+      "source": "/workspace/scratch/91bae9b28339/action-quality-20261015/capp",
+      "snapshotFileCount": 2330,
+      "snapshotManifestSha256": "b382f85db8f5aa79e5408fae970042f1edb5a98112d54d3c46ebc75ba97faf12",
+      "sourceDriftAtCompletion": [],
+      "checks": [
+        {
+          "gate": "registry-check",
+          "exitCode": 0,
+          "seconds": 0.08,
+          "command": [
+            "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+            "tools/sidecar_registry.py",
+            "--check"
+          ],
+          "cwd": "/workspace/scratch/91bae9b28339/action-quality-20261015/capp",
+          "log": "/workspace/scratch/91bae9b28339/action-quality-20261015/qa/registry-check.log"
+        },
+        {
+          "gate": "public-check",
+          "exitCode": 0,
+          "seconds": 0.44,
+          "command": [
+            "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+            "tools/capp_public_docs.py",
+            "--check"
+          ],
+          "cwd": "/workspace/scratch/91bae9b28339/action-quality-20261015/capp",
+          "log": "/workspace/scratch/91bae9b28339/action-quality-20261015/qa/public-check.log"
+        },
+        {
+          "gate": "standard",
+          "exitCode": 0,
+          "seconds": 0.07,
+          "command": [
+            "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+            "tools/cappstandard.py",
+            "--json"
+          ],
+          "cwd": "/workspace/scratch/91bae9b28339/action-quality-20261015/capp",
+          "log": "/workspace/scratch/91bae9b28339/action-quality-20261015/qa/standard.log",
+          "checks": 633
+        },
+        {
+          "gate": "policy",
+          "exitCode": 0,
+          "seconds": 5.45,
+          "command": [
+            "/tmp/action-motion-python/bin/python",
+            "tests/agent_sidecar_actions_smoke.py"
+          ],
+          "cwd": "/workspace/scratch/91bae9b28339/action-quality-20261015/capp",
+          "log": "/workspace/scratch/91bae9b28339/action-quality-20261015/qa/policy.log",
+          "tests": 28
+        },
+        {
+          "gate": "public-docs",
+          "exitCode": 0,
+          "seconds": 4.18,
+          "command": [
+            "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+            "tests/public_developer_docs_smoke.py"
+          ],
+          "cwd": "/workspace/scratch/91bae9b28339/action-quality-20261015/capp",
+          "log": "/workspace/scratch/91bae9b28339/action-quality-20261015/qa/public-docs.log",
+          "tests": 17
+        },
+        {
+          "gate": "public-sidecars",
+          "exitCode": 0,
+          "seconds": 0.71,
+          "command": [
+            "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+            "tests/public_developer_sidecars_smoke.py"
+          ],
+          "cwd": "/workspace/scratch/91bae9b28339/action-quality-20261015/capp",
+          "log": "/workspace/scratch/91bae9b28339/action-quality-20261015/qa/public-sidecars.log",
+          "tests": 12
+        },
+        {
+          "gate": "public-sidecars-sdk",
+          "exitCode": 0,
+          "seconds": 1.16,
+          "command": [
+            "node",
+            "tests/public_developer_sidecars_sdk_smoke.mjs"
+          ],
+          "cwd": "/tmp/action-quality-capp-pack",
+          "log": "/workspace/scratch/91bae9b28339/action-quality-20261015/qa/public-sidecars-sdk.log",
+          "checks": 10
+        },
+        {
+          "gate": "pack-build",
+          "exitCode": 0,
+          "seconds": 0.69,
+          "command": [
+            "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+            "tools/capppack.py",
+            "build",
+            "--site-id",
+            "capp-protocol",
+            "--version",
+            "0.28.0",
+            "--no-sealed"
+          ],
+          "cwd": "/tmp/action-quality-capp-pack",
+          "log": "/workspace/scratch/91bae9b28339/action-quality-20261015/qa/pack-build.log"
+        },
+        {
+          "gate": "pack-verify",
+          "exitCode": 0,
+          "seconds": 0.06,
+          "command": [
+            "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+            "tools/capppack.py",
+            "verify"
+          ],
+          "cwd": "/tmp/action-quality-capp-pack",
+          "log": "/workspace/scratch/91bae9b28339/action-quality-20261015/qa/pack-verify.log"
+        },
+        {
+          "gate": "pack-verify-capsule",
+          "exitCode": 0,
+          "seconds": 0.06,
+          "command": [
+            "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+            "tools/capppack.py",
+            "verify-capsule"
+          ],
+          "cwd": "/tmp/action-quality-capp-pack",
+          "log": "/workspace/scratch/91bae9b28339/action-quality-20261015/qa/pack-verify-capsule.log"
+        },
+        {
+          "gate": "service-closure",
+          "exitCode": 0,
+          "seconds": 5.51,
+          "command": [
+            "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+            "tests/native_desktop_selfhost_closure_smoke.py"
+          ],
+          "cwd": "/workspace/scratch/91bae9b28339/action-quality-20261015/capp",
+          "log": "/workspace/scratch/91bae9b28339/action-quality-20261015/qa/service-closure.log"
+        },
+        {
+          "gate": "docs-check-final",
+          "exitCode": 1,
+          "seconds": 0.61,
+          "command": [
+            "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+            "tools/cappdocs.py",
+            "check"
+          ],
+          "cwd": "/workspace/scratch/91bae9b28339/action-quality-20261015/capp",
+          "log": "/workspace/scratch/91bae9b28339/action-quality-20261015/qa/docs-check-final.log"
+        }
+      ],
+      "artifacts": {
+        "dist/capsule.json": {
+          "bytes": 21485,
+          "sha256": "fc8882bcb682217ce8e5b1aa257b3ce0e1744ad4cfa2ec41948642dd12b0cbfc"
+        },
+        "dist/executable.html": {
+          "bytes": 4507693,
+          "sha256": "fd62088c98e923d984ed92e9bec6fb64901daa537132f6715b41a0c2562375e8"
+        },
+        "dist/capp-protocol-0.28.0.capp.html": {
+          "bytes": 4507693,
+          "sha256": "fd62088c98e923d984ed92e9bec6fb64901daa537132f6715b41a0c2562375e8"
+        }
+      },
+      "nativeCertified": false,
+      "environmentNotes": [
+        "Initial policy run lacked jsonschema; rerun under existing /tmp/action-motion-python passed all 28 tests. Original failure retained in policy-missing-jsonschema.log.",
+        "npm ci --ignore-scripts --no-audit --no-fund installed locked TypeScript 5.8.3 only in isolated snapshot."
+      ],
+      "metadataRefresh": {
+        "changed": [
+          "docs/public/REVIEW.json",
+          "sidecars/local-ai/platforms/windows/sidecar.json",
+          "sidecars/local-ai/sidecar.json",
+          "sidecars/registry.json",
+          "src/js/17-sidecar-registry.generated.js"
+        ],
+        "snapshotFileCount": 2330
+      },
+      "retainedFocusedEvidence": "Policy28, publicdocs17, sidecars12 and SDK10 retained: metadata-only changes did not alter configuration authority, SDK contracts or documented examples.",
+      "unimateRefresh": {
+        "changed": [
+          "sidecars/local-ai/native/capp_animation/PROVENANCE.json",
+          "sidecars/local-ai/native/capp_animation/vendor/unimate/utils/topology_utils.py",
+          "sidecars/local-ai/native/capp_animation/worker.py",
+          "tests/local_animation_unimate_quality.py"
+        ],
+        "snapshotFileCount": 2330,
+        "refreshedAtEpoch": 1792061414
+      },
+      "affectedGatesPassed": true,
+      "finalRefresh": {
+        "added": [],
+        "changed": [
+          "docs/architecture/sidecars/LOCAL_ANIMATION.md",
+          "docs/history/validation/sidecars/LOCAL_ANIMATION_QUALITY_2026-10-15.md",
+          "sidecars/local-ai/native/capp_animation/PROVENANCE.json",
+          "sidecars/local-ai/native/capp_animation/motion_windows.py",
+          "sidecars/local-ai/native/capp_animation/worker.py",
+          "tests/local_animation_unimate_quality.py"
+        ],
+        "removed": [],
+        "snapshotFileCount": 2330,
+        "refreshedAtEpoch": 1792062005
+      },
+      "documentationBaseline": {
+        "baselineErrors": 19,
+        "finalErrors": 19,
+        "added": [],
+        "removed": [],
+        "sameIssueSet": true
+      },
+      "knownBaselineFailure": "cappdocs check fails on the same 19 pre-existing Model Designer links; no added or removed issues."
+    }
+  },
+  "windowsRecipe": {
+    "recipe": "animation-authoring-win64-v2",
+    "assets": 32,
+    "files": 18081,
+    "extractedBytes": 4964639914,
+    "dependencyGraphVerified": true,
+    "seconds": 52.1,
+    "windowsExecutionVerified": false,
+    "limitation": "Windows binaries extracted and graph checked on Linux; cannot execute Windows interpreter here."
+  },
+  "neural": {
+    "momask": {
+      "status": "real-cpu-inference-completed",
+      "accepted": [
+        "A person walks forward naturally. / 2s / seed123: clear alternating gait, natural counter-swing; 2.559m displacement (1.280m/s); foot min +0.010m and raw bone length CV maximum3.23%.",
+        "Reference OpenAI CLIP embeddings exactly equal on4prompts includingUnicode/entities/truncation; originalBPEtokensmatch.",
+        "RIC decoder matches original MoMask reference to8.67e-7maximumabsoluteerror.",
+        "6focused regression tests andweight-free architecture probe pass."
+      ],
+      "qualityLimitations": [
+        "A person runs forward. / 6s / seed0 produces a short central locomotion burst with idle lead/tail, not steady6-secondrunning. Per-secondroot speeds:0.003,0.108,1.430,1.905,0.144,0.016m/s.",
+        "Explicit continuous/steady/run/jog captions andseed123 didnot remove the idle lead/tail in these tested6s samples. These are retained as evidence, not silently substituted.",
+        "An object captions are worse thanpersoncaptions on these probes; preservehumanstarters forMoMask.",
+        "World-rest-delta rotations derive from learned jointpositions and outgoingbone fitting; axialtwist andfootcontact correction are not promised.",
+        "RawRIC bone lengths vary slightly; targetrig forwardkinematics preservesbindbone lengths.",
+        "CPUtimings vary withthreadcount/concurrentworkloads; Windows/CUDA andtargetskin visualacceptance remainseparate."
+      ],
+      "files": [
+        "jog-straight-6s-seed0-evidence.json",
+        "jog-straight-6s-seed0.json",
+        "jogging-6s-seed0-evidence.json",
+        "jogging-6s-seed0.json",
+        "object-run-6s-seed0-evidence.json",
+        "object-run-6s-seed0.json",
+        "object-walk-2s-seed123-evidence.json",
+        "object-walk-2s-seed123.json",
+        "reference-evidence.json",
+        "run-6s-seed0-evidence.json",
+        "run-6s-seed0-geometry-evidence.json",
+        "run-6s-seed0.json",
+        "run-6s-seed0.png",
+        "run-6s-seed123-evidence.json",
+        "run-6s-seed123.json",
+        "run-continuous-6s-seed0-evidence.json",
+        "run-continuous-6s-seed0.json",
+        "running-quickly-6s-seed0-evidence.json",
+        "running-quickly-6s-seed0.json",
+        "walk-2s-seed123-evidence.json",
+        "walk-2s-seed123-geometry-evidence.json",
+        "walk-2s-seed123.json",
+        "walk-2s-seed123.png"
+      ]
+    },
+    "unirig": {
+      "input": "UniRig official examples/giraffe.glb",
+      "inputSha256": "9a947cae00b169345802c08885c1e54313c6ce93c885bacf8e37e8a1f18f9e3b",
+      "vertices": 14807,
+      "triangles": 21636,
+      "seed": 0,
+      "profile": "cpu-single-sample",
+      "beams": 1,
+      "jointCount": 47,
+      "elapsedSeconds": 146.84311829699982,
+      "loadSeconds": 7.252144514000975,
+      "maxResidentKiB": 3116156,
+      "outputSha256": "d5a8063360d1455220a3f85dcf8c9c7d20b675e2b529898107bbcba105b1d0e9",
+      "boundaryResult": "Passed: one topological tree, finite input-space coordinates and nonzero bone lengths.",
+      "visualReview": "Long neck, both forelegs and one hindleg follow the mesh. Second hindleg and tail are missing; extra head/neck branches need editing. A usable review candidate, not a complete production rig.",
+      "limitations": "Single CPU sample. CUDA upstream 15-beam generation and Windows/installed inference have not been executed."
+    },
+    "unimate": {
+      "schema": "capp.animation.quality-validation.v1",
+      "ok": true,
+      "date": "2026-10-15",
+      "case": {
+        "rig": "Exact 21-joint Practice humanoid extracted from supplied Lab",
+        "seed": 0,
+        "baselinePrompt": "A person runs forward.",
+        "revisedPrompt": "An object runs forward.",
+        "guidanceScale": 3,
+        "modelRevision": "174fc755ec248d0c98f27759b7a95648e7f05905",
+        "upstreamCommit": "b78c7807df7cf4231d4e67f8d0ece29c5e11025b"
+      },
+      "baseline": {
+        "jointCount": 21,
+        "frameCount": 60,
+        "finite": true,
+        "meanJointFrameDisplacement": 0.07466607895528315,
+        "maxJointFrameDisplacement": 0.4042452775738505,
+        "meanWorldRotationFrameDegrees": 9.156511674484555,
+        "maxWorldRotationFrameDegrees": 49.233352512530615,
+        "rootUpVectorMinY": -0.023073403837760242,
+        "rootHeightMin": 0.40596550017607097,
+        "rootHeightMax": 1.0354408139620563,
+        "rootDisplacement": [
+          0.5490331471953553,
+          0.09277022369575083,
+          1.806123896981418
+        ],
+        "maxBoneLengthError": 4.996003610813204e-16,
+        "maxQuaternionNormError": 2.220446049250313e-16,
+        "sampler": "40-step Heun",
+        "elapsedSeconds": 330.464719669,
+        "cpuThreads": 8
+      },
+      "revisedSingleWindow": {
+        "jointCount": 21,
+        "frameCount": 60,
+        "finite": true,
+        "meanJointFrameDisplacement": 0.03126493586445624,
+        "maxJointFrameDisplacement": 0.125677168511385,
+        "meanWorldRotationFrameDegrees": 2.601588292656168,
+        "maxWorldRotationFrameDegrees": 14.214579823212883,
+        "rootUpVectorMinY": 0.9046789116522422,
+        "rootHeightMin": 0.6166586692274945,
+        "rootHeightMax": 0.7305768021495136,
+        "rootDisplacement": [
+          0.03898928684644143,
+          0.06998128356089084,
+          1.5996688797422718
+        ],
+        "maxBoneLengthError": 4.440892098500626e-16,
+        "maxQuaternionNormError": 2.220446049250313e-16,
+        "sampler": "Official dopri5 atol1e-6 rtol1e-3",
+        "modelVelocityEvaluations": 128,
+        "elapsedSeconds": 983.34,
+        "cpuThreads": 2
+      },
+      "conditionedContinuation": {
+        "jointCount": 21,
+        "frameCount": 95,
+        "finite": true,
+        "meanJointFrameDisplacement": 0.03289657150067601,
+        "maxJointFrameDisplacement": 0.1319408859978633,
+        "meanWorldRotationFrameDegrees": 4.356480855236599,
+        "maxWorldRotationFrameDegrees": 27.09690765834766,
+        "rootUpVectorMinY": 0.9036059361700078,
+        "rootHeightMin": 0.6166586692274945,
+        "rootHeightMax": 0.7395128781269554,
+        "rootDisplacement": [
+          0.04063898486814488,
+          0.001805394318037834,
+          1.7495917165935655
+        ],
+        "maxBoneLengthError": 4.440892098500626e-16,
+        "maxQuaternionNormError": 2.220446049250313e-16,
+        "durationSeconds": 3.125,
+        "strictlyIncreasingTimes": true,
+        "maxTimeStep": 0.03333333333333366,
+        "featureFrameCount": 108,
+        "seamMaxJointFrameDisplacement": 0.09161339524418595,
+        "firstFrameTime": 0.0,
+        "modelVelocityEvaluations": [
+          128,
+          50
+        ],
+        "totalElapsedSeconds": 1336.4422518890005,
+        "cpuThreads": 2,
+        "outputBytes": 142274,
+        "outputSha256": "fa23ba00b9e498647944684e8bde60083f76b2ce19b30aeafdc47f98fa71ee12"
+      },
+      "comparison": {
+        "meanJointStepReductionFraction": 0.5812698845056463,
+        "maxJointStepReductionFraction": 0.6891066501366232,
+        "visualAssessment": "The original single-window torso tipped almost horizontal; revised torso remains upright with alternating leg motion. Raw neural continuation had a55.79-degree seam jump; bounded local cleanup reduces it to7.70degrees and preserves the neural trajectory and all poses beyond eight new frames. Arms remain somewhat spread, and later model-generated motion can still be brisk; this is not polished mocap or a foot-contact guarantee.",
+        "timingComparable": false,
+        "timingReason": "Different CPU thread counts and concurrent neural QA workloads."
+      },
+      "postRecordingSourceChanges": [
+        {
+          "file": "capp/sidecars/local-ai/native/capp_animation/vendor/unimate/utils/topology_utils.py",
+          "change": "Match upstream Torch float32 Laplacian weights and NumPy float32 eigensolver; original recording used prior float64 graph construction.",
+          "validation": "Exact normalized matrix and spectral-feature regression passes; no second full neural run after this parity correction.",
+          "measuredPriorDifferenceOnPractice": {
+            "maxLaplacianEntryDifference": 2.9802322498717615e-08,
+            "maxSignAgnosticSpectralEntryDifference": 0.046235025
+          }
+        },
+        {
+          "file": "capp/sidecars/local-ai/native/capp_animation/worker.py",
+          "change": "Adaptive progress follows accepted solver steps; rejected overshoots cannot report completion.",
+          "validation": "Mock rejected-stage / accepted-step / final-return regression passes; sampling mathematics unchanged."
+        },
+        {
+          "file": "capp/sidecars/local-ai/native/capp_animation/motion_windows.py",
+          "change": "Bounded8-frame local rotation cleanup at continuation seams; actual root XYZ untouched.",
+          "validation": "Applied and inspected on saved real features; velocity/pose/endpoint/length invariants covered by two focused regressions."
+        }
+      ],
+      "validation": {
+        "focusedQualityTests": 12,
+        "focusedQualityTestsPassed": true,
+        "legacyKinematicsTests": 11,
+        "legacyKinematicsTestsPassed": true,
+        "exactDurationBoundary": [
+          0.5,
+          60
+        ],
+        "realWindowsCudaTested": false,
+        "installedAcceptanceTested": false
+      },
+      "evidence": {
+        "baselineMotion": "lab/qa/unimate-baseline-practice-motion.json",
+        "revisedSingleWindowMotion": "lab/qa/unimate-revised-practice-motion.json",
+        "revisedContinuationMotion": "lab/qa/unimate-final-chain-practice-motion.json",
+        "rawContinuationMotion": "lab/qa/unimate-revised-chain-practice-motion.json",
+        "baselineContactSheet": "qa/unimate-baseline-practice.png",
+        "revisedContactSheet": "qa/unimate-revised-practice.png",
+        "continuationContactSheet": "qa/unimate-final-chain-practice.png",
+        "focusedTestLog": "qa/local-animation-unimate-quality.log"
+      },
+      "rawConditionedContinuation": {
+        "jointCount": 21,
+        "frameCount": 95,
+        "finite": true,
+        "meanJointFrameDisplacement": 0.03334805497982492,
+        "maxJointFrameDisplacement": 0.25738414687021915,
+        "meanWorldRotationFrameDegrees": 4.50927809105786,
+        "maxWorldRotationFrameDegrees": 55.789156039150264,
+        "rootUpVectorMinY": 0.9036059361700078,
+        "rootHeightMin": 0.6166586692274945,
+        "rootHeightMax": 0.7395128781269554,
+        "rootDisplacement": [
+          0.04063898486814488,
+          0.001805394318037834,
+          1.7495917165935655
+        ],
+        "maxBoneLengthError": 4.440892098500626e-16,
+        "maxQuaternionNormError": 2.220446049250313e-16
+      },
+      "seamCleanup": {
+        "method": "local-angular-velocity-extrapolation + quintic smootherstep",
+        "frames": 8,
+        "seams": [
+          60
+        ],
+        "rawSeamMaxJointStep": 0.25738414687021915,
+        "finalSeamMaxJointStep": 0.09161339524418595,
+        "rawSeamMaxWorldAngleDegrees": 55.789156039150264,
+        "finalSeamMaxWorldAngleDegrees": 7.7024950853353715,
+        "rootXYZMaxChange": 0.0,
+        "priorPosesMaxChange": 0.0,
+        "posesAfterCleanupMaxChange": 0.0,
+        "verification": "Executed the final postprocessor on the actual recorded neural feature chain; this is no new or synthetic neural sample."
+      }
+    }
+  },
+  "documentation": {
+    "aggregate": "failed with unchanged supplied baseline",
+    "baselineBrokenLinks": 19,
+    "finalBrokenLinks": 19,
+    "newFailures": 0,
+    "registryCheck": "pass",
+    "publicReview": "reviewed and deliberately resealed; check passes"
+  },
+  "limits": [
+    "Installed Windows/WebView2 and RTX4070/CUDA were not executed",
+    "Target neural cancellation and independently installed self-hosting remain unverified",
+    "Model execution and geometric validity do not establish prompt adherence or production-ready animation",
+    "MoMask six-second running probes had idle lead/tail; a two-second walking probe had a clear alternating gait",
+    "UniRig CPU giraffe candidate missed one hind leg/tail and had unnecessary branches; review/edit required",
+    "CPU1sample UniRig profile differs from CUDA15beam upstream profile",
+    "Existing saved skin weights require explicit rebind to receive the automatic-binding fix"
+  ]
+}

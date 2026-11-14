@@ -1,0 +1,96 @@
+{
+  "date": "2026-10-16",
+  "versions": {
+    "3D Lab": "0.15.0",
+    "Foundry": "0.2.0"
+  },
+  "sourceArchives": {
+    "lab": "201cc78dd49fcf8dfa51af44ee8b705b07d5d70a348753baa503fc77fba912dd",
+    "foundry": "6cf0f2a283029e8497dd6c8a3060a371616b64738796460807c3adfd1247ee7f"
+  },
+  "builtFiles": {
+    "lab/index.html": "6607d0b2b2071fd561a38ca49af99c6dbb51a3e4f3d5cf15a6fc68981e65ed95",
+    "foundry/index.html": "3b33444d724026b53a915231a2503a5498eacf5d18d0868626525ccba43f5b20",
+    "foundry/backend/project_assets/foundry.html": "3b33444d724026b53a915231a2503a5498eacf5d18d0868626525ccba43f5b20",
+    "foundry/backend/project_assets/labs/3d.html": "6607d0b2b2071fd561a38ca49af99c6dbb51a3e4f3d5cf15a6fc68981e65ed95"
+  },
+  "node": {
+    "lab": {
+      "command": "npm test",
+      "exitCode": 0,
+      "passLines": 263,
+      "additionalFlowDomainSuite": true
+    },
+    "foundry": {
+      "command": "npm test",
+      "exitCode": 0,
+      "passLines": 7
+    }
+  },
+  "python": {
+    "command": "PYTHONPATH=backend python -m unittest project_assets.test_workspace project_assets.test_skeletal project_assets.test_foundry project_assets.test_equipment -v",
+    "run": 34,
+    "passed": 33,
+    "skipped": 1,
+    "exitCode": 0
+  },
+  "labBrowser": {
+    "checks": [
+      "new navigation exposes equipment, reusable rig shelf and workflow editor",
+      "reviewed body map enables grip prediction and four per-weapon actions",
+      "weight admission is enforced and undo restores the whole item operation",
+      "GLB embeds equipment and actions while preserving the original skinned mesh",
+      "rig shelf reuses a named action and saves the recipe independently of the scene",
+      "node editor adds, edits, connects and drags actual portable workflow nodes",
+      "workflow pauses for review before saving a real equipment character draft",
+      "batch retry keeps successful clips and retries only the failed model action",
+      "predicted joints, reviewed body roles and smooth weights can run automatically before mandatory review",
+      "mobile editor panels stay within the viewport",
+      "saved equipment draft and reusable shelf survive a browser reload",
+      "no unhandled browser errors or network requests"
+    ],
+    "errors": [],
+    "network": [],
+    "builtIndexSha256": "1df748acb064e0f544161bfcd3ab3afa5868787d4f35e8ad262530090df95b40",
+    "inferenceVerified": false,
+    "nativeVerified": false,
+    "success": true
+  },
+  "foundryFinalBrowser": {
+    "checks": [
+      "final build resolves linked weapon model and anchors it to the character bone",
+      "final build equipment follows forwards and backwards timeline state",
+      "final build one-shot equipment actions retain final holster state",
+      "final bundled Lab imports full equipment recipe and shows revised Foundry guidance",
+      "narrow workspace has no horizontal overflow",
+      "same-ID folders remain isolated during a switch and return",
+      "Voice handoff completes after initial asynchronous import, with one recording and open timeline"
+    ],
+    "errors": [],
+    "inputs": {
+      "foundry/backend/project_assets/foundry.html": "3b33444d724026b53a915231a2503a5498eacf5d18d0868626525ccba43f5b20",
+      "foundry/backend/project_assets/labs/3d.html": "6607d0b2b2071fd561a38ca49af99c6dbb51a3e4f3d5cf15a6fc68981e65ed95"
+    },
+    "success": true
+  },
+  "browserEvidenceNote": "Lab 12-check suite tested 1df748ac...; final Lab build changes only the Send to Foundry help text, and final Foundry checks import its equipment recipe and verify the new guidance. Foundry full browser run passed 12 checks then hit a timing-sensitive Voice readiness assertion; a focused final-build run verified all seven listed checks, including successful Voice import and timeline readiness. No Voice source was changed.",
+  "installer": {
+    "success": true,
+    "checks": [
+      "dry run changes no targets",
+      "conflict refuses whole update",
+      "applies every declared payload with exact hash",
+      "unrelated files preserved",
+      "original changed files backed up",
+      "repeat application is idempotent"
+    ],
+    "files": 55
+  },
+  "limitations": [
+    "GPU/checkpoint inference was not run; browser inference uses controlled provider fixtures.",
+    "No native build, CTest, Windows app, gameplay or native performance validation.",
+    "User-created woman model was not supplied; actual weighted fixture characters were exercised.",
+    "Equipment previews and authoring metadata do not implement Kestrel combat, inventory, world pickup, clothing hard points or finger animation.",
+    "Graph executes one character and a connected sequence per run; multiple motions supported, character-sheet batch queues deferred."
+  ]
+}

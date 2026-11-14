@@ -1,0 +1,32 @@
+{
+  "version": "0.16.0",
+  "source_archive": "3d-lab(20261016-210403).zip",
+  "source_sha256": "cee7f4ae1e4b736987645859b6b7f5bdc50aa546eacb7bfd0cf68494d2221363",
+  "source_scope": "Only the fresh 3D Lab upload was edited.",
+  "checks": {
+    "existing_source_suite": {
+      "command": "npm test",
+      "result": "passed",
+      "pass_lines": 265
+    },
+    "durable_storage_integration": {
+      "command": "node tests/disk-storage.mjs",
+      "checks": 17
+    },
+    "atomic_failure_gates": {
+      "command": "python3 tests/asset_storage_test.py",
+      "checks": 5
+    },
+    "built_browser": {
+      "command": "node tests/disk-storage-browser.mjs",
+      "checks": 8,
+      "evidence": "DISK-STORAGE-BROWSER-VERIFICATION.json"
+    }
+  },
+  "limits": [
+    "No direct access to user Windows browser data; migration runs when the existing updated app connects.",
+    "No Windows/WebView2/native/GPU testing.",
+    "No cApp, Foundry or Kestrel source changed.",
+    "Browser tests use synthetic model and rig fixtures, not user assets."
+  ]
+}

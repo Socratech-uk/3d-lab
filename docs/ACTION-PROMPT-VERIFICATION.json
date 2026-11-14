@@ -1,0 +1,75 @@
+{
+  "version": "0.15.1",
+  "verified_at": "2026-10-16",
+  "baseline_archive": "3d-lab(9).zip",
+  "baseline_sha256": "a267a77e7604d70ca67ad8e8e9ad68163c0f72cce13e4572f0194d961892d8cb",
+  "build": {
+    "passed": true,
+    "file": "index.html",
+    "sha256": "c55126e71c44485103891be6d5ea845f3d07d8777cdf1d20708c60563e2b8f5e",
+    "runtime_external_scripts": false
+  },
+  "source_suite": {
+    "command": "npm test",
+    "passed": true,
+    "scripts": [
+      "node tests/action-game.mjs",
+      "node tests/action-anatomy.mjs",
+      "node tests/project-assets.mjs",
+      "node tests/core.mjs",
+      "node tests/large-models.mjs",
+      "node tests/builder-geometry.mjs",
+      "node tests/builder-solids.mjs",
+      "node tests/builder-projection.mjs",
+      "node tests/builder-library.mjs",
+      "node tests/builder-outline.mjs",
+      "node tests/builder-objects.mjs",
+      "node tests/shape-document.mjs",
+      "node tests/shape-geometry.mjs",
+      "node tests/shape-library.mjs",
+      "node tests/action-lab.mjs",
+      "node tests/action-motion-duration.mjs",
+      "node tests/action-prompts.mjs",
+      "node tests/action-assets.mjs",
+      "node tests/action-workflow.mjs",
+      "node tests/skeleton-proxy.mjs",
+      "node tests/action-movement.mjs",
+      "node tests/action-equipment.mjs",
+      "node tests/action-rig-library.mjs",
+      "node tests/action-flow.mjs",
+      "node tests/action-flow-prompts.mjs",
+      "node tests/action-flow-adapters.mjs"
+    ]
+  },
+  "browser": {
+    "checks": [
+      "prompt saved in the already-open Action Lab appears immediately in the workflow picker",
+      "starter selection and replacement use real recipes without requiring prompt entry",
+      "live saved-prompt updates refresh the picker while existing workflow copies are retained",
+      "deleting a source does not change exported or saved workflow actions",
+      "picked recipe reaches the engine with its exact seed and duration, then pauses for review",
+      "picker respects the action limit and fits a phone viewport"
+    ],
+    "errors": [],
+    "network": [],
+    "builtIndexSha256": "c55126e71c44485103891be6d5ea845f3d07d8777cdf1d20708c60563e2b8f5e",
+    "inferenceVerified": false,
+    "nativeVerified": false,
+    "success": true
+  },
+  "segment_review": {
+    "frontend_interpolation_checks_passed": true,
+    "checks": [
+      "Continuous root travel at both sides of documented overlap-sized intervals",
+      "Quaternion sign changes do not cause a playback spin",
+      "Exact fractional end time survives retargeting and saved-recipe reload",
+      "A generator-supplied discontinuity is retained in editable keys"
+    ],
+    "neural_stitching_modified": false,
+    "neural_inference_verified": false,
+    "missing_input": "Current cApp animation runtime source and a motion exhibiting the hitch"
+  },
+  "native_build_performed": false,
+  "ctest_performed": false,
+  "windows_execution_performed": false
+}

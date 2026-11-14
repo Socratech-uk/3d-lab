@@ -1,0 +1,14 @@
+{
+  "checks": 8,
+  "results": [
+    "canonical materials and geometry are independent of preview modes",
+    "editable replacement preserves camera and visual framing",
+    "snapshot texture handles survive replacement without closing image sources",
+    "raycast provides mesh-local point and normal",
+    "Shift sculpt drag emits one begin/end and does not orbit camera",
+    "WebGL context loss pauses rendering and restores retained editable object",
+    "manual renderer recovery retains mesh/camera and uses one canvas",
+    "destroy releases canvas without uncaught browser errors"
+  ],
+  "pageErrors": []
+}

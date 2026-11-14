@@ -1,0 +1,15 @@
+{
+  "name": "capp-3d-lab",
+  "version": "0.22.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node tools/build.mjs",
+    "test": "node tests/action-game.mjs && node tests/action-anatomy.mjs && node tests/action-animal-anatomy.mjs && node tests/action-draft-rigs.mjs && node tests/project-assets.mjs && node tests/core.mjs && node tests/large-models.mjs && node tests/mesh-counts.mjs && node tests/builder-geometry.mjs && node tests/builder-solids.mjs && node tests/builder-projection.mjs && node tests/builder-materials.mjs && node tests/texture-layers.mjs && node tests/builder-library.mjs && node tests/builder-outline.mjs && node tests/builder-objects.mjs && node tests/shape-document.mjs && node tests/shape-geometry.mjs && node tests/shape-library.mjs && node tests/action-lab.mjs && node tests/action-motion-duration.mjs && node tests/action-prompts.mjs && node tests/action-assets.mjs && node tests/action-workflow.mjs && node tests/skeleton-proxy.mjs && node tests/action-movement.mjs && node tests/action-equipment.mjs && node tests/action-rig-library.mjs && node tests/action-flow.mjs && node tests/action-flow-prompts.mjs && node tests/action-flow-adapters.mjs && node tests/asset-revisions.mjs",
+    "test:storage": "node tests/disk-storage.mjs && python3 tests/asset_storage_test.py"
+  },
+  "devDependencies": {
+    "esbuild": "0.25.12",
+    "fake-indexeddb": "6.2.5"
+  }
+}

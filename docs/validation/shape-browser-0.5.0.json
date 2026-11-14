@@ -1,0 +1,100 @@
+{
+  "checks": 23,
+  "results": [
+    {
+      "name": "Shape Lab opens with a real editable profile and 3D mesh without an imported asset",
+      "ms": 621
+    },
+    {
+      "name": "visible linked profile handles drag together and form one undoable edit",
+      "ms": 2980
+    },
+    {
+      "name": "unlinking a pair permits independent longitudinal and vertical point edits",
+      "ms": 1888
+    },
+    {
+      "name": "pulling a visible profile edge moves both bounding points as one undoable edit",
+      "ms": 2000
+    },
+    {
+      "name": "cancelling a live point drag restores the recipe and its undo history",
+      "ms": 957
+    },
+    {
+      "name": "top view edits width, grid cursor tracks the mouse and stations add/remove",
+      "ms": 2602
+    },
+    {
+      "name": "valid formula creates editable stations and unsafe formula rejection preserves geometry",
+      "ms": 1762
+    },
+    {
+      "name": "typing in formula fields never triggers viewport navigation or shape shortcuts",
+      "ms": 81
+    },
+    {
+      "name": "numeric transforms, independent duplication and visibility retain all recipe objects",
+      "ms": 1204
+    },
+    {
+      "name": "locked shape refuses transforms and hidden geometry remains in complete GLB exports",
+      "ms": 720
+    },
+    {
+      "name": "editable JSON roundtrip preserves objects, links, transforms and locked visibility",
+      "ms": 2815
+    },
+    {
+      "name": "a freehand polygon previews connected snapped points before closing into an extrusion",
+      "ms": 2964
+    },
+    {
+      "name": "unfinished sketch cancellation retains the existing solid and recipe",
+      "ms": 1737
+    },
+    {
+      "name": "extrusion depth, bevel, taper and twist rebuild the mesh and remain editable",
+      "ms": 435
+    },
+    {
+      "name": "revolution creates a separate editable object and exports real geometry",
+      "ms": 617
+    },
+    {
+      "name": "Save shape draft stores an editable recipe and mesh together without resetting the session",
+      "ms": 1590
+    },
+    {
+      "name": "local shape session survives reload and saved draft reopens as editable shapes",
+      "ms": 1574
+    },
+    {
+      "name": "shape context action reopens its recipe and Builder transfer preserves it as a source",
+      "ms": 1979
+    },
+    {
+      "name": "Shape fullscreen preserves sketch editing and exposes object/tool panels",
+      "ms": 1054
+    },
+    {
+      "name": "focused 3D preview supports WASD and Q/E while sketch keyboard nudges affect points only",
+      "ms": 909
+    },
+    {
+      "name": "Shape Lab responsive layouts retain editable canvas without horizontal overflow",
+      "ms": 1520
+    },
+    {
+      "name": "leaving Shape Lab restores the original imported asset without overwriting its bytes",
+      "ms": 2115
+    },
+    {
+      "name": "no runtime errors or external network requests were introduced",
+      "ms": 337
+    }
+  ],
+  "errors": [],
+  "network": [],
+  "scope": "Real Chromium UI with procedural meshes; no neural inference or installed Windows acceptance."
+}

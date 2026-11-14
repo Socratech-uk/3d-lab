@@ -1,0 +1,73 @@
+{
+  "checks": 16,
+  "results": [
+    {
+      "name": "supplied ship imports into Builder with original polygon count",
+      "ms": 793
+    },
+    {
+      "name": "50% ship reduction, Undo and Redo operate on the real mesh",
+      "ms": 1232
+    },
+    {
+      "name": "normalization uses model dimensions and edited draft preserves source provenance",
+      "ms": 687
+    },
+    {
+      "name": "original ship download remains byte-for-byte unchanged",
+      "ms": 289
+    },
+    {
+      "name": "synthetic cube import and Builder start preserve all 12 triangles",
+      "ms": 415
+    },
+    {
+      "name": "box cutter creates an actual opening and Undo restores geometry",
+      "ms": 901
+    },
+    {
+      "name": "inner walls join a cut hull and interior panel adds a separate part",
+      "ms": 310
+    },
+    {
+      "name": "manual WebGL recovery preserves unsaved geometry, history and one canvas",
+      "ms": 619
+    },
+    {
+      "name": "automatic context restoration rebuilds active cutter controls without losing edits",
+      "ms": 329
+    },
+    {
+      "name": "discarding Builder and returning through Assets restores the original",
+      "ms": 239
+    },
+    {
+      "name": "sculpt stroke edits geometry and is one Undo step",
+      "ms": 416
+    },
+    {
+      "name": "failed edited-draft save preserves the working mesh and download",
+      "ms": 450
+    },
+    {
+      "name": "reference projection embeds the image and guards unsupported edits",
+      "ms": 1941
+    },
+    {
+      "name": "desktop and mobile Builder layouts have no horizontal overflow",
+      "ms": 606
+    },
+    {
+      "name": "all Builder and app buttons provide hover descriptions",
+      "ms": 5
+    },
+    {
+      "name": "no unexpected network requests or uncaught browser errors",
+      "ms": 0
+    }
+  ],
+  "skipped": [],
+  "errors": [],
+  "network": [],
+  "scope": "Integrated browser editor tests; synthetic fixtures and optional external user GLB. No neural generation or Windows GPU inference."
+}

@@ -1,0 +1,22 @@
+{
+  "checks": 16,
+  "results": [
+    "toolbar selects all six tools and preserves keyboard focus",
+    "undo and redo invoke the builder operation wrapper",
+    "native Builder fullscreen fills the screen and exposes panel toggles",
+    "fullscreen side panels open and close without disturbing mesh",
+    "keyboard guide opens over native fullscreen and restores canvas focus",
+    "exiting native fullscreen restores layout",
+    "desktop-shell fallback fullscreen also opens and closes",
+    "camera lock blocks frame/reset and movement but keeps outline picks",
+    "Create fullscreen targets the stage and hides Builder toolbar",
+    "Shape fullscreen retains both sketch and 3D preview without Builder tools",
+    "Shape fullscreen side panels and contextual keyboard guide stay accessible",
+    "Sketch-only fullscreen retains pane controls, help, panels and exit",
+    "Shape fallback Escape defers to unfinished sketch and preserves scene",
+    "narrow Shape fullscreen stacks live panes and can expand either one",
+    "leaving fullscreen Shape restores shared chrome and exits safely",
+    "teardown releases chrome listeners without browser errors"
+  ],
+  "pageErrors": []
+}

@@ -1,0 +1,15 @@
+{
+  "checks": [
+    "unconnected built app clearly reports cache-only storage",
+    "Connect & migrate copies real IndexedDB data through the cross-origin file service",
+    "imported GLB is acknowledged only after the on-disk model is present",
+    "Action Lab saves a real practice rig, skin weights and named actions to disk",
+    "prompt and workflow save controls persist JSON on disk",
+    "reload automatically reconnects and keeps saved assets",
+    "a browser with no local data restores disk models and can reopen the saved action rig",
+    "built app has no JavaScript page errors"
+  ],
+  "errors": [],
+  "root": "temporary synthetic fixture folder",
+  "windowsTested": false
+}

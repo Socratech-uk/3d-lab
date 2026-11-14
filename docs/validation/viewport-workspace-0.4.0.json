@@ -1,0 +1,16 @@
+{
+  "checks": 10,
+  "results": [
+    "toolbar selects all six tools and preserves keyboard focus",
+    "undo and redo invoke the builder operation wrapper",
+    "native Builder fullscreen fills the screen and exposes panel toggles",
+    "fullscreen side panels open and close without disturbing mesh",
+    "keyboard guide opens over native fullscreen and restores canvas focus",
+    "exiting native fullscreen restores layout",
+    "desktop-shell fallback fullscreen also opens and closes",
+    "camera lock blocks frame/reset and movement but keeps outline picks",
+    "Create fullscreen targets the stage and hides Builder toolbar",
+    "teardown releases chrome listeners without browser errors"
+  ],
+  "pageErrors": []
+}

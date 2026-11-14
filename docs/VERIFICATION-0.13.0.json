@@ -1,0 +1,161 @@
+{
+  "release": "3D Lab 0.13.0",
+  "date": "2026-10-15",
+  "inputArchivesSha256": {
+    "3d-lab(8).zip": "d77f47c03a9a9315d0542103b8f15cc328a96e2024f12b50d74d4daa99926e85",
+    "kestrel-source-20261015-185014-261.zip": "7ae22de2d6fad837dee6e7746cc9a671b52cd31a24a9c0501327421fc25b3987",
+    "capp-v1(20261015-194114).zip": "a044e16ff0ac0f5fcea879517f480f1459ad7a3e11320a5beff9c2b15f6a9b55"
+  },
+  "builtIndexSha256": "f9df25e338dd58287754bc34201882e1829446f7ba8438b80555ef9212118b8f",
+  "kestrelHubCopyIdentical": true,
+  "executed": {
+    "nodeFullSuite": {
+      "command": "npm test",
+      "status": "passed",
+      "passLines": 223,
+      "note": "Full suite passed before three additional game checks and the final stride-trim correction; the final game and movement suites passed again afterward."
+    },
+    "finalGamePreparation": {
+      "command": "node tests/action-game.mjs",
+      "status": "passed",
+      "checks": 18
+    },
+    "finalMovementController": {
+      "command": "node tests/action-movement.mjs",
+      "status": "passed",
+      "checks": 11
+    },
+    "build": {
+      "command": "npm run build",
+      "status": "passed"
+    },
+    "browser": {
+      "game": {
+        "checks": [
+          "action playback and stride settings save without changing pose keys",
+          "visible contact bands seek the playhead and survive Undo/Redo",
+          "contact suggestions remain proposals until explicitly applied",
+          "events appear on the timeline and invalid contact edits are transactional",
+          "reverse transforms marker times with keys and Undo restores them",
+          "transfer requires mapping review, appends a new action and preserves the target",
+          "sandbox exposes stance/air slots, calibrated speed and live event crossings",
+          "real GLB carries consistent rig, weights, original actions and game settings",
+          "preparation UI and timeline fit a narrow viewport",
+          "save and reopen preserve contacts, events, movement and original keys"
+        ],
+        "errors": [],
+        "builtIndexSha256": "f9df25e338dd58287754bc34201882e1829446f7ba8438b80555ef9212118b8f",
+        "inferenceVerified": false,
+        "nativeVerified": false,
+        "success": true
+      },
+      "bodyMap": {
+        "checks": [
+          "body-map panel is usable on the existing human without replacing its rig",
+          "predicted 34-joint skeleton opens suggestions and keeps candidate save/discard semantics",
+          "show role selects its visible point and manual assignment is exclusive",
+          "discard restores the entire prior rig, map and action state",
+          "review commits map, application keeps every predicted bone and binds original meshes",
+          "generic labels cannot break MoMask after a reviewed anatomical map",
+          "UniMate receives 21 canonical joints and dragging output gets a visible warning",
+          "in-place playback cannot modify exported pose keys",
+          "articulated output is distinguished from a translating mannequin",
+          "saving and reopening retains the body map and all detailed bones",
+          "local bend test runs on the bound detailed rig without calling AI",
+          "rest edits visibly invalidate a saved body review",
+          "narrow layout keeps the mapping controls within the viewport"
+        ],
+        "errors": [],
+        "builtIndexSha256": "f9df25e338dd58287754bc34201882e1829446f7ba8438b80555ef9212118b8f",
+        "inferenceVerified": false,
+        "windowsVerified": false,
+        "success": true
+      },
+      "capture": {
+        "success": true,
+        "checks": [
+          "PNG screenshot exports transparent model pixels at the chosen size",
+          "selected-action GIF exports animated transparent frames without editing the scene",
+          "invalid action ranges show a correction and remain editable",
+          "turntable exports and cancellation returns control without downloading a partial GIF",
+          "capture controls and dialog fit a narrow screen"
+        ],
+        "errors": [],
+        "builtIndexSha256": "f9df25e338dd58287754bc34201882e1829446f7ba8438b80555ef9212118b8f"
+      }
+    },
+    "viewportWorkspaceRegression": {
+      "status": "passed",
+      "checks": [
+        "toolbar selects all six tools and preserves keyboard focus",
+        "undo and redo invoke the builder operation wrapper",
+        "native Builder fullscreen fills the screen and exposes panel toggles",
+        "fullscreen side panels open and close without disturbing mesh",
+        "keyboard guide opens over native fullscreen and restores canvas focus",
+        "exiting native fullscreen restores layout",
+        "desktop-shell fallback fullscreen also opens and closes",
+        "camera lock blocks frame/reset and movement but keeps outline picks",
+        "Create fullscreen targets the stage and hides Builder toolbar",
+        "Shape fullscreen retains both sketch and 3D preview without Builder tools",
+        "Shape fullscreen side panels and contextual keyboard guide stay accessible",
+        "Sketch-only fullscreen retains pane controls, help, panels and exit",
+        "Shape fallback Escape defers to unfinished sketch and preserves scene",
+        "narrow Shape fullscreen stacks live panes and can expand either one",
+        "leaving fullscreen Shape restores shared chrome and exits safely",
+        "teardown releases chrome listeners without browser errors"
+      ]
+    },
+    "independentImageDecode": {
+      "png": {
+        "size": [
+          768,
+          457
+        ],
+        "alphaRange": [
+          0,
+          255
+        ]
+      },
+      "action.gif": {
+        "size": [
+          384,
+          228
+        ],
+        "frames": 20,
+        "distinctFrames": 11,
+        "durationMs": 2000
+      },
+      "turntable.gif": {
+        "size": [
+          384,
+          228
+        ],
+        "frames": 10,
+        "distinctFrames": 10,
+        "durationMs": 1000
+      }
+    },
+    "gifLzwDictionaryStress": {
+      "status": "passed",
+      "pixels": 65536,
+      "note": "Independent Pillow decode matched random palette indices through dictionary growth and reset."
+    },
+    "receivingPublisher": {
+      "status": "passed",
+      "checks": 21,
+      "fixture": "Actual browser-exported 21-joint GLB and matching movement recipe included in Python checks."
+    }
+  },
+  "notVerified": [
+    "Native Kestrel compilation, CTest, shaders, gameplay or performance (supplied skip-native-validation rule).",
+    "Windows/WebView2 installed acceptance.",
+    "Real AI model inference or representative NPC/animal motion quality.",
+    "Omitted user mesh/audio assets."
+  ],
+  "limits": [
+    "Contact markers diagnose but do not implement runtime foot locking.",
+    "The flat Lab controller previews locomotion; stance/air clips have individual preview.",
+    "Sound playback and equipment socket integration are deferred.",
+    "GIF exports are image previews, not portable skeletal clips."
+  ]
+}

@@ -1,0 +1,349 @@
+{
+  "release": "3D Lab 0.6.0 / Local AI 0.19.0 / MCP 0.24.18",
+  "phase": "2026-10-14 Action Lab",
+  "sources": [
+    {
+      "file": "3d-lab(5).zip",
+      "sha256": "ad27c688348e8fee72048fd703af7beead4428e32b160b396e5bb39d67e4413c",
+      "bytes": 961764
+    },
+    {
+      "file": "capp-v1(20261014-232508).zip",
+      "sha256": "d7997d91b6b596b7ea678410185741e7aa778db0b77cb5581b4de58818f9a52c",
+      "bytes": 112182108
+    }
+  ],
+  "sourcePolicy": "Fresh uploads only; older matching toolchain/dependency binaries reused, no earlier source merge.",
+  "lab": {
+    "nodeChecks": 138,
+    "actionGeometryChecks": 10,
+    "browser": {
+      "checks": [
+        "Practice character starts with a bound editable rig",
+        "Pose edits create initial and current keys",
+        "Undo restores the previous action",
+        "Redo restores all pose keys",
+        "Timeline playback advances",
+        "Immutable action draft saved",
+        "Draft reopens with rig and animation keys",
+        "Weight brush follows the visible model surface",
+        "A brush stroke is one undo step",
+        "Surface click adds a connected joint",
+        "Mechanical joint limits can be edited",
+        "Fullscreen includes Action Lab and timeline",
+        "Tools remain reachable in fullscreen",
+        "WASD moves the focused Action camera",
+        "Typing in fields does not switch tools",
+        "No runtime exceptions"
+      ],
+      "errors": []
+    },
+    "generatedOwnerBrowser": {
+      "checks": [
+        "Animation delivered through actual generated owner and app frame with speech/3D disabled",
+        "Passive entry does not download or render",
+        "Child gets no native invoke or model manager",
+        "Unknown fields and cross-app identities refused",
+        "Real recorded UniMate output retargets to an editable action",
+        "AI action and rig save together",
+        "Animated GLB exports",
+        "Another client cannot cancel the active action",
+        "Owned cancellation rejects late motion",
+        "Disabled animation grant refuses before native IPC",
+        "No browser exceptions"
+      ],
+      "errors": [],
+      "nativeReplies": "Recorded Linux CPU inference; controlled IPC fixture",
+      "windowsExecutionVerified": false
+    },
+    "animatedGlb": [
+      {
+        "path": "qa/action-roundtrip.glb",
+        "bytes": 182640,
+        "skins": 8,
+        "joints": 21,
+        "actions": [
+          "Action"
+        ],
+        "triangles": 1536,
+        "validated": true,
+        "noToolHelpers": true
+      },
+      {
+        "path": "qa/bridge-browser/animated.glb",
+        "bytes": 134892,
+        "skins": 8,
+        "joints": 21,
+        "actions": [
+          "An object walks forward."
+        ],
+        "triangles": 1536,
+        "validated": true,
+        "noToolHelpers": true
+      }
+    ],
+    "indexBytes": 1121139,
+    "indexSha256": "4552b4e83c2941b2c65c4b0e5dd6052e26eccc89c186ac43154e4c1174b584c8"
+  },
+  "capp": {
+    "nativeGeneratedRustTestsPassed": 36,
+    "nativeTestScope": "Complete generated native block compiled and tested; UI handles and GPU server fixtures, not installed Windows/CUDA.",
+    "animationBoundaryTestsPassed": 4,
+    "agentPolicyTestsPassed": 28,
+    "existingAppFrameTestsPassed": 14,
+    "models3dTestsPassed": 8,
+    "advancedModels3dTestsPassed": 4,
+    "advancedModels3dTestsSkipped": 1,
+    "skippedReason": "trimesh test prerequisite unavailable in the general test interpreter",
+    "immutableServiceClosure": "PASS; actual service ZIP includes runtime, contract, recipe, every vendored module and licence",
+    "registry": "current",
+    "standardChecksPassed": 633,
+    "publicDocumentation": "62 pages, 26 components, 75 explicit downloads verified",
+    "documentationCheck": {
+      "passed": false,
+      "issues": 19,
+      "baselineIssues": 19,
+      "newIssues": 0,
+      "baselineIdentical": true,
+      "description": "Pre-existing broken model-designer links in the fresh cApp source; retained without unrelated repairs."
+    },
+    "normalPackBuild": {
+      "passed": true,
+      "command": "python3 tools/capppack.py build --site-id capp-protocol --version 0.28.0 --no-sealed",
+      "isolatedCopy": true,
+      "verifyRegistry": true,
+      "verifyCapsule": true
+    }
+  },
+  "neuralInference": {
+    "engine": "UniMate v3",
+    "upstreamCommit": "b78c7807df7cf4231d4e67f8d0ece29c5e11025b",
+    "checkpointRevision": "174fc755ec248d0c98f27759b7a95648e7f05905",
+    "checkpointSha256": "f991ddd87262c251f4681d18297a6163ab4f139daa28c86d5ef0a66771df7bc6",
+    "checkpointBytes": 1185836040,
+    "realCheckpointLoaded": true,
+    "realSamplingExecuted": true,
+    "device": "Linux CPU",
+    "prompt": "An object walks forward.",
+    "rigJoints": 5,
+    "outputFrames": 15,
+    "fps": 30,
+    "generationMs": 313383,
+    "positionsAndRotationsFinite": true,
+    "motionSha256": "2bfc2e7930518459b986bb0045d925032ab291c39ad47aee19bee53849854d94",
+    "qualityBenchmark": false,
+    "qualityNote": "Small named-rig execution check; representative NPC/animal quality and contact cleanup still need testing.",
+    "licence": "Checkpoint CC BY-NC 4.0; upstream code MIT",
+    "limits": "5\u201370 joints, one connected root, Y-up/+Z, 0.5\u20132 seconds"
+  },
+  "windowsDependencies": {
+    "exactBytesAndHashes": true,
+    "realWindowsWheelExtraction": true,
+    "dependencyGraphVerified": true,
+    "windowsExecutionVerified": false,
+    "assets": [
+      {
+        "id": "python",
+        "bytes": 11249023,
+        "sha256": "009d6bf7e3b2ddca3d784fa09f90fe54336d5b60f0e0f305c37f400bf83cfd3b",
+        "extractedFiles": 34
+      },
+      {
+        "id": "certifi",
+        "bytes": 161216,
+        "sha256": "f6c12493cfb1b06ba2ff328595af9350c65d6644968e5d3a2ffd78699af217a5",
+        "extractedFiles": 10
+      },
+      {
+        "id": "charset-normalizer",
+        "bytes": 107108,
+        "sha256": "31a9a6f775f9bcd865d88ee350f0ffb0e25936a7f930ca98995c05abf1faf21c",
+        "extractedFiles": 21
+      },
+      {
+        "id": "colorama",
+        "bytes": 25335,
+        "sha256": "4f1d9991f5acc0ca119f9d443620b77f9d6b33703e51011c16baf57afb285fc6",
+        "extractedFiles": 17
+      },
+      {
+        "id": "einops",
+        "bytes": 44599,
+        "sha256": "0f3096f26b914f465f6ff3c66f5478f9a5e380bb367ffc6493a68143fbbf1fd1",
+        "extractedFiles": 24
+      },
+      {
+        "id": "filelock",
+        "bytes": 16215,
+        "sha256": "c401f4f8377c4464e6db25fff06205fd89bdd83b65eb0488ed1b160f780e21de",
+        "extractedFiles": 14
+      },
+      {
+        "id": "fsspec",
+        "bytes": 194435,
+        "sha256": "2daf8dc3d1dfa65b6aa37748d112773a7a08416f6c70d96b264c96476ecaf711",
+        "extractedFiles": 59
+      },
+      {
+        "id": "idna",
+        "bytes": 70442,
+        "sha256": "946d195a0d259cbba61165e88e65941f16e9b36ea6ddb97f00452bae8b1287d3",
+        "extractedFiles": 13
+      },
+      {
+        "id": "jinja2",
+        "bytes": 134899,
+        "sha256": "85ece4451f492d0c13c5dd7c13a64681a86afae63a5f347908daf103ce6d2f67",
+        "extractedFiles": 31
+      },
+      {
+        "id": "markupsafe",
+        "bytes": 15521,
+        "sha256": "70a87b411535ccad5ef2f1df5136506a10775d267e197e4cf531ced10537bd6b",
+        "extractedFiles": 11
+      },
+      {
+        "id": "mpmath",
+        "bytes": 536198,
+        "sha256": "a0b2b9fe80bbcd81a6647ff13108738cfb482d481d826cc0e02f5b35e5c88d2c",
+        "extractedFiles": 92
+      },
+      {
+        "id": "msvc-runtime",
+        "bytes": 1921911,
+        "sha256": "aba7fbe71897d25ed53fbb7f391e9f50289378a8a9ae218ba18530c663448391",
+        "extractedFiles": 18
+      },
+      {
+        "id": "networkx",
+        "bytes": 1723263,
+        "sha256": "df5d4365b724cf81b8c6a7312509d0c22386097011ad1abe274afd5e9d3bbc5f",
+        "extractedFiles": 582
+      },
+      {
+        "id": "numpy",
+        "bytes": 15811913,
+        "sha256": "cd25bcecc4974d09257ffcd1f098ee778f7834c3ad767fe5db785be9a4aa9cb2",
+        "extractedFiles": 934
+      },
+      {
+        "id": "packaging",
+        "bytes": 66469,
+        "sha256": "29572ef2b1f17581046b3a2227d5c611fb25ec70ca1ba8554b24b0e69331a484",
+        "extractedFiles": 23
+      },
+      {
+        "id": "pyyaml",
+        "bytes": 161980,
+        "sha256": "e10ce637b18caea04431ce14fabcf5c64a1c61ec9c56b071a4b7ca131ca52d44",
+        "extractedFiles": 24
+      },
+      {
+        "id": "regex",
+        "bytes": 276047,
+        "sha256": "24257953d5c1d6d3c129ab03414c07fc1a47833c9165d49b954190b2b7f21a1a",
+        "extractedFiles": 10
+      },
+      {
+        "id": "requests",
+        "bytes": 64738,
+        "sha256": "2462f94637a34fd532264295e186976db0f5d453d1cdd31473c85a6a161affb6",
+        "extractedFiles": 23
+      },
+      {
+        "id": "safetensors",
+        "bytes": 308878,
+        "sha256": "836cbbc320b47e80acd40e44c8682db0e8ad7123209f69b093def21ec7cafd11",
+        "extractedFiles": 13
+      },
+      {
+        "id": "sympy",
+        "bytes": 6189177,
+        "sha256": "db36cdc64bf61b9b24578b6f7bab1ecdd2452cf008f34faa33776680c26d66f8",
+        "extractedFiles": 1555
+      },
+      {
+        "id": "torch",
+        "bytes": 2532350702,
+        "sha256": "6a1fb2714e9323f11edb6e8abf7aad5f79e45ad25c081cde87681a18d99c29eb",
+        "extractedFiles": 10934
+      },
+      {
+        "id": "tqdm",
+        "bytes": 78540,
+        "sha256": "26445eca388f82e72884e0d580d5464cd801a3ea01e63e5601bdff9ba6a48de2",
+        "extractedFiles": 40
+      },
+      {
+        "id": "typing-extensions",
+        "bytes": 45806,
+        "sha256": "a439e7c04b49fec3e5d3e2beaa21755cadbbdc391694e28ccdd36ca4a1408f8c",
+        "extractedFiles": 5
+      },
+      {
+        "id": "urllib3",
+        "bytes": 131182,
+        "sha256": "ec21cddfe7724fc7cb4ba4bea7aa8e2ef36f607a4bab81aa6ce42a13dc3f03dd",
+        "extractedFiles": 42
+      },
+      {
+        "id": "transformers",
+        "bytes": 10034536,
+        "sha256": "a12ef6f52841fd190a3e5602145b542d03507222f2c64ebb7ee92e8788093aef",
+        "extractedFiles": 1852
+      },
+      {
+        "id": "huggingface-hub",
+        "bytes": 447536,
+        "sha256": "98c2a5a8e786c7b2cb6fdeb2740893cba4d53e312572ed3d8afafda65b128c46",
+        "extractedFiles": 117
+      },
+      {
+        "id": "tokenizers",
+        "bytes": 2381616,
+        "sha256": "88301aa0801f225725b6df5dea3d77c80365ff2362ca7e252583f2b4809c4cc0",
+        "extractedFiles": 28
+      },
+      {
+        "id": "sentencepiece",
+        "bytes": 991520,
+        "sha256": "0993dbc665f4113017892f1b87c3904a44d0640eda510abcacdfb07f74286d36",
+        "extractedFiles": 9
+      }
+    ]
+  },
+  "setupPending": [
+    "MoMask motion: verified checkpoint distribution and runtime recipe",
+    "UniRig neural skeleton: Windows skeleton dependency stack"
+  ],
+  "targetAcceptance": {
+    "installedWindows": false,
+    "webView2": false,
+    "rtx4070Inference": false,
+    "realWindowsDependencyExecution": false,
+    "realWorkerCancellationWhileSampling": false,
+    "thirdPartyAnimatedGlbPlayback": false
+  },
+  "logDigests": {
+    "lab-regressions.log": "6a82a7de285329ca6770214d6bb23a149be4295617a69b4a6c9c62883153eb51",
+    "lab-build.log": "dd51ec693e86fc06818d5c78b9dae5298bd595293208c8e40a3ab3b771f48cd5",
+    "action-ui-check.log": "190fa759c4a1dcac4c05a0915275d0d68b33b80050467d9719f0df59cfaeeb99",
+    "bridge-browser.log": "e4e15abc277e01bed32b61d0b311778b60809422dbd523384c7deca9297dd2d9",
+    "native-rust-animation.log": "7251544e3c01cae1edffca817ad15d56c024a51b40610f55e3f1261ff912f8a4",
+    "animation-smoke.log": "f17beac1497f5011ee2eb13c1405a6b9d86cad6c6b40ca9a4baa8e7fec7b7dd1",
+    "agent-policy.log": "672e77704c145038829bfe63e241332ab99d342904f9a7845cdef981f814863c",
+    "selfhost-closure.log": "0d2742b09c1354dcfb557d1ca07d019c760d113290821fa71d888bad7a1b2df5",
+    "models3d-regression.log": "55cf6e1a7c72514c234a84487dc42b43217dca06e50808698b9dbb073fd6c291",
+    "advanced-regression.log": "c072a7f7d43178b28637db4bb2231d81f574f69cd4421af264142ed025cd6f89",
+    "app-frame-smoke.log": "674e08e1d7d023511a71e7d347f48125bdd725046a05061950f3f9fa7cded44d",
+    "neural-check.log": "a1ee59f425f52b86710a6ae06c348469e14b312e58c7dc82c1495f48e74c9f2b",
+    "animation-dependencies.log": "5658135e3c17d7287473e136031130e232c996c9a636b8505162f4c252681ebd",
+    "pack-build.log": "37cac7dc66f217e61239fd73fef35da8c38390e69030aae250788cf9b9122cde",
+    "pack-verify.log": "e72b877d856e56c8c0a610f56436431c4351666135290010a1ecdd6f040ea2d9",
+    "pack-capsule.log": "c9b544389e83daff596f8f74d2a7c62101d499cf9cbd0129e8cf29f948971115",
+    "public-check.log": "f27fcf1186f06a11cf648d59f2ecedceee935af7dd4ce83a691e1ab482e3b313",
+    "registry-check.log": "cd5abbf973243f5c157fa9b4233154fc281f0d689ea885bd766f3c2b79259371",
+    "docs-check-final.log": "1475d562c42922ce3c2bfa8d1706e398ab7223bcf000ef4362306b332a19c26b",
+    "docs-baseline.log": "1475d562c42922ce3c2bfa8d1706e398ab7223bcf000ef4362306b332a19c26b"
+  }
+}

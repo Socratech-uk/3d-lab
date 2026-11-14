@@ -1,0 +1,48 @@
+{
+  "release": "0.12.0",
+  "date": "2026-10-15",
+  "input": {
+    "file": "3d-lab(8).zip",
+    "sha256": "c3559c1eae990744d1af4d368531d3c6faf2a7e17fe17aab22ac57a0cbc20191"
+  },
+  "nodeSuite": {
+    "passed": true,
+    "command": "npm test",
+    "newBodyMappingAndMotionChecks": 23,
+    "logSha256": "883fa02a27b82fa7d0752baf1c35d9069a670db31f9f8547a73a3f1cf7a030f7"
+  },
+  "browser": {
+    "checks": [
+      "body-map panel is usable on the existing human without replacing its rig",
+      "predicted 34-joint skeleton opens suggestions and keeps candidate save/discard semantics",
+      "show role selects its visible point and manual assignment is exclusive",
+      "discard restores the entire prior rig, map and action state",
+      "review commits map, application keeps every predicted bone and binds original meshes",
+      "generic labels cannot break MoMask after a reviewed anatomical map",
+      "UniMate receives 21 canonical joints and dragging output gets a visible warning",
+      "in-place playback cannot modify exported pose keys",
+      "articulated output is distinguished from a translating mannequin",
+      "saving and reopening retains the body map and all detailed bones",
+      "local bend test runs on the bound detailed rig without calling AI",
+      "rest edits visibly invalidate a saved body review",
+      "narrow layout keeps the mapping controls within the viewport"
+    ],
+    "errors": [],
+    "builtIndexSha256": "39bb7371765723e7668443161167c11e40ac4e23d8562cee75428c26cfe2be98",
+    "inferenceVerified": false,
+    "windowsVerified": false,
+    "success": true
+  },
+  "limitations": [
+    "Controlled animation API responses, not checkpoint inference.",
+    "No Windows/WebView2 or RTX validation.",
+    "No representative user character mesh or skin weights were supplied.",
+    "Body mapping uses deterministic reviewed heuristics, not a new anatomical/skin-weight model."
+  ],
+  "unchanged": [
+    "App/database identity",
+    "Project Assets integration",
+    "Original draft storage semantics",
+    "Native model runtimes/checkpoints"
+  ]
+}

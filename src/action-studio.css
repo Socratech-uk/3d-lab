@@ -1,0 +1,15 @@
+/* Task-led navigation keeps detailed rig controls within reach. */
+.action-tabs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;padding-bottom:14px;border-bottom:1px solid #304355}
+.action-tabs button{min-height:38px;text-align:left;padding:8px 10px}
+.action-tabs button:nth-child(-n+4){font-weight:650;background:#192f3b}
+.action-tabs button:nth-child(n+5){font-size:11px;min-height:31px;color:#a7c0cf}
+.action-tabs button[aria-pressed=true]{border-color:#8de4cf;background:#284b50;color:#e3fff7}
+.action-tools>h2{letter-spacing:-.04em}.action-tools details{margin:12px 0}
+.action-tools details>summary{cursor:pointer;line-height:1.5;padding:7px 0;color:#bbd3df}
+.action-tools section[hidden]{display:none!important}
+.action-tools input[type=number]{width:100%}.action-tools .field{line-height:1.5}
+#a-send-foundry{border-color:#7aa9ba;color:#c8e9ef;background:#1a3542}
+.action-tools button:focus-visible,.action-inspector button:focus-visible{outline:2px solid #8de4cf;outline-offset:3px}
+@media(min-width:1400px){.action-view{grid-template-columns:310px minmax(0,1fr) 260px}}
+
+@media(min-width:1251px){.action-tools,.action-inspector{position:sticky;top:14px;max-height:calc(100vh - 28px);overflow-y:auto;scrollbar-width:thin;scrollbar-color:#40596a transparent}.action-workspace{align-self:start}}

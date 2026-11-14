@@ -1,0 +1,133 @@
+{
+  "sourceZip": "sol-explorer(20261014-133934).zip",
+  "sourceSha256": "0e0ead6f6bd586b6650c761e7b80254d3657f6d7d44ad7dafda983b510da0302",
+  "scope": "Exact pure geometry/document/component dependency closure. No live game state, server, publishing or editor UI is activated.",
+  "files": [
+    {
+      "source": "src/model-format/sol-shape-profile.js",
+      "target": "src/authoring/src/model-format/sol-shape-profile.js",
+      "sha256": "f6101d43f00dcaeecae674f6006ec3f40ae1517bc712aedff483fb826303ccd6",
+      "bytes": 26967
+    },
+    {
+      "source": "src/model-format/sol-custom-mesh.js",
+      "target": "src/authoring/src/model-format/sol-custom-mesh.js",
+      "sha256": "d635f1a62c96c541d29eb39a6776c6215905f0d4bda7964a84c5d55045e0a78b",
+      "bytes": 24422
+    },
+    {
+      "source": "src/model-format/sol-model-document.js",
+      "target": "src/authoring/src/model-format/sol-model-document.js",
+      "sha256": "d757dadfd9423da10da7ed975b3b672ba749e5aa688501290b1f4f8337a64e3a",
+      "bytes": 19856
+    },
+    {
+      "source": "src/model-format/sol-model-runtime.js",
+      "target": "src/authoring/src/model-format/sol-model-runtime.js",
+      "sha256": "23b343bf6aac9ec41bd55866a8a9d3b2651cf392f7b52cad6e91d93fd720f4e8",
+      "bytes": 8034
+    },
+    {
+      "source": "src/model-format/sol-component-library.js",
+      "target": "src/authoring/src/model-format/sol-component-library.js",
+      "sha256": "a6e7aa6866533ac85e4e37e837941138b50aeced7cb60fa21267c001e5507291",
+      "bytes": 24400
+    },
+    {
+      "source": "src/model-format/sol-project-file.js",
+      "target": "src/authoring/src/model-format/sol-project-file.js",
+      "sha256": "13677ae1c97a054e6f1ea26ff95110ea257e77a84d3806449048ac42cbc21e41",
+      "bytes": 992
+    },
+    {
+      "source": "src/model-format/sol-collision-model.js",
+      "target": "src/authoring/src/model-format/sol-collision-model.js",
+      "sha256": "9614c3cf75a195497f42c19d19cad8b83e59ce0ae3006d0a5cab527821f98855",
+      "bytes": 26932
+    },
+    {
+      "source": "src/model-format/sol-rounded-plate.js",
+      "target": "src/authoring/src/model-format/sol-rounded-plate.js",
+      "sha256": "c384bbdbafcd90d9e7a8ca4293efcdd7edb611ad23d47203c9b9b71cb2aa700e",
+      "bytes": 1165
+    },
+    {
+      "source": "design/copy-edit.js",
+      "target": "src/authoring/design/copy-edit.js",
+      "sha256": "5fc02491f0bd50f421e7ae412c934c2dde86fd9991cea265cafc5f9ddf79e439",
+      "bytes": 4220
+    },
+    {
+      "source": "design/join-object.js",
+      "target": "src/authoring/design/join-object.js",
+      "sha256": "6599eecfb6f9e188c07a5760208b818bd3304b4f7c9aa5c2a545ec67a5fa8efe",
+      "bytes": 20777
+    },
+    {
+      "source": "src/ships/ship-weapons.js",
+      "target": "src/authoring/src/ships/ship-weapons.js",
+      "sha256": "fbf1a474b359ed2ba21559f40ca54608e05261054b5b41dde2b387dc60fc7874",
+      "bytes": 10728
+    },
+    {
+      "source": "src/model-format/sol-presentation-profile.js",
+      "target": "src/authoring/src/model-format/sol-presentation-profile.js",
+      "sha256": "4da671acc06b10d890e9a4f4261801f9f2df12c39fc57f56aa70a4361e407921",
+      "bytes": 3574
+    },
+    {
+      "source": "src/model-format/sol-world-components.js",
+      "target": "src/authoring/src/model-format/sol-world-components.js",
+      "sha256": "46be79bc0a7ef7c359f4464a7641e917b1aebe0aaa50e0af4c2eed4f0caf73ab",
+      "bytes": 35347
+    },
+    {
+      "source": "src/characters/humanoid-motion.js",
+      "target": "src/authoring/src/characters/humanoid-motion.js",
+      "sha256": "0be4a310852143edee6cb3e38bb40af5b408b02554d81676661a967ccfc6cee1",
+      "bytes": 8990
+    },
+    {
+      "source": "src/model-format/sol-library-hierarchy.js",
+      "target": "src/authoring/src/model-format/sol-library-hierarchy.js",
+      "sha256": "2a2ebc0548b83b361e7290cc0f9cfdff06d565b41daad43e46627c20aeece021",
+      "bytes": 11553
+    },
+    {
+      "source": "src/model-format/sol-three-model.js",
+      "target": "src/authoring/src/model-format/sol-three-model.js",
+      "sha256": "e729a84a699a6e937eb3f72605eff9431b2fe5db37fe306438c03541c3cd2047",
+      "bytes": 29347
+    },
+    {
+      "source": "src/geometry/mesh-collision.js",
+      "target": "src/authoring/src/geometry/mesh-collision.js",
+      "sha256": "89dbc131f365e637f2a04b081b2236e80ac944186758b6e696f7506d81f60b33",
+      "bytes": 17641
+    },
+    {
+      "source": "design/asset-workspace.js",
+      "target": "src/authoring/design/asset-workspace.js",
+      "sha256": "b186278c34166f3036b70cb8cd23022be5475fef1453ded5175afbfab945c5dd",
+      "bytes": 6296
+    },
+    {
+      "source": "src/characters/character-frame.js",
+      "target": "src/authoring/src/characters/character-frame.js",
+      "sha256": "a25bcef15a1f80f6e337fbdb91cd50cd88c6a5b73cfbf830e8873d94976d5f92",
+      "bytes": 3607
+    },
+    {
+      "source": "src/characters/npcs/civilian-texture-materials.js",
+      "target": "src/authoring/src/characters/npcs/civilian-texture-materials.js",
+      "sha256": "7b5d519eefcc6919ad4e270159758652e9d3776d45140aee0813ee5ad2b54941",
+      "bytes": 3176
+    },
+    {
+      "source": "src/ships/ship-surface-shader.js",
+      "target": "src/authoring/src/ships/ship-surface-shader.js",
+      "sha256": "86f458e5b8c61ea6cd0da0c9bb5f394a1df39760b836a36523a3fc6e57778e4e",
+      "bytes": 2444
+    }
+  ]
+}

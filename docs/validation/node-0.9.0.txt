@@ -1,0 +1,202 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> capp-3d-lab@0.9.0 test
+> node tests/core.mjs && node tests/large-models.mjs && node tests/builder-geometry.mjs && node tests/builder-solids.mjs && node tests/builder-projection.mjs && node tests/builder-library.mjs && node tests/builder-outline.mjs && node tests/builder-objects.mjs && node tests/shape-document.mjs && node tests/shape-geometry.mjs && node tests/shape-library.mjs && node tests/action-lab.mjs && node tests/action-motion-duration.mjs && node tests/action-prompts.mjs && node tests/action-assets.mjs && node tests/action-workflow.mjs
+
+PASS real GLB triangles and byte lengths
+PASS base64 round trip and size admission
+PASS external GLB references never reach a loader
+PASS decoder, attribute and hierarchy budgets
+PASS metadata, folders and tags remain bounded
+PASS case-insensitive conflict resolution preserves both
+PASS search combines words and metadata
+PASS generation settings reject unsupported engines
+PASS GLB and metadata save atomically with independent identity
+PASS import collision is renamed and reported
+PASS stale metadata revisions cannot overwrite
+PASS reopening the store retains exact bytes
+PASS delete is revision guarded and affects only the target
+PASS preparation requires explicit licence acceptance
+PASS stop holds the lease until the original render settles
+PASS save failure retains completed output and supports retry
+PASS mismatched engine results are rejected
+PASS scoped bridge does not borrow parent APIs or swap provider
+PASS extracted Shape Studio produces actual mesh geometry
+19 focused checks passed. Controlled engine replies are not neural inference.
+PASS multi-megabyte GLB decodes without overflowing the stack
+PASS binary values and padding survive chunk boundaries
+PASS malformed alphabet and padding remain rejected
+PASS exact decoded length enforces caller budgets for each padding form
+PASS the existing 64 MiB limit is supported without reducing mesh detail
+PASS 256-detail generation saves and reopens the complete large output
+PASS a failed save retains the large mesh for exact download and retry
+7 large-model checks passed. Synthetic output; no GPU inference claimed.
+PASS cleanup welds compatible unindexed vertices without changing original
+PASS cleanup removes bad faces and retains colours and UVs
+PASS cleanup keeps UV seams and material assignment
+PASS normalization centres and uniformly scales longest dimension
+PASS QEM reduces closed curved UV mesh and keeps every face outward
+PASS QEM preserves material/UV seams and open borders exactly
+PASS reduction reports unreachable targets honestly
+PASS simplification deterministic across calls
+PASS brush follows front surface without editing disconnected nearby layer
+PASS deflate lowers only local vertices and brush outside mesh is harmless
+PASS smooth lowers a spike and flatten approaches the brush plane
+PASS invalid brushes and deformable meshes are rejected
+  56400 → 28200 triangles in 698ms
+PASS 56k-triangle workload reduces without recursion or quadratic scans
+13 geometry checks passed.
+PASS cube positional topology welds face shading and UV seams
+PASS window clips triangles at the box boundary and removes exact area
+PASS cut retains UVs, normals, material groups and interpolated colours
+PASS cut followed by shell produces closed walls and window reveals
+PASS closed cube shell offsets corners to exact interior planes
+PASS an open surface receives correctly oriented boundary rims
+PASS doorway crossing a hull edge retains a closed wall shell
+PASS off-centre cuts have no false T junctions on untouched neighbours
+PASS empty, missed, invalid and over-thick operations are rejected
+PASS non-manifold meshes and inconsistent orientation are rejected
+PASS animated attributes are rejected without mutating the source
+PASS adaptive wall thickness reports thinning around a deep generated fold
+12 cutting and shell checks passed.
+PASS occluded surfaces and original materials survive an independently owned edit
+PASS multi-material groups, textures and source images are independent after cloning
+PASS source aspect ratio and explicit horizontal flip are baked into UVs
+PASS all six cardinal directions select the intended facing surfaces
+PASS negative object scale retains outward-facing projection
+PASS transformed parent hierarchy participates in shared scene occlusion
+PASS no image edge smearing, no invalid options and no dynamic mesh edits
+PASS transparent occluders and hidden objects have explicit behaviour
+  56100 input triangles, 28050 overlay triangles, 308ms
+PASS 56k triangle ship-size workload completes with bounded output
+9 reference-projection checks passed. Browser decoding/GLB export is a separate check.
+PASS edited draft has separate identity and original bytes remain intact
+PASS edit provenance and separate source views survive reopening and filtering
+PASS repeated edited name resolves without overwriting either draft
+PASS invalid provenance cannot create partial edited drafts
+PASS a bounded outline separates an exact solid plug and complementary remainder
+PASS surface-panel mode cuts actual triangle boundaries and retains all exterior area
+PASS cut before wall generation produces closed window reveals and a separate thick panel
+PASS cut after wall generation closes both skins around the window
+PASS concave L outline retains its notch and conserves volume
+PASS through-all cuts separate front and back surfaces as one scene part
+PASS clockwise and explicitly closed loops produce the same cut
+PASS view-plane orientation and origin are honoured in model coordinates
+PASS open sources remain open with explicit feedback and can receive walls later
+PASS interpolated colours, UVs, smooth normals and material groups survive separation
+PASS snapping an outline onto existing mesh edges does not leave false holes
+PASS curved wall skins produce proper cap rings rather than filling the ship interior
+PASS a second independent window can be cut after the first cut and wall generation
+PASS invalid crossing, degenerate and oversized outlines are rejected without mutation
+PASS missed outlines, invalid depth and inverted view frames are rejected
+PASS unsupported skinning and non-manifold parts fail before replacing a mesh
+DENSE outline split and topology verification: 3885 ms
+PASS 56k-triangle generated-mesh scale remains closed and numerically conservative
+17 outline separation checks passed.
+PASS primitives use exact dimensions, finite bounds, normals and bounded detail
+PASS duplicate owns geometry, materials, textures and typed pixels without changing the source
+PASS transforms bake nested children and overlays around bounds without mutating matrices
+PASS mirroring indexed and non-indexed meshes keeps outward faces and tangent handedness
+PASS baking a pre-existing negative transform corrects winding only once
+PASS merge preserves source transforms, UVs, normals, material groups and projection children
+PASS merge retains multi-material face groups and fills absent colour streams with white
+PASS island separation joins UV seam duplicates, preserves appearance and reconstructs all triangles
+PASS islands touching only at a single corner remain separate
+PASS separation retains child overlays once, independently owned and in their baked position
+PASS invalid scales, animated sources, hidden merge geometry and excessive islands fail safely
+11 component operation checks passed.
+PASS default document has a valid independent profile and stable roundtrip identity
+PASS all shape and sketch presets validate without sharing point arrays
+PASS normalization and clone never mutate nested source recipes or transforms
+PASS independent paired profile handles survive storage without snapping peers
+PASS bounded formulas compose into a portable profile without executable code
+PASS reject unsupported formats versions excessive parts and duplicate IDs
+PASS reject nonfinite scalar or vector recipes and preserve intentional mirror scales
+PASS reject crossing touching duplicate and empty-area sketch edges
+PASS concave polygons and clockwise orientation keep editable handle ordering
+PASS revolve radius and extent are safe and partial angles are explicitly rejected
+PASS bounded resolution bevel and draft metadata reject hostile resource use
+PASS JSON byte bound and normalized fields prevent unexpected imported payloads
+12 Shape Lab document checks passed.
+PASS every supplied profile preset produces closed outward geometry and valid UVs
+PASS independent edge positions survive lofting with watertight caps
+PASS formula curves produce finite capped meshes and retain their portable recipe
+PASS concave and clockwise extrusions have exact volume and no open seams
+PASS bevel taper and twist produce closed meshes with a centred exact depth
+PASS maximal fitted bevel omits collapsed middle rings safely
+PASS revolved cylinder and annular ring close caps correctly around the Y axis
+PASS reversing revolve handles preserves orientation and distinct seam UVs
+PASS absolute transforms bake with correct mirrored winding and identity output nodes
+PASS mesh ownership and complete editable document preserve hidden and locked parts
+PASS geometry builder rejects invalid sketches and resource-exhausting whole scenes
+11 Shape Lab geometry checks passed.
+PASS Shape Lab saves exact mesh, reference and editable recipe with independent identity
+PASS Shape Lab document survives close and reopen without exposing shared mutations
+PASS Repeated shape saves preserve both recipes and resolve names
+PASS Shape metadata updates retain recipe and honor stale revision guards
+PASS Missing, invalid and oversized shape sources cannot create partial drafts
+PASS Builder edits and ordinary imports cannot advertise an unchanged editable shape source
+PASS Save snapshots the recipe before asynchronous hashing without mutating input
+PASS An asset-store failure rolls back mesh and recipe together and retains caller document
+PASS Separate local Shape Lab session restores normalized editable state
+PASS Invalid session saves preserve the last valid recipe and caller state
+PASS Quota failure retains saved session and reports recovery action
+PASS Corrupt and over-budget local sessions report failure without deleting recovery data
+PASS Unavailable or blocked session storage fails with actionable messages
+13 Shape Lab storage checks passed.
+PASS recipes reject cycles, nonfinite positions and prototype identifiers
+PASS hinge stays rigid and clamps to its angle limit
+PASS slider projects onto its constrained axis; fixed joints stay anchored
+PASS smooth binding and painting preserve normalized weights
+PASS interpolation and export retain rest offsets and named clips
+PASS skinned scene extraction preserves independent rest geometry
+PASS neutral imported skin with transformed joints retains model-space vertices
+PASS skin outside its bind pose is refused without mutating source geometry or skeleton
+PASS IK reaches an endpoint without changing chain lengths
+PASS BVH channel order is respected and trailing content rejected
+PASS full neural rotations preserve twist through rotated rest frames
+PASS object-only motion is refused instead of silently losing actions
+PASS animated skeleton ancestor cannot silently leave an unskinned accessory behind
+PASS forearm geometry follows the elbow pivot, not the wrist incoming edge
+PASS absolute source rotations remove the source rest basis before target rest is applied
+PASS exact Spine name is not stolen by HumanML3D Spine1 alias
+PASS first generated crouch height is retained while horizontal placement stays anchored
+17 Action Lab checks passed.
+PASS segmented motion preserves exact fractional duration and end pose through saving
+PASS partial, unordered and mismatched timing cannot silently change an action
+PASS mixed rotation frames are rejected before retargeting
+Retargeted 126,070 keys in 233 ms
+PASS full minute and maximum engine rig stay within editable key budget
+PASS prompt provenance permits line breaks but rejects control characters
+5 long-motion timing checks passed.
+PASS all starter prompts are bounded and animal options are separate
+PASS draft, saved recipes and selection survive reload
+PASS prompt updates and copies preserve original identity and values
+PASS deletion retains the editor and other saved prompts
+PASS imports merge without overwriting matching names or current draft
+PASS malformed and oversized imports are rejected atomically
+PASS quota failures preserve saved recipes while retaining draft in memory
+PASS corrupt stored data is preserved rather than silently replaced
+PASS 48-entry limit blocks an oversized import without partial writes
+PASS long actions are ready only within rig, binding and aggregate key budgets
+PASS prompt text permits newlines but rejects unsupported controls before inference
+PASS an earlier status cannot mark a newly prepared model unloaded
+PASS a late status cannot resurrect an unloaded model
+PASS native failures and cancellation invalidate loaded state
+PASS model limits and skeleton generation are task-specific
+PASS rigging sends canonical mesh positions and rejects oversized geometry without truncation
+PASS late prepare and render replies cannot resurrect cancelled operations
+PASS skeleton response is typed and malformed names never become editable joints
+18 Action prompt and engine checks passed.
+PASS Action asset metadata: combined filters, sort, immutable input, honest origin guidance (12 assertions)
+✓ a static asset is a new working copy, not an already saved action draft
+✓ binding counts use actual scene parts and ignore stale or detached entries
+✓ a saved animated draft previews its existing actions without requesting a replacement rig
+✓ generic joint names and partial binding remain visible on an animated imported GLB
+✓ candidate status takes priority over a usable existing animation
+✓ mechanical guidance allows deliberately unbound fixed geometry and generic pivot names
+✓ choosing another guidance type does not add joints or overwrite existing bindings
+✓ AI naming guidance detects duplicate names and disconnected roots without claiming engine readiness
+✓ saved practice drafts preserve their source classification and dirty state
+✓ empty and unbound scenes are not presented as motion ready
+10 Action Lab workflow checks passed.

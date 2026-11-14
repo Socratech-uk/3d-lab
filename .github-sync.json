@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "owner": "Socratech-uk",
+  "repository": "3d-lab",
+  "branch": "main",
+  "visibility": "public",
+  "requirePrivate": false,
+  "description": "3D Lab modeling, rigging, animation and texture tools",
+  "allowedTestSecretHashes": []
+}

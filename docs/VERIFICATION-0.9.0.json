@@ -1,0 +1,85 @@
+{
+  "release": "3D Lab 0.9.0",
+  "date": "2026-10-15",
+  "scope": "Lab-only asset selection, safe Action Lab handoff and beginner workflow guidance.",
+  "sourcePolicy": "Only the newly supplied 3d-lab(8).zip was used as application source. No older application or cApp source was merged.",
+  "source": {
+    "file": "3d-lab(8).zip",
+    "bytes": 1107271,
+    "sha256": "34e5799b40c264815e5182ffd0daa5a60a654033af44f83a6a559eab78eecc52"
+  },
+  "builtIndex": {
+    "bytes": 1203224,
+    "sha256": "f662e1758c6cacb5af5c23c7b804431247534de85c074ad8267b93641e6c7f87"
+  },
+  "changes": [
+    "Searchable, filterable and paginated Action Lab asset chooser, with direct GLB import.",
+    "Assets right-click, ellipsis and keyboard menus plus inspector Open/Continue in Action Lab.",
+    "Persistent model identity and human, animal or mechanical setup guidance based on actual rig, bindings and keyed actions.",
+    "Save/Discard/Cancel switching, same-source session continuation and transactional failure recovery.",
+    "Detached import validation, incompatible bind-pose and unsupported mixed animation rejection.",
+    "Busy/candidate and async-load safeguards, contained dialog focus and mobile/fullscreen access."
+  ],
+  "preserved": [
+    "Original assets and source GLB bytes/metadata.",
+    "Saved Action Lab recipes, joints, bindings, constraints, clip keys and source provenance.",
+    "capp.3d-lab.assets.v1 database identity.",
+    "Existing Local AI 0.21.0 / MCP 0.24.20 setup and neural-model integrations."
+  ],
+  "node": {
+    "command": "npm test",
+    "passed": true,
+    "suiteScripts": 16,
+    "actionGeometryCases": 17,
+    "assetMetadataAssertions": 12,
+    "actionWorkflowCases": 10,
+    "log": "validation/node-0.9.0.txt"
+  },
+  "browser": {
+    "checks": [
+      "Action Lab exposes asset choice and import with beginner guidance on first visit",
+      "Import from Action Lab saves a real GLB and opens it directly for rigging",
+      "Asset browser searches names, folder, tags and notes; filters and selection are explicit",
+      "Larger collections paginate and name sorting remains predictable",
+      "Right click, ellipsis and keyboard menus all offer direct Action Lab handoff",
+      "Maximum-length asset titles open without overflowing the editable title limit",
+      "Same-source reopening retains unsaved rig changes and Undo history",
+      "Switch Cancel preserves the complete document and keeps the picker available",
+      "Switch Discard is explicit and loads the chosen static mesh without old joints",
+      "Save and switch stores the rig, weights and named keys as a separate action asset",
+      "Reopen action draft restores all rig, binding, constraint and clip data",
+      "The first async asset switch owns the request and prevents overlapping user switches",
+      "Immediate workspace return cancels stale static previews and retains the open action session",
+      "An imported animated GLB keeps the embedded rig, skin weights and keys",
+      "Failed Save and switch leaves current work intact and permits cancellation",
+      "Malformed import is rejected before replacing or saving current edits",
+      "A valid GLB with unsupported morph geometry is decoded and rejected without scene loss",
+      "An incompatible imported bind pose is rejected without corrupting the current rig",
+      "A removed asset fails safely without losing the edited scene",
+      "Asset names are rendered as text, and picker keyboard focus stays within its dialog",
+      "Asset replacement is blocked during an owned model operation and skeleton review",
+      "Mobile and fullscreen retain accessible asset picking without horizontal overflow",
+      "Saved action persists through real reload and reopens without an AI model",
+      "Asset handoffs preserve the original static GLB bytes and metadata",
+      "No uncaught browser errors or unexpected network access"
+    ],
+    "errors": [],
+    "network": [],
+    "testedInputs": {
+      "builtIndexSha256": "f662e1758c6cacb5af5c23c7b804431247534de85c074ad8267b93641e6c7f87",
+      "browserTestSha256": "5145c60adc9f40cb84355db17bde80708f05937dd04cb845dc5f018d6cc74656"
+    },
+    "scope": "Built Lab, real browser IndexedDB and GLB parser/exporter. Controlled animation bridge tests only busy/candidate UX, not inference.",
+    "windowsExecutionVerified": false,
+    "passed": true
+  },
+  "browserEvidence": "validation/action-assets-browser-0.9.0.json",
+  "visualReview": "Desktop Action Lab and 390px mobile picker screenshots inspected; source identity, guide and selection remain readable, with scrolling for narrow dialogs.",
+  "limits": [
+    "Browser execution used Linux Chromium, real IndexedDB and GLB parsing/export; Windows/WebView2 was not run.",
+    "A controlled animation bridge exercised only busy and candidate safeguards, not model inference.",
+    "No new neural-quality or RTX 4070/CUDA acceptance claim; 0.8.0 inference records remain historical.",
+    "Imports require supported self-contained skeletal/static GLBs. Morph targets, object-only motion and incompatible bind poses are rejected with feedback.",
+    "Setup guidance describes scene structure; users must still inspect joint placement, weights, contacts and movement."
+  ]
+}

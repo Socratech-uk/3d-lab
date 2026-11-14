@@ -1,0 +1,72 @@
+{
+  "version": "0.19.0",
+  "date": "2026-10-18",
+  "sourceArchive": "3d-lab(20261018-093128).zip",
+  "sourceArchiveSha256": "ab74525b8e4c9b15c716068dd6a7b1a82792dc66c5157c277664729249cb3907",
+  "scope": "3D Lab only; existing Hunyuan controls and disk storage retained",
+  "checks": {
+    "fullNodeSuite": {
+      "command": "npm test",
+      "passed": true
+    },
+    "animalAnatomy": {
+      "command": "node tests/action-animal-anatomy.mjs",
+      "passed": 17,
+      "cases": [
+        "24 generic joints in +Z/-Z/+X/-X with translated/scaled positions and shuffled storage",
+        "long ground-reaching and absent tails",
+        "generic humans and helper-rich quadrupeds up to 98 joints",
+        "missing legs and incorrect facing block automatic detection/application",
+        "explicit named roles and editable kind/facing",
+        "cache invalidation and caller isolation",
+        "existing imported-rig guidance",
+        "semantic aliases retain source names",
+        "full rig, skin attributes, actions and provenance preserved through recipe round-trip",
+        "19 semantic animal joints condition motion; MoMask rejects animals",
+        "new workflow auto defaults and old explicit choices retained",
+        "workflow accepts compatible editor corrections"
+      ]
+    },
+    "builtBrowser": {
+      "command": "PLAYWRIGHT_PATH=<playwright> CHROMIUM_PATH=<chromium> node tests/action-animal-browser.mjs",
+      "passed": 11,
+      "checks": [
+        "already-applied generic animal is recognised without replacing its rig",
+        "suggested labels are searchable and joint settings retain the source name",
+        "review stores the labels while preserving source joints, weights, clips and bindings",
+        "Undo and Redo restore review state even when the joint IDs are unchanged",
+        "saved map and full rig reopen from disk in an empty browser profile",
+        "generic animal predictions override the previous human guidance and open unreviewed labels",
+        "reviewed prediction applies and binds all 24 joints with one-step restoration",
+        "UniMate receives animal roles and MoMask refuses animal conditioning",
+        "manual type/facing corrections can be reset with auto-detection",
+        "rest edits invalidate review while keeping saved role identities",
+        "mobile controls stay within the viewport with readable labels"
+      ],
+      "pageErrors": [],
+      "builtIndexSha256": "fc8d7f3ff96f27366716df09b234c66fcc8204815eff065987595aaba340abd8",
+      "storage": "real temporary Python disk catalogue; remote-compatibility test connection",
+      "modelReplies": "controlled synthetic 24-joint UniRig reply and synthetic canonical UniMate motion",
+      "skinPreservation": "all exported GLB JOINTS_0 and WEIGHTS_0 buffer-view bytes compared before/after body-map application",
+      "freshProfileReopen": true,
+      "desktopAnd390pxLayout": true
+    },
+    "sourceBundle": {
+      "command": "node tools/build.mjs",
+      "passed": true,
+      "externalRuntimeScripts": false
+    },
+    "payloadReplay": "Every changed file is checked against the fresh input archive and overlaid by root-relative path; final bytes match the edited source. Source-version mismatches must be merged explicitly."
+  },
+  "notPerformed": [
+    "Actual HOUND asset review (asset was not supplied)",
+    "Real UniRig or UniMate neural inference",
+    "Installed Windows / WebView2 execution",
+    "PowerShell updater execution on Windows",
+    "Native compile/build or CTest",
+    "CUDA / VRAM / performance benchmarking",
+    "Kestrel gameplay acceptance"
+  ],
+  "persistence": "Accepted bodyMap v1 references original IDs and survives recipe and embedded GLB metadata. Unreviewed suggestions stay in the editor. Existing Files/shared disk persistence remains in use.",
+  "limitations": "Heuristic suggestions for common connected Y-up four-legged rest rigs. Missing/atypical anatomy and incompatible root direction need manual selections or rig edits; visual anatomical and gait/contact review remains required."
+}

@@ -1,0 +1,127 @@
+{
+  "date": "2026-10-18",
+  "versions": {
+    "3d-lab": "0.20.0",
+    "local-ai": "0.23.0",
+    "mcp": "0.24.26"
+  },
+  "inputs": {
+    "capp": {
+      "archive": "capp-v1(20261018-133143).zip",
+      "sha256": "8a5440387f5cd548638a4a445bc3a3e15c72dbdc119d36c726ba61c5dc6f95da"
+    },
+    "3d-lab": {
+      "archive": "3d-lab(20261018-123351).zip",
+      "sha256": "1da2353dc7567ffd133fa9cb80c7a68ad04cce9ed781cd2b24a50e693d6d22cb"
+    }
+  },
+  "checks": [
+    {
+      "command": "npm test",
+      "ok": true,
+      "passed": 323
+    },
+    {
+      "command": "npm run test:storage",
+      "ok": true,
+      "nodePassed": 17,
+      "pythonPassed": 5
+    },
+    {
+      "command": "node tests/builder-materials.mjs",
+      "ok": true,
+      "passed": 8,
+      "includes": "UV seam preservation, normalized attributes, all six directions, occlusion, normal-map UV protection on rebake, physical materials, unsafe inputs and cancellation"
+    },
+    {
+      "command": "node tests/action-flow.mjs",
+      "ok": true,
+      "includes": "Hunyuan imagePadding serialization, bound rejection and existing consent/cancellation behavior"
+    },
+    {
+      "command": "node tests/builder-textures-browser.mjs",
+      "ok": true,
+      "checks": [
+        "texture upload supplies box UVs; Undo/Redo retain exact geometry and original disk bytes",
+        "normal maps and physical glass export together, with editable optical settings",
+        "PNG capture uses its own glass environment and leaves the editable scene unchanged",
+        "source-image bake preserves the mesh and existing normal UVs; export embeds the atlas",
+        "textured edits save as a new disk draft; a fresh browser profile reloads the embedded images",
+        "material changes affect only selected parts and roll back with Undo",
+        "texture controls remain reachable in the small-screen workspace"
+      ],
+      "errors": [],
+      "neuralInference": false,
+      "nativeAcceptance": false,
+      "performanceAcceptance": false
+    },
+    {
+      "command": "node tests/builder-textures-browser.mjs with supplied coin and reference",
+      "ok": true,
+      "checks": [
+        "supplied 1.72M-triangle coin bakes in the actual app, cancels safely and exports without reducing it"
+      ],
+      "fixture": "User-supplied model.glb; enhanced front reference from the earlier supplied coin set; original files unchanged"
+    },
+    {
+      "command": "node tests/hunyuan-controls-browser.mjs",
+      "ok": true,
+      "controlledNativeOutput": true,
+      "includes": "both real facades, real Files worker, saved framing and conditioning metadata, empty-profile reuse, all retained source views, correct side-reference save role"
+    },
+    {
+      "command": "node tools/build.mjs",
+      "ok": true,
+      "indexBytes": 1995506,
+      "indexSha256": "6d50435eaa7a4e35f3f6a75f92d369195ca384f5788633af285e63702d68393d"
+    }
+  ],
+  "coinGeometry": {
+    "triangles": 1722550,
+    "trianglePositionWindingMultisetSha256": "8f4a36f9a0b428f7313b39f56ae0f43889cef18423a3c383989602bb7a3f4699",
+    "exactTrianglePositionsWindingPreserved": true,
+    "maximumNormalComponentDelta": 5.960464477539063e-08,
+    "normalNote": "Builder import/flatten applies its existing normal-matrix normalization; UV baking retains normals.",
+    "originalBytes": 41341652,
+    "bakedBytes": 55532156,
+    "images": 1,
+    "bakeMetadata": [
+      {
+        "version": 1,
+        "views": [
+          "front"
+        ],
+        "atlasSize": 2048,
+        "uvChannel": 0,
+        "crop": true,
+        "scale": 1,
+        "offsetX": 0,
+        "offsetY": 0,
+        "flipX": false,
+        "method": "orthographic-visible-surface",
+        "depthResolution": 512
+      }
+    ]
+  },
+  "method": "Orthographic visible-surface image projection into indexed UV charts and an embedded atlas; no inference and no new triangles.",
+  "limits": [
+    "Input views must match model orientation, framing and appearance; image lighting and view seams remain possible.",
+    "Triangle-centre visibility is approximate; large partially occluded triangles may bleed.",
+    "Source baking colours existing geometry; it does not straighten wavy tracks or infer hidden artwork.",
+    "Tight Hunyuan framing has not been qualified by real generation.",
+    "Physical glass requires receiving-renderer extension support.",
+    "Existing 64 MiB GLB, 8-image and 32-million-decoded-pixel limits remain."
+  ],
+  "notRun": [
+    "native compilation/build",
+    "CTest",
+    "Windows/WebView2 installation",
+    "CUDA neural inference and geometric quality",
+    "GPU memory/performance/gameplay acceptance",
+    "PowerShell updater execution"
+  ],
+  "originalDraftsChanged": false,
+  "weightsChanged": false,
+  "vendorSourcesChanged": false,
+  "githubConnectorUsed": false
+}

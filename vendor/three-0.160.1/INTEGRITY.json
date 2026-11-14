@@ -1,0 +1,53 @@
+{
+  "schema": "sol.vendor-integrity.v1",
+  "package": "three",
+  "version": "0.160.1",
+  "source": "https://registry.npmjs.org/three/-/three-0.160.1.tgz",
+  "license": "MIT",
+  "tarballSha256": "d462f9bb4a53d0a75f5ebba49ec1c69847f166cd1bd6cbfdd98ce0b5b7988609",
+  "npmIntegrity": "sha512-Bgl2wPJypDOZ1stAxwfWAcJ0WQf7QzlptsxkjYiURPz+n5k4RBDLsq+6f9Y75TYxn6aHLcWz+JNmwTOXWrQTBQ==",
+  "registryIntegrityVerified": true,
+  "scope": "Exact unmodified dependency closure for Model Designer. No runtime stub or substituted package version.",
+  "files": [
+    {
+      "path": "LICENSE",
+      "bytes": 1081,
+      "sha256": "852e0e8699169bf9f6fdc6bda3e682d078dcbc738b5d33e74df594721bff271d"
+    },
+    {
+      "path": "build/three.module.js",
+      "bytes": 1272972,
+      "sha256": "76dea8151bc9352aef3528b4262e249b2604f62543828328db978d060d61a495"
+    },
+    {
+      "path": "examples/jsm/controls/OrbitControls.js",
+      "bytes": 30973,
+      "sha256": "7aa4372a5ec60b49988edde81014c7361740a57962d032003ca33301c1f4edd5"
+    },
+    {
+      "path": "examples/jsm/controls/TransformControls.js",
+      "bytes": 40573,
+      "sha256": "487861c18e017a6c69cc302827c6f506993f05dafce220da0bad095d6fe5808d"
+    },
+    {
+      "path": "examples/jsm/exporters/GLTFExporter.js",
+      "bytes": 77714,
+      "sha256": "f8a6eb87719e68c925fdf445014b5ead49cf779ae14e69c6cc1cb1dd4eae514d"
+    },
+    {
+      "path": "examples/jsm/loaders/GLTFLoader.js",
+      "bytes": 108522,
+      "sha256": "d073b438e6a07e1359741dd5d6c76c953420cc0d4fd84eb1bdde94315540e6a3"
+    },
+    {
+      "path": "examples/jsm/utils/BufferGeometryUtils.js",
+      "bytes": 31906,
+      "sha256": "9be041e96308775d00e2695cc607645b9a9b64fd7c0e759dd8f7c00a8d92becb"
+    },
+    {
+      "path": "examples/jsm/utils/TextureUtils.js",
+      "bytes": 2367,
+      "sha256": "1b84a7fde8745dd614f62b6ca8108b592144278c07891a0cbe8cdf8e15796efa"
+    }
+  ]
+}

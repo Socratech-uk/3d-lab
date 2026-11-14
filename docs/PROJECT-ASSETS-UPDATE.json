@@ -1,0 +1,91 @@
+{
+  "input": "3d-lab(8).zip",
+  "changes": [
+    {
+      "path": "README.md",
+      "before": "64fc3996439ba31efacf91edcfec06649ea112d8a8624cd17f5c7a9decca1623",
+      "after": "415cf0b897b9b48120843209749b653ffb8560fa7ce1cbdb5f1defc53769ccbf"
+    },
+    {
+      "path": "docs/INTEGRATION.md",
+      "before": "8ff3bec370583c08f61fcdd93c88c901d333c047be74eb00a5b51248952ef5b7",
+      "after": "692fcf234b7db23556c7f2531b5a8a5fa97d7192ece89914ba5a38cf2d33a328"
+    },
+    {
+      "path": "docs/PROJECT-ASSETS-VERIFICATION.json",
+      "before": null,
+      "after": "fb7cc478de367f81ef39212e38ca14fc158caa91d733969d8cba53357b388fdf"
+    },
+    {
+      "path": "docs/PROJECT-ASSETS.md",
+      "before": null,
+      "after": "b75200717e12b3ce03bacb03c449b3287885c592c998e464f4313fb091d91230"
+    },
+    {
+      "path": "index.html",
+      "before": "7290a52080f6aacd9b27f457c05319ea43584eca2cbe83eda6bbb3fc7d5e050c",
+      "after": "01d2170863de3e7292bae9d936931bdfea07a14c2c94f9dea9a79d7db8a0fcd7"
+    },
+    {
+      "path": "memory.md",
+      "before": "b5716fe111f1dd487cdbba1f3542bcbba0ddbe2bbde79e46ba134c276fc20b07",
+      "after": "d6aa3ac7ca510634c4656d89f75c89e6bfee6890b3f81170a5eac894ad7ade25"
+    },
+    {
+      "path": "package-lock.json",
+      "before": "0d39cac866f4aeac37e8e7007f5a045e9cb0fca445757f2f9836d347d655808e",
+      "after": "b1ddc8a758b30c6b802e8f620acc6c7a57561ab6b2400dbc048f6e3cc9289e1a"
+    },
+    {
+      "path": "package.json",
+      "before": "c98cb07cb18e8e6a8b3667f9f3e74ee9bd7fd8608e9efbf3b3b99b1872914ae4",
+      "after": "87ed6f768f6fc4a7c17bab8c8761ec4570abbe2c2c2d04131738114e586b2e5d"
+    },
+    {
+      "path": "src/app.mjs",
+      "before": "f20020a387789a986eeaa0507f109bdcd1cd72456096f76885c1952b75f6f0a9",
+      "after": "7629e962030525ea54e9ec0aace77cde225a22c0608edbe253de1cd21e8aa667"
+    },
+    {
+      "path": "src/core.mjs",
+      "before": "c4892c74fc1416c24b32fb4c78f64d0e64e3b73622e730f0c7994305e35f0b62",
+      "after": "8de90154bc23a06c7b0d4e0d5374a7e7078673a64dc6c9ff256d9e75d1d06bbc"
+    },
+    {
+      "path": "src/index.template.html",
+      "before": "14e4f64e5d8d5d901489f30d699507f070442d3a8763fa4f65ccf74cfaa4168e",
+      "after": "6efb20852982df28ba715822a06f13a304c6412a29605e2ac078faf9510b1f5a"
+    },
+    {
+      "path": "src/library.mjs",
+      "before": "accfec376e47f250662d7143c9d7d0f99a675dfb61bf77477e7ed7cd8f868b5b",
+      "after": "f44666556cf3d6dedbe9c173857179f39809622a373c7f51556b54a956bfeb43"
+    },
+    {
+      "path": "src/project-lab.mjs",
+      "before": null,
+      "after": "cc92ac770774ca9b28f48bcdc897549c883efc1e9005f992622718bb51c9a79d"
+    },
+    {
+      "path": "src/project-workspace.css",
+      "before": null,
+      "after": "d1b96de020de33129d5dc607e6d909e78e48aa8a626ed73d94e032e41c3f709d"
+    },
+    {
+      "path": "src/project-workspace.mjs",
+      "before": null,
+      "after": "607748e595d86eea052896b9e7611bcd0836f7c791c0251f0284603ef2dbb83c"
+    },
+    {
+      "path": "tests/project-assets.mjs",
+      "before": null,
+      "after": "ad39823cd14c347ec729f662a73aa053f3504b3d64ad6b574f8fee99c405199d"
+    },
+    {
+      "path": "tools/build.mjs",
+      "before": "45b3d2b23904556e8bbb41a2d5ef0cedbf7398b2c8620d68272ad49ddcefb0cd",
+      "after": "5ba518fdb63f92281451d2e36b8f1cf1b1f1db677e282fa48f5bebe01902b4ad"
+    }
+  ],
+  "removed": []
+}

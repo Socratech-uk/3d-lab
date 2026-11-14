@@ -1,0 +1,30 @@
+{
+  "checks": 22,
+  "results": [
+    "honest browser preview without a sidecar",
+    "no automatic preparation or generation on launch",
+    "working source geometry, wireframe and camera controls",
+    "later tools are explicit placeholders",
+    "image picker performs real raster preparation",
+    "JPEG and WebP headers are admitted before real decoding",
+    "drop captures files synchronously and prevents browser navigation",
+    "licence acceptance gates explicit model preparation",
+    "generation, saved reference and rendered GLB end to end",
+    "asset metadata persists and search combines fields",
+    "right-click context and future production state",
+    "keyboard context and open inspector",
+    "GLB download retains exact file bytes",
+    "GLB import resolves naming conflicts with feedback",
+    "malformed or remote-reference meshes are rejected",
+    "cancel remains busy until the engine request settles",
+    "failed draft save retains output for download and retry",
+    "delete requires confirmation and preserves unrelated drafts",
+    "real IndexedDB survives reload",
+    "responsive layouts retain controls without horizontal overflow",
+    "all action buttons have hover help",
+    "no unexpected runtime network or uncaught errors"
+  ],
+  "errors": [],
+  "network": [],
+  "engine": "Controlled test fixture; no neural or Windows acceptance"
+}

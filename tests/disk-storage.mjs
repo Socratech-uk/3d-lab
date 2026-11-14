@@ -1,0 +1,57 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs/promises';
+import path from 'node:path';
+import os from 'node:os';
+import {spawn} from 'node:child_process';
+import {pathToFileURL,fileURLToPath} from 'node:url';
+import {DiskModelLibrary,DiskClient,storageConnection} from '../src/disk-library.mjs';
+import {DiskAuthoringStorage,DiskRigRecipeStore} from '../src/disk-authoring.mjs';
+import {ModelLibrary} from '../src/library.mjs';
+import {PromptLibrary} from '../src/action-prompts.mjs';
+import {RigRecipeStore,createRigRecipe} from '../src/action-rig-library.mjs';
+import {createActionDocument,createJoint} from '../src/action-document.mjs';
+import {createShapeDocument} from '../src/shape-document.mjs';
+import {flowPreset,FLOW_STORAGE} from '../src/action-flow.mjs';
+import {fixtureGlb} from './fixtures.mjs';
+const {indexedDB}=process.env.FAKE_IDB_PATH?await import(pathToFileURL(process.env.FAKE_IDB_PATH).href):await import('fake-indexeddb');
+const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..'),folder=await fs.mkdtemp(path.join(os.tmpdir(),'lab-disk-test-'));
+const cache=()=>new ModelLibrary({indexedDB,name:'disk-test-'+crypto.randomUUID()});
+const local=()=>{const map=new Map();return {getItem:k=>map.get(k)??null,setItem:(k,v)=>map.set(k,String(v)),removeItem:k=>map.delete(k)};};
+let processHandle,link,port;async function start(){
+ processHandle=spawn('python3',[path.join(root,'tools/asset_storage.py'),'--root',folder,'--port','0'],{stdio:['ignore','pipe','pipe']});
+ link=await new Promise((resolve,reject)=>{let data='';const t=setTimeout(()=>reject(Error('Storage launch timeout: '+data)),10000);processHandle.on('exit',c=>{clearTimeout(t);reject(Error('Storage exited '+c+': '+data));});processHandle.stderr.on('data',b=>data+=b);processHandle.stdout.on('data',b=>{data+=b;const m=data.match(/http:\/\/127\.0\.0\.1:\d+\/#storage=[A-Za-z0-9_-]+/);if(m){clearTimeout(t);resolve(m[0]);}});});port=new URL(link).port;
+}
+async function stop(){if(!processHandle)return;const p=processHandle;processHandle=null;await new Promise(resolve=>{p.once('exit',resolve);p.kill();});}
+let count=0;const test=async(name,fn)=>{await fn();count++;console.log('PASS',name);};
+const legacy=cache(),bytes=fixtureGlb(),storage=local();
+const doc=createActionDocument('Walking character');doc.joints=[createJoint([0,0,0],null,'Hips'),createJoint([0,1,0],null,'Head')];doc.joints[1].parent=doc.joints[0].id;
+const source={blob:new Blob(['reference'],{type:'image/png'}),name:'front.png',sha256:'a'.repeat(64),width:64,height:64,views:{left:{blob:new Blob(['left'],{type:'image/png'}),name:'left.png',sha256:'b'.repeat(64),width:64,height:64}}};
+const a=await legacy.save({bytes,info:{title:'Walking character',tags:['test']},origin:'action',actionDocument:doc});
+const b=await legacy.save({bytes,info:{title:'Shape source'},origin:'shape',shapeDocument:createShapeDocument(),source});
+const c=await legacy.save({bytes,info:{title:'Generated reference'},origin:'generation',generation:{model:'triposr',device:'cpu',resolution:128,seed:0,steps:30},source});
+const disk=new DiskModelLibrary({cache:legacy,connectionStorage:storage});
+try{
+ await start();
+ await test('reject insecure remote and credential-bearing links',()=>{for(const bad of ['http://example.com/#storage='+ 'a'.repeat(48),'http://127.0.0.1:43193/private/#storage='+ 'a'.repeat(48),'http://user:pass@127.0.0.1:43193/#storage='+ 'a'.repeat(48)])assert.throws(()=>storageConnection(bad));});
+ await test('storage API rejects requests without its private token',async()=>{const r=await fetch('http://127.0.0.1:'+port+'/v1/assets');assert.equal(r.status,401);});
+ await test('migrate existing model, action, shape and multiview records with original IDs',async()=>{await disk.connect(link);assert.equal(disk.failed.length,0,disk.message);assert.equal((await disk.list()).length,3);for(const asset of [a.asset,b.asset,c.asset]){const got=await disk.get(asset.id);assert.equal(got.asset.id,asset.id);assert.deepEqual(new Uint8Array(await got.files.glb.arrayBuffer()),bytes);assert.deepEqual(new Uint8Array(await fs.readFile(got.modelPath)),bytes);}const got=await disk.get(b.asset.id);assert.equal(await got.files.image.text(),'reference');assert.equal(await got.files.views.left.blob.text(),'left');assert.deepEqual((await disk.get(a.asset.id)).files.actionDocument,doc);assert.equal((await legacy.list()).length,3);});
+ await test('repeated migration is idempotent',async()=>{await disk.connect(link);assert.equal((await disk.list()).length,3);assert.match(disk.message,/3 already backed up/);});
+ let newSave;
+ await test('new saves succeed on disk even when the browser cache is full',async()=>{const blocked=cache();blocked.putRecord=async()=>{throw Error('cache quota');};const lib=new DiskModelLibrary({cache:blocked});await lib.connect(link);newSave=await lib.save({bytes,info:{title:'Disk only'}});assert.ok(newSave.path);assert.deepEqual(new Uint8Array(await fs.readFile(path.join(newSave.path,'model.glb'))),bytes);});
+ await test('empty browser recovers the complete catalogue and editable records from disk',async()=>{const lib=new DiskModelLibrary({cache:cache()});await lib.connect(link);assert.equal((await lib.list()).length,4);assert.deepEqual((await lib.get(a.asset.id)).files.actionDocument,doc);assert.equal(await(await lib.get(b.asset.id)).files.views.left.blob.text(),'left');});
+ await test('metadata changes and deletion enforce expected revisions',async()=>{const row=await disk.update(a.asset.id,1,{title:'Walking character revised'});assert.equal(row.revision,2);await assert.rejects(()=>disk.update(a.asset.id,1,{title:'Lost edit'}),/changed/);await assert.rejects(()=>disk.remove(a.asset.id,1),/changed/);});
+ await test('browser conflict preserves both revisions without overwriting the disk copy',async()=>{const old=cache();const rec=await legacy.get(a.asset.id);delete rec.files.diskStamp;rec.asset.title='Conflicting legacy title';await old.putRecord(rec);const lib=new DiskModelLibrary({cache:old});await lib.connect(link);assert.equal(lib.failed.length,0);assert.equal((await disk.list()).length,5);assert.equal((await disk.get(a.asset.id)).asset.title,'Walking character revised');assert.ok((await disk.list()).some(r=>r.title==='Conflicting legacy title (browser recovery)'));await lib.connect(link);assert.equal((await disk.list()).length,5);});
+ await test('removed drafts retain their disk bytes and do not reappear from a stale browser',async()=>{const rec=await legacy.get(c.asset.id);delete rec.files.diskStamp;const stale=cache();await stale.putRecord(rec);const existing=await disk.get(c.asset.id);await disk.remove(c.asset.id,1);assert.deepEqual(new Uint8Array(await fs.readFile(existing.modelPath)),bytes);const lib=new DiskModelLibrary({cache:stale});await lib.connect(link);assert.equal((await lib.list()).some(r=>r.id===c.asset.id),false);});
+ await test('save acknowledgement lost after commit can be retried without duplicating the asset',async()=>{let lost=true;const client=new DiskClient({fetch:async(url,opts)=>{const response=await fetch(url,opts);if(lost&&url.endsWith('/assets')&&opts.method==='POST'){lost=false;throw new TypeError('connection lost after disk commit');}return response;}}),lib=new DiskModelLibrary({client,cache:cache()});await lib.connect(link);const before=(await lib.list()).length,options={bytes,info:{title:'Retry once'}};await assert.rejects(()=>lib.save(options),/unavailable/);const saved=await lib.save(options);assert.equal((await lib.list()).length,before+1);assert.equal(saved.asset.title,'Retry once');});
+ const settings=local(),prompts=new PromptLibrary(settings);prompts.save({name:'Saved walk',actionName:'Walk',prompt:'A person walks.',durationSeconds:6,seed:13});settings.setItem(FLOW_STORAGE,JSON.stringify([{id:'flow-one',flow:flowPreset()}]));settings.setItem('capp.3d-lab.shapes.v1',JSON.stringify(createShapeDocument()));
+ const rigCache=new RigRecipeStore({indexedDB,name:'rig-test-'+crypto.randomUUID()}),rig=createRigRecipe(doc,{name:'Test rig',bounds:{min:[0,0,0],max:[1,2,1]}});await rigCache.save(rig);
+ const authoring=new DiskAuthoringStorage({library:disk,cache:settings,rigCache});
+ await test('migrate prompts, workflows, shape session and reusable rigs to readable JSON files',async()=>{await authoring.sync();for(const name of ['action-prompts','workflows','shape-session','rig-shelf'])assert.ok(JSON.parse(await fs.readFile(path.join(folder,'settings',name+'.json'),'utf8')));assert.equal(new PromptLibrary(authoring).state.entries[0].name,'Saved walk');assert.equal((await new DiskRigRecipeStore(authoring).list()).length,1);});
+ await test('new authoring saves wait for disk acknowledgement and survive fresh browser storage',async()=>{new PromptLibrary(authoring).save({name:'Jump',actionName:'Jump',prompt:'A person jumps.',durationSeconds:2,seed:99});await authoring.flush();const fresh=new DiskAuthoringStorage({library:disk,cache:local(),rigCache:new RigRecipeStore({indexedDB,name:'empty-'+crypto.randomUUID()})});await fresh.sync();assert.equal(new PromptLibrary(fresh).state.entries.length,2);assert.equal((await new DiskRigRecipeStore(fresh).list()).length,1);});
+ await test('concurrent prompt changes cannot silently overwrite another window',async()=>{const other=new DiskAuthoringStorage({library:disk,cache:local(),rigCache:new RigRecipeStore({indexedDB,name:'empty-'+crypto.randomUUID()})});await other.sync();const one=new PromptLibrary(authoring),two=new PromptLibrary(other);one.save({name:'One',actionName:'One',prompt:'one',durationSeconds:2,seed:1});two.save({name:'Two',actionName:'Two',prompt:'two',durationSeconds:2,seed:2});await authoring.flush();await assert.rejects(()=>other.flush(),/changed in another/);assert.ok(other.pending.size);await other.sync();assert.ok(other.recoveries.length);});
+ await test('concurrent saves keep both drafts with distinct names',async()=>{const one=new DiskModelLibrary({cache:cache()}),two=new DiskModelLibrary({cache:cache()});await one.connect(link);await two.connect(link);const saved=await Promise.all([one.save({bytes,info:{title:'Concurrent'}}),two.save({bytes,info:{title:'Concurrent'}})]);assert.equal(new Set(saved.map(r=>r.asset.title)).size,2);assert.equal(new Set(saved.map(r=>r.asset.id)).size,2);});
+ await test('missing or corrupted content never enters the disk catalogue',async()=>{const record=await disk.client.request('assets/'+a.asset.id);record.bundle.asset.id=record.bundle.files.id=crypto.randomUUID();record.bundle.files.glb.$blob.sha256='a'.repeat(64);record.bundle.asset.sha256='a'.repeat(64);await assert.rejects(()=>disk.client.request('assets',{method:'POST',value:{bundle:record.bundle}}),/missing|checksum/);});
+ await test('service downtime rejects saving instead of reporting a browser save',async()=>{await stop();await assert.rejects(()=>disk.save({bytes,info:{title:'Must not be reported saved'}}),/unavailable/);const read=await disk.get(a.asset.id);assert.equal(read.asset.id,a.asset.id);assert.match(disk.message,/cached copy/);});
+ await test('disk catalogue and complete model data survive service restart',async()=>{await start();await disk.connect(link);assert.ok((await disk.list()).some(r=>r.id===newSave.asset.id));assert.deepEqual(new Uint8Array(await(await disk.get(newSave.asset.id)).files.glb.arrayBuffer()),bytes);});
+ console.log(count+' durable-storage checks passed. Test root: '+folder);
+}finally{await stop();legacy.close();}

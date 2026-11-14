@@ -1,0 +1,3 @@
+export const jointNameKey=s=>String(s).toLowerCase().replace(/^mixamorig[:_]?/,'').replace(/[^a-z0-9]/g,'');
+const aliases={pelvis:'hips',root:'hips',spine1:'spine',spine2:'chest',spine3:'chest',leftcollar:'leftshoulder',rightcollar:'rightshoulder',leftshoulderjoint:'leftarm',rightshoulderjoint:'rightarm',leftelbow:'leftforearm',rightelbow:'rightforearm',leftwrist:'lefthand',rightwrist:'righthand',lefthip:'leftupleg',righthip:'rightupleg',leftknee:'leftleg',rightknee:'rightleg',leftankle:'leftfoot',rightankle:'rightfoot',lefttoe:'lefttoebase',righttoe:'righttoebase'};
+export const jointKey=name=>aliases[jointNameKey(name)]||jointNameKey(name);

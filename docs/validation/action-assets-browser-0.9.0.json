@@ -1,0 +1,38 @@
+{
+  "checks": [
+    "Action Lab exposes asset choice and import with beginner guidance on first visit",
+    "Import from Action Lab saves a real GLB and opens it directly for rigging",
+    "Asset browser searches names, folder, tags and notes; filters and selection are explicit",
+    "Larger collections paginate and name sorting remains predictable",
+    "Right click, ellipsis and keyboard menus all offer direct Action Lab handoff",
+    "Maximum-length asset titles open without overflowing the editable title limit",
+    "Same-source reopening retains unsaved rig changes and Undo history",
+    "Switch Cancel preserves the complete document and keeps the picker available",
+    "Switch Discard is explicit and loads the chosen static mesh without old joints",
+    "Save and switch stores the rig, weights and named keys as a separate action asset",
+    "Reopen action draft restores all rig, binding, constraint and clip data",
+    "The first async asset switch owns the request and prevents overlapping user switches",
+    "Immediate workspace return cancels stale static previews and retains the open action session",
+    "An imported animated GLB keeps the embedded rig, skin weights and keys",
+    "Failed Save and switch leaves current work intact and permits cancellation",
+    "Malformed import is rejected before replacing or saving current edits",
+    "A valid GLB with unsupported morph geometry is decoded and rejected without scene loss",
+    "An incompatible imported bind pose is rejected without corrupting the current rig",
+    "A removed asset fails safely without losing the edited scene",
+    "Asset names are rendered as text, and picker keyboard focus stays within its dialog",
+    "Asset replacement is blocked during an owned model operation and skeleton review",
+    "Mobile and fullscreen retain accessible asset picking without horizontal overflow",
+    "Saved action persists through real reload and reopens without an AI model",
+    "Asset handoffs preserve the original static GLB bytes and metadata",
+    "No uncaught browser errors or unexpected network access"
+  ],
+  "errors": [],
+  "network": [],
+  "testedInputs": {
+    "builtIndexSha256": "f662e1758c6cacb5af5c23c7b804431247534de85c074ad8267b93641e6c7f87",
+    "browserTestSha256": "5145c60adc9f40cb84355db17bde80708f05937dd04cb845dc5f018d6cc74656"
+  },
+  "scope": "Built Lab, real browser IndexedDB and GLB parser/exporter. Controlled animation bridge tests only busy/candidate UX, not inference.",
+  "windowsExecutionVerified": false,
+  "passed": true
+}

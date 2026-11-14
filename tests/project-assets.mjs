@@ -1,0 +1,16 @@
+import assert from 'node:assert/strict';
+import {indexedDB} from 'fake-indexeddb';
+import {ModelLibrary} from '../src/library.mjs';
+import {fixtureGlb} from './fixtures.mjs';
+import {projectConnection} from '../src/project-workspace.mjs';
+const library=new ModelLibrary({indexedDB,name:'project-assets-'+crypto.randomUUID()}),bytes=fixtureGlb();
+const project={id:'kestrel',assetId:'kestrel:model:crate',revision:'a'.repeat(64)};
+const a=await library.save({bytes,info:{title:'Project crate'},project}),b=await library.save({bytes,info:{title:'Project crate'},project});
+assert.equal(a.asset.id,b.asset.id);assert.equal((await library.list()).length,1);assert.deepEqual((await library.get(a.asset.id)).asset.project,project);
+const c=await library.save({bytes,info:{title:'Project crate'},project:{...project,revision:'b'.repeat(64)}});assert.notEqual(a.asset.id,c.asset.id);
+await assert.rejects(()=>library.save({bytes,info:{title:'Bad'},project:{...project,id:'../bad'}}),/Invalid project/);
+assert.equal((await library.list()).length,2);assert.deepEqual(new Uint8Array(await(await library.get(a.asset.id)).files.glb.arrayBuffer()),bytes);
+const token='x'.repeat(43);assert.deepEqual(projectConnection('http://127.0.0.1:8034/#connect='+token),{base:'http://127.0.0.1:8034',token});
+for(const value of ['http://example.com/#connect='+token,'http://127.0.0.1:80/path#connect='+token,'http://user@127.0.0.1:8034/#connect='+token,'http://127.0.0.1:8034/#connect=short'])assert.throws(()=>projectConnection(value));
+assert.equal(projectConnection('https://foundry.example.test/#connect='+token).base,'https://foundry.example.test');
+library.close();console.log('PASS project revision reuse, byte preservation, separate revision identities and connector URL validation');

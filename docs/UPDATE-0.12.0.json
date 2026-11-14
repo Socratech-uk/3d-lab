@@ -1,0 +1,126 @@
+{
+  "inputSha256": "c3559c1eae990744d1af4d368531d3c6faf2a7e17fe17aab22ac57a0cbc20191",
+  "changedFiles": [
+    {
+      "path": "README.md",
+      "beforeSha256": "415cf0b897b9b48120843209749b653ffb8560fa7ce1cbdb5f1defc53769ccbf",
+      "afterSha256": "046662138428d6eea384cc4047f3a5a186236ccd19f1c23ba224752ddd2aa9f8"
+    },
+    {
+      "path": "docs/ACTION-LAB.md",
+      "beforeSha256": "cb6a7d1ec062bd1e04e384e90d27335fb7c91bb31df42bae6856d3bf8b056308",
+      "afterSha256": "891ee0a268a4739c626b14d1513b2f5c0f2b8221755d4ae4a74716c787132898"
+    },
+    {
+      "path": "docs/VERIFICATION-0.12.0.json",
+      "beforeSha256": null,
+      "afterSha256": "de37577a1f86126e6d0b52a556c32059833ec97ebf566a0f739047f04d236ae5"
+    },
+    {
+      "path": "index.html",
+      "beforeSha256": "01d2170863de3e7292bae9d936931bdfea07a14c2c94f9dea9a79d7db8a0fcd7",
+      "afterSha256": "39bb7371765723e7668443161167c11e40ac4e23d8562cee75428c26cfe2be98"
+    },
+    {
+      "path": "memory.md",
+      "beforeSha256": "d6aa3ac7ca510634c4656d89f75c89e6bfee6890b3f81170a5eac894ad7ade25",
+      "afterSha256": "8fbaad629412677d656f40c82498bf020499205a27927a46e56a39f0dbeecac1"
+    },
+    {
+      "path": "package-lock.json",
+      "beforeSha256": "b1ddc8a758b30c6b802e8f620acc6c7a57561ab6b2400dbc048f6e3cc9289e1a",
+      "afterSha256": "dc8435ce94bca66bfb061869f26838f14c8893fe313e76ff8481fad21329e5a3"
+    },
+    {
+      "path": "package.json",
+      "beforeSha256": "87ed6f768f6fc4a7c17bab8c8761ec4570abbe2c2c2d04131738114e586b2e5d",
+      "afterSha256": "960adb2301fb83afd36036747e9c964250bd931a391e2b325230989247bb2796"
+    },
+    {
+      "path": "src/action-anatomy.mjs",
+      "beforeSha256": null,
+      "afterSha256": "b386417ba0d2f13a94e519daaa890d3662dedb6b97671abebdfd3b3fb806397c"
+    },
+    {
+      "path": "src/action-body-ui.mjs",
+      "beforeSha256": null,
+      "afterSha256": "79a5f3b4ad2d68a1dae26a59028c633bd25fa79927067648b043559a03f37c3b"
+    },
+    {
+      "path": "src/action-composer.mjs",
+      "beforeSha256": "5de821f54cca48470ba11a74e05712cca11d1e0d39b3ffbacd7d38e86111873d",
+      "afterSha256": "7c6110953dc7a346c2524b9ce97d6aadda4a9bf709c013baa243bd71fb71310c"
+    },
+    {
+      "path": "src/action-document.mjs",
+      "beforeSha256": "56db417418bfaad429dbaa492b2ef14428e555438b8a6b8215582f7c814f4231",
+      "afterSha256": "2763e23dd8bc2c9c0a373dcb1a1f7f415b19013a6dab38eb04527f6f011f2e50"
+    },
+    {
+      "path": "src/action-engine.mjs",
+      "beforeSha256": "3edeb002b48c19d3bf5db51864b39d60caf3793a2da505b86b4c9a8d480c01f8",
+      "afterSha256": "8c0eaae53e25db18170d141d1b0f7bf383d2eb1b8ccdc1c6e73d5e35e7eeab86"
+    },
+    {
+      "path": "src/action-joint-names.mjs",
+      "beforeSha256": null,
+      "afterSha256": "140e6ceea2bd7de0e9ea22109a7f34ea0116ea92566f725dfd0eb7aef7772105"
+    },
+    {
+      "path": "src/action-lab.mjs",
+      "beforeSha256": "30a926480721d394b2830efe65f549c750420b93e21717af6415a68649998bb4",
+      "afterSha256": "499c03d20f9b0236828cd02f811703e9bff3e4634e353ef6568a94a81a09625a"
+    },
+    {
+      "path": "src/action-motion-check.mjs",
+      "beforeSha256": null,
+      "afterSha256": "002f91789d21c0d1c60b9e4373347b4ea043b577f9a5e4d4b29f00fe50b10562"
+    },
+    {
+      "path": "src/action-motion.mjs",
+      "beforeSha256": "bc3976543dd17961b0deea62f5a6ff252aeceb899412c6b1df6b54417e7f9387",
+      "afterSha256": "515393c0d48c64cf4b491e354dd885590a199baa8b1285ef98e09cdf53df1cdc"
+    },
+    {
+      "path": "src/action-ui.mjs",
+      "beforeSha256": "d33d781074af37016aa78138da5d4f58a96c3b95b330063e4288c055c91a264b",
+      "afterSha256": "e7febb0b186e157b595433c97d1e06ed0c0a4ca486f9d65fd1325bbc1d8745dc"
+    },
+    {
+      "path": "src/action-workflow.mjs",
+      "beforeSha256": "cf567a79a3b5948eca1b26e36577f7b2e40f4703e7b83ec535d1acb2e68c95a6",
+      "afterSha256": "685cd22cd3da5b34399bc1e0428087d18cf515f8c770b3a272ae14c409e0755c"
+    },
+    {
+      "path": "src/action.css",
+      "beforeSha256": "7e51fc8bb518034b3865f77e54e713ac54fbf9b099652a4a0a5c892f8e88b2bb",
+      "afterSha256": "f1f54e92ab950797c1d2cb2a5afa69b69895b86b188e7bf9545dd92703eeb8d4"
+    },
+    {
+      "path": "src/core.mjs",
+      "beforeSha256": "8de90154bc23a06c7b0d4e0d5374a7e7078673a64dc6c9ff256d9e75d1d06bbc",
+      "afterSha256": "a749295b8f968a8fea55c24671cf79a005c7b65eb9edc10d3511f9cbbc7029ba"
+    },
+    {
+      "path": "tests/action-anatomy.mjs",
+      "beforeSha256": null,
+      "afterSha256": "989c045ca5c77a5df7d45ce2822eb8377ddabd96c3d8bdfa5241ce8900ee2699"
+    },
+    {
+      "path": "tests/action-body-browser.mjs",
+      "beforeSha256": null,
+      "afterSha256": "1ec2babd80de26c5f602910e934add68046cdb254d83f929fb9bf9a38d076f06"
+    },
+    {
+      "path": "tests/action-prompts.mjs",
+      "beforeSha256": "8d73e4f3559939aedd58da4d5567a523abff49454d9b89cc77a0398ffb6f2c12",
+      "afterSha256": "a4ddf44a676f5a212e8f6d07b17dcd32e9c7a44200327a44b56d43c1bec23cfa"
+    },
+    {
+      "path": "tests/body-fixtures.mjs",
+      "beforeSha256": null,
+      "afterSha256": "04de5169a6a456ead1d1a05761d6f0acf3b861324974771f9b77c267cba5fa50"
+    }
+  ],
+  "removedFiles": []
+}

@@ -1,0 +1,13 @@
+import assert from 'node:assert/strict';
+import {fixtureGlb,packGlb} from './fixtures.mjs';
+import {textureContainer,textureLayer,saveTextureLayers} from '../src/texture-layers.mjs';
+const initial=textureContainer(fixtureGlb()),json=structuredClone(initial.json),vertices=initial.buffer(0);
+const png=Uint8Array.from(Buffer.from('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+a+7sAAAAASUVORK5CYII=','base64'));
+const binary=new Uint8Array((vertices.length+png.length+3)&~3);binary.set(vertices);binary.set(png,vertices.length);json.buffers[0].byteLength=binary.length;json.bufferViews.push({buffer:0,byteOffset:vertices.length,byteLength:png.length});json.images=[{bufferView:1,mimeType:'image/png'}];json.extras={retained:{id:'original',value:[1,2,3]}};
+const original=packGlb(json,binary),change={image:0,composite:png,paint:png,opacity:.7};
+const once=saveTextureLayers(original,[change]),a=textureContainer(once);assert.deepEqual(a.buffer(0),vertices);assert.deepEqual(a.json.extras.retained,json.extras.retained);assert.deepEqual(a.json.nodes,json.nodes);assert.deepEqual(a.json.accessors,json.accessors);assert.equal(a.layers.length,1);assert.deepEqual(textureLayer(a,0).base,png);
+const twice=saveTextureLayers(once,[{...change,opacity:.3}]),b=textureContainer(twice);assert.equal(b.json.bufferViews.length,a.json.bufferViews.length);assert.equal(b.layers[0].opacity,.3);assert.deepEqual(b.buffer(0),vertices);
+const bad=structuredClone(b.json);bad.extras.cappTextureLayers.layers[0].paintBufferView=0;const data=new Uint8Array(b.json.buffers[0].byteLength);b.json.bufferViews.forEach((v,i)=>data.set(b.buffer(i),v.byteOffset));const padded=new Uint8Array((data.length+3)&~3);padded.set(data);assert.throws(()=>textureContainer(packGlb(bad,padded)),/geometry or animation/);
+assert.throws(()=>saveTextureLayers(original,[change,change]),/each texture once/);assert.throws(()=>saveTextureLayers(original,[{...change,opacity:NaN}]),/opacity/);
+const channels=structuredClone(json);channels.textures=[{source:0}];channels.materials=[{pbrMetallicRoughness:{baseColorTexture:{index:0}},normalTexture:{index:0}}];assert.throws(()=>saveTextureLayers(packGlb(channels,binary),[change]),/another material channel/);
+console.log('PASS texture layers preserve mesh buffers and unrelated metadata, retain the base, reject invalid references and reuse storage on repeated saves');

@@ -1,0 +1,535 @@
+{
+  "status": "source-and-browser-verified; native-acceptance-pending",
+  "date": "2026-10-18",
+  "versions": {
+    "3d-lab": "0.20.1",
+    "local-ai": "0.23.1",
+    "mcp": "0.24.27",
+    "links": "0.6.0-alpha.2"
+  },
+  "inputs": {
+    "capp": {
+      "archive": "capp-v1(20261018-161738).zip",
+      "bytes": 112895335,
+      "sha256": "2cd73ab0aae01daba1966cddd0c91cc351f117ee524ecf2a5f8d53ad6d692275"
+    },
+    "3d-lab": {
+      "archive": "3d-lab(20261018-151810).zip",
+      "bytes": 1757762,
+      "sha256": "58ee5f980b99b754ae95c99bf4ff5b1fa2271e50edbced44cacb9201a7e6b82a"
+    }
+  },
+  "reproduction": {
+    "userFailedGlbProvided": false,
+    "exporter": "trimesh 4.0.5",
+    "wheelBytes": 688495,
+    "wheelSha256": "d139a9108fc7d68a9cd3f5788528eadc20f25a10ae915922b4a2768e0b23d943",
+    "isolatedTestNumpy": "1.26.4",
+    "failure": "Default exporter divides a zero-length normal by zero and writes NaN into accessor metadata; Lab raises Invalid GLB metadata.",
+    "fix": "Repair shading normals, export with unitize_normals=False and require strict JSON. Positions/faces/winding are unchanged.",
+    "dependencyAndModelPinsChanged": false
+  },
+  "checks": [
+    {
+      "command": "npm test",
+      "project": "3d-lab",
+      "status": "passed",
+      "checks": 324
+    },
+    {
+      "command": "npm run test:storage",
+      "project": "3d-lab",
+      "status": "passed",
+      "nodeChecks": 17,
+      "pythonChecks": 5
+    },
+    {
+      "command": "node tools/build.mjs",
+      "project": "3d-lab",
+      "status": "passed",
+      "bytes": 2002592,
+      "sha256": "90078a93a723e2ceb0c3ea3317f97b40592184f0db45568d95d5c450e757f981"
+    },
+    {
+      "command": "node tests/glb-layout-zoom-browser.mjs",
+      "project": "3d-lab",
+      "status": "passed",
+      "checks": [
+        "long generation panels scroll independently while Create fits desktop and laptop windows",
+        "the exact legacy exporter failure retains downloadable bytes and cannot write an invalid draft",
+        "the finite-normal export passes both real facades, saves to disk and renders after 75-step settings",
+        "Ctrl+wheel leaves the 3D camera alone and remains uncancelled for native page zoom",
+        "Builder, Shape Lab and Action Lab keep the preview within the desktop workspace",
+        "small screens show the complete Create preview before the controls without horizontal overflow",
+        "a fresh browser profile reopens the fixed generation from disk"
+      ],
+      "layoutMeasurements": [
+        {
+          "label": "Create 1920x1035",
+          "view": "create",
+          "height": 995,
+          "width": 1920,
+          "documentHeight": 995,
+          "documentWidth": 1920,
+          "stage": {
+            "x": 310,
+            "y": 82,
+            "width": 1340,
+            "height": 876,
+            "bottom": 958,
+            "right": 1650
+          },
+          "viewport": {
+            "x": 310,
+            "y": 162,
+            "width": 1340,
+            "height": 698,
+            "bottom": 860,
+            "right": 1650
+          },
+          "fit": {
+            "x": 1427.125,
+            "y": 875,
+            "width": 30.5625,
+            "height": 26,
+            "bottom": 901,
+            "right": 1457.6875
+          }
+        },
+        {
+          "label": "Create 1366x768",
+          "view": "create",
+          "height": 728,
+          "width": 1366,
+          "documentHeight": 728,
+          "documentWidth": 1366,
+          "stage": {
+            "x": 286.859375,
+            "y": 82,
+            "width": 833.265625,
+            "height": 609,
+            "bottom": 691,
+            "right": 1120.125
+          },
+          "viewport": {
+            "x": 286.859375,
+            "y": 162,
+            "width": 833.265625,
+            "height": 431,
+            "bottom": 593,
+            "right": 1120.125
+          },
+          "fit": {
+            "x": 897.25,
+            "y": 608,
+            "width": 30.5625,
+            "height": 26,
+            "bottom": 634,
+            "right": 927.8125
+          }
+        },
+        {
+          "label": "Create 1280x720",
+          "view": "create",
+          "height": 680,
+          "width": 1280,
+          "documentHeight": 680,
+          "documentWidth": 1280,
+          "stage": {
+            "x": 268.796875,
+            "y": 82,
+            "width": 780.8125,
+            "height": 561,
+            "bottom": 643,
+            "right": 1049.609375
+          },
+          "viewport": {
+            "x": 268.796875,
+            "y": 162,
+            "width": 780.8125,
+            "height": 383,
+            "bottom": 545,
+            "right": 1049.609375
+          },
+          "fit": {
+            "x": 826.734375,
+            "y": 560,
+            "width": 30.5625,
+            "height": 26,
+            "bottom": 586,
+            "right": 857.296875
+          }
+        },
+        {
+          "label": "Create 1024x768",
+          "view": "create",
+          "height": 728,
+          "width": 1024,
+          "documentHeight": 728,
+          "documentWidth": 1024,
+          "stage": {
+            "x": 250,
+            "y": 82,
+            "width": 550,
+            "height": 609,
+            "bottom": 691,
+            "right": 800
+          },
+          "viewport": {
+            "x": 250,
+            "y": 162,
+            "width": 550,
+            "height": 431,
+            "bottom": 593,
+            "right": 800
+          },
+          "fit": {
+            "x": 577.125,
+            "y": 608,
+            "width": 30.5625,
+            "height": 26,
+            "bottom": 634,
+            "right": 607.6875
+          }
+        },
+        {
+          "label": "Generated Create",
+          "view": "create",
+          "height": 995,
+          "width": 1920,
+          "documentHeight": 995,
+          "documentWidth": 1920,
+          "stage": {
+            "x": 310,
+            "y": 82,
+            "width": 1340,
+            "height": 876,
+            "bottom": 958,
+            "right": 1650
+          },
+          "viewport": {
+            "x": 310,
+            "y": 162,
+            "width": 1340,
+            "height": 698,
+            "bottom": 860,
+            "right": 1650
+          },
+          "fit": {
+            "x": 1427.125,
+            "y": 875,
+            "width": 30.5625,
+            "height": 26,
+            "bottom": 901,
+            "right": 1457.6875
+          }
+        },
+        {
+          "label": "Builder 1920x1035",
+          "view": "builder",
+          "height": 995,
+          "width": 1920,
+          "documentHeight": 995,
+          "documentWidth": 1920,
+          "stage": {
+            "x": 310,
+            "y": 82,
+            "width": 1340,
+            "height": 876,
+            "bottom": 958,
+            "right": 1650
+          },
+          "viewport": {
+            "x": 310,
+            "y": 229,
+            "width": 1340,
+            "height": 631,
+            "bottom": 860,
+            "right": 1650
+          },
+          "fit": {
+            "x": 1427.125,
+            "y": 875,
+            "width": 30.5625,
+            "height": 26,
+            "bottom": 901,
+            "right": 1457.6875
+          }
+        },
+        {
+          "label": "Builder 1366x768",
+          "view": "builder",
+          "height": 728,
+          "width": 1366,
+          "documentHeight": 728,
+          "documentWidth": 1366,
+          "stage": {
+            "x": 286.859375,
+            "y": 82,
+            "width": 833.265625,
+            "height": 609,
+            "bottom": 691,
+            "right": 1120.125
+          },
+          "viewport": {
+            "x": 286.859375,
+            "y": 229,
+            "width": 833.265625,
+            "height": 364,
+            "bottom": 593,
+            "right": 1120.125
+          },
+          "fit": {
+            "x": 897.25,
+            "y": 608,
+            "width": 30.5625,
+            "height": 26,
+            "bottom": 634,
+            "right": 927.8125
+          }
+        },
+        {
+          "label": "Builder 1024x768",
+          "view": "builder",
+          "height": 728,
+          "width": 1024,
+          "documentHeight": 728,
+          "documentWidth": 1024,
+          "stage": {
+            "x": 250,
+            "y": 82,
+            "width": 550,
+            "height": 609,
+            "bottom": 691,
+            "right": 800
+          },
+          "viewport": {
+            "x": 250,
+            "y": 229,
+            "width": 550,
+            "height": 364,
+            "bottom": 593,
+            "right": 800
+          },
+          "fit": {
+            "x": 577.125,
+            "y": 608,
+            "width": 30.5625,
+            "height": 26,
+            "bottom": 634,
+            "right": 607.6875
+          }
+        },
+        {
+          "label": "Shape Lab",
+          "view": "shapes",
+          "height": 728,
+          "width": 1024,
+          "documentHeight": 728,
+          "documentWidth": 1024,
+          "stage": {
+            "x": 525,
+            "y": 142,
+            "width": 275,
+            "height": 549,
+            "bottom": 691,
+            "right": 800
+          },
+          "viewport": {
+            "x": 525,
+            "y": 212,
+            "width": 275,
+            "height": 392,
+            "bottom": 604,
+            "right": 800
+          },
+          "fit": {
+            "x": 541,
+            "y": 625,
+            "width": 28.5625,
+            "height": 24,
+            "bottom": 649,
+            "right": 569.5625
+          }
+        },
+        {
+          "label": "Action Lab",
+          "view": "actions",
+          "height": 728,
+          "width": 1024,
+          "documentHeight": 728,
+          "documentWidth": 1024,
+          "stage": {
+            "x": 274,
+            "y": 221.1875,
+            "width": 502,
+            "height": 282.3125,
+            "bottom": 503.5,
+            "right": 776
+          },
+          "viewport": {
+            "x": 274,
+            "y": 285.1875,
+            "width": 502,
+            "height": 120.3125,
+            "bottom": 405.5,
+            "right": 776
+          },
+          "fit": {
+            "x": 585.125,
+            "y": 433.703125,
+            "width": 26.5625,
+            "height": 24.796875,
+            "bottom": 458.5,
+            "right": 611.6875
+          }
+        },
+        {
+          "label": "Reopened Create",
+          "view": "create",
+          "height": 995,
+          "width": 1920,
+          "documentHeight": 995,
+          "documentWidth": 1920,
+          "stage": {
+            "x": 310,
+            "y": 82,
+            "width": 1340,
+            "height": 876,
+            "bottom": 958,
+            "right": 1650
+          },
+          "viewport": {
+            "x": 310,
+            "y": 162,
+            "width": 1340,
+            "height": 698,
+            "bottom": 860,
+            "right": 1650
+          },
+          "fit": {
+            "x": 1427.125,
+            "y": 875,
+            "width": 30.5625,
+            "height": 26,
+            "bottom": 901,
+            "right": 1457.6875
+          }
+        }
+      ],
+      "pageErrors": []
+    },
+    {
+      "command": "python3 tests/local_models3d_export.py",
+      "project": "capp",
+      "status": "passed",
+      "checks": 5,
+      "environment": "Exact Trimesh 4.0.5 with isolated NumPy 1.26.4; no neural model"
+    },
+    {
+      "command": "python3 tests/local_models3d_controls.py",
+      "project": "capp",
+      "status": "passed",
+      "checks": 5,
+      "cuda": "controlled pipeline double"
+    },
+    {
+      "command": "python3 tests/local_models3d_advanced_smoke.py",
+      "project": "capp",
+      "status": "passed",
+      "checks": 5,
+      "skipped": 0,
+      "scope": "Source/package admission; no model inference"
+    },
+    {
+      "command": "python3 tests/local_models3d_smoke.py",
+      "project": "capp",
+      "status": "passed",
+      "checks": 9
+    },
+    {
+      "command": "node tests/local_models3d_controls.mjs",
+      "project": "capp",
+      "status": "passed",
+      "scope": "Both real app/owner facades; Hunyuan controls and invalid-value admission"
+    },
+    {
+      "command": "python3 tests/windows_chrome_package_smoke.py",
+      "project": "capp",
+      "status": "passed",
+      "groups": 7,
+      "scope": "Actual generated Windows source/config; main and Links child zoom defaults; no Rust build"
+    },
+    {
+      "command": "python3 tests/sidecar_registry_single_source_smoke.py",
+      "project": "capp",
+      "status": "passed"
+    },
+    {
+      "command": "python3 tools/sidecar_registry.py --check",
+      "project": "capp",
+      "status": "passed"
+    },
+    {
+      "command": "python3 tools/capp_public_docs.py --approve --check",
+      "project": "capp",
+      "status": "passed",
+      "pages": 62,
+      "components": 26,
+      "explicitDownloads": 75,
+      "review": "Five changed public inputs deliberately reviewed; no publication"
+    },
+    {
+      "command": "python3 tools/cappstandard.py --json",
+      "project": "capp",
+      "status": "passed",
+      "checks": 633
+    },
+    {
+      "command": "python3 tools/capppack.py build --site-id capp-protocol --version 0.28.0 --no-sealed; verify; verify-capsule",
+      "project": "capp",
+      "status": "passed",
+      "scope": "Isolated ordinary source release; no native build",
+      "chunks": 9,
+      "sourceSha256": "2f9738f89d90f0688fce284989f477b644a834994536d369ec6b202373b3b832"
+    },
+    {
+      "command": "python3 tests/native_desktop_selfhost_closure_smoke.py",
+      "project": "capp",
+      "status": "passed",
+      "scope": "Actual cApp source release; helper survives immutable packaged service closure. Not installed A-to-B self-hosting."
+    }
+  ],
+  "broaderGates": [
+    {
+      "command": "python3 tools/cappdocs.py check",
+      "status": "failed",
+      "unchangedFreshBaselineResult": true,
+      "issues": 19,
+      "detail": "Existing Designer markdown links; current and fresh baseline outputs byte-identical."
+    },
+    {
+      "command": "python3 tests/public_developer_docs_smoke.py",
+      "status": "failed",
+      "unchangedFreshBaselineResult": true,
+      "tests": 17,
+      "failures": 1,
+      "detail": "test_current_inventory_and_explicit_downloads expects four planned sidecars; supplied inventory has three. Failure matches after source-path/timing normalization."
+    }
+  ],
+  "browserGeneration": "Controlled original/repaired GLB output through both actual JavaScript facades and real Files worker. Native Hunyuan denoising was not run.",
+  "browserScope": "cApp-like 40px host plus app iframe; long Create panel independent scroll; desktop/laptop fitted stages; mobile preview first; original invalid bytes download; fixed output saved and reopened from fresh browser profile; Ctrl+wheel uncancelled and camera unchanged; ordinary wheel still zooms model.",
+  "nativeAcceptance": false,
+  "notRun": [
+    "native compilation/build",
+    "CTest",
+    "installed Windows/WebView2 interaction and Ctrl+wheel page zoom",
+    "CUDA/Hunyuan inference",
+    "GPU quality or performance",
+    "gameplay",
+    "installed A-to-B self-hosting",
+    "PowerShell updater execution"
+  ],
+  "activation": "Apply both source overlays; rebuild/restart the cApp owner with publication suppressed; freshly Compile and Package the updated Lab with Local AI 0.23.1 and current Links/Files selections. Preserve identity, shared asset folders and existing model weights.",
+  "packageVerification": "See root UPDATE-MANIFEST.json and PACKAGE-VERIFICATION.json for payload hashes and replay against fresh inputs."
+}

@@ -1,0 +1,52 @@
+{
+  "version": "0.2.1",
+  "sourceArchives": {
+    "capp-v1(20261014-204614).zip": "d7997d91b6b596b7ea678410185741e7aa778db0b77cb5581b4de58818f9a52c",
+    "3d-lab(1).zip": "939331e3299e8a0e940053a180aaa0aa0399582aca1b159994237fe7aa255244"
+  },
+  "scope": "3D Lab only; cApp source, model catalogue, native engines and permissions unchanged",
+  "reproduction": {
+    "baseline": "RangeError: Maximum call stack size exceeded at RegExp.test in src/core.mjs decode64",
+    "trigger": "Multi-megabyte valid base64 returned by the model engine; reproduced with a valid 6,167,924-byte GLB",
+    "stage": "Before GLB inspection, draft save or preview"
+  },
+  "repair": "Iterative alphabet/padding validation with exact decoded-size admission, followed by 65,536-character decode chunks into the final byte buffer.",
+  "preserved": {
+    "glbBytes": 67108864,
+    "resolutions": [
+      128,
+      256
+    ],
+    "assetProtocol": "capp.3d-lab.assets.v1",
+    "originalModelBytes": true
+  },
+  "checks": {
+    "core": 19,
+    "largeModels": 7,
+    "browser": 25,
+    "browserEvidence": "validation/browser-0.2.1.json",
+    "largeBrowserFixture": {
+      "bytes": 6167924,
+      "triangles": 204800,
+      "vertices": 103041,
+      "description": "Synthetic indexed coloured geometry; controlled engine response, no neural inference"
+    },
+    "maxSizeDecode": "Full 64 MiB round trip passed",
+    "browserFlows": [
+      "256 Full generation reply",
+      "IndexedDB save",
+      "preview and shading controls",
+      "byte-exact GLB download",
+      "reload and reopen"
+    ],
+    "build": "npm run build passed; shipped index.html regenerated from source",
+    "freshSourceReapplication": "56 files matched; 26 core/large-model checks passed; rebuilt HTML is byte-identical",
+    "cappSourceChanged": false
+  },
+  "activation": "Copy complete ZIP contents into the existing 3D Lab source folder, preserve project/app identity, freshly Compile and Package. Existing Local AI 0.18.0 / MCP 0.24.17 and downloaded models are reused.",
+  "notVerified": [
+    "Windows installed WebView2 / CUDA generation",
+    "The separate graphics-context-loss warning in the supplied screenshot"
+  ],
+  "notes": "Earlier evidence files are preserved. The fix removes the reproduced decoder overflow; it does not certify GPU resets, inference performance or new model runtimes."
+}

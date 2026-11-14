@@ -1,0 +1,25 @@
+{
+  "checks": 19,
+  "results": [
+    "surface hit gives mesh-local and root-model points",
+    "nearest triangle vertex snaps within screen tolerance",
+    "edge snap remains on geometry and distant vertex falls back to surface",
+    "hidden, locked, projection and selected-mesh filtering is enforced",
+    "hover cursor tracks surface and brush uses model-space radius",
+    "primary tool stroke emits hover begin update end without Shift or orbit",
+    "Alt-drag temporarily orbits instead of painting",
+    "cursor is excluded from editable clone and vanishes outside viewport",
+    "focused WASD moves camera and ends animation on key release",
+    "Q rotates view without moving camera and F lowers position",
+    "text fields and dialogs never drive camera",
+    "suspending stops key animation and blur clears held keys",
+    "view basis is orthonormal in model space and focus frames selection",
+    "manual recovery preserves object and rebinds keyboard handlers once",
+    "orthographic conversion preserves target-plane size and aligns depth rays",
+    "orthographic resize cursor lock and perspective restoration retain scale",
+    "legacy Shift brush remains backward compatible",
+    "real context loss retains editable CPU data and restores rendering",
+    "destroy releases cursor canvas and navigation without browser errors"
+  ],
+  "pageErrors": []
+}
